@@ -30,10 +30,15 @@ body {
 .bucket-list-title {
   background-color: #ffffff;
   color: #ff007a;
+  padding: 50px 40px;
 }
 
+.bucket-list {
+  padding: 22px 42px;
+}
 
 .bucket-item {
   background-color: #ffffff;
   color: #888888;
+  margin-top: 22px;
 }
