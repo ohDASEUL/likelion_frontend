@@ -33,6 +33,12 @@ body {
   color: #ff007a;
   padding: 50px 40px;
   border-radius: 20px 20px 0 0;
+
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
 }
 
 .bucket-list {
@@ -44,5 +50,12 @@ body {
   color: #888888;
   margin-top: 22px;
   border-radius: 10px;
-  border: 4px solid #D9D9D9;
+  border: 4px solid #d9d9d9;
+  padding: 10px 5px;
+
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
 }
