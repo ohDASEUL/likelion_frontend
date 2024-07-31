@@ -24,8 +24,10 @@ body {
 .container {
   background-color: #eeeeee;
   width: 448px;
-  margin: 110px auto;
+  margin: 90px auto;
   border-radius: 20px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bucket-list-title {
@@ -39,6 +41,19 @@ body {
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
+
+  position: relative;
+}
+
+.bucket-list-title::before {
+  content: ""; /* 내용 없음 */
+  position: absolute; /* 절대 위치 설정 */
+  left: 0px; /* 왼쪽으로 위치 조정 */
+  top: 50%; /* 수직 중앙 정렬 */
+  transform: translateY(-50%); /* 중앙 정렬 조정 */
+  width: 8px;
+  height: 32px;
+  background-color: #ff007a;
 }
 
 .bucket-list {
@@ -61,9 +76,9 @@ body {
 }
 
 .bucket-item.selected {
-  background-color: #FFFFFF; 
-  border-color: #759CFF; 
-  color: #759CFF; 
+  background-color: #ffffff;
+  border-color: #759cff;
+  color: #759cff;
   background-image: url(images/check.png);
   background-repeat: no-repeat;
   background-position: right center;
