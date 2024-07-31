@@ -1,0 +1,39 @@
+html,
+body,
+div,
+h1,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: #d9d9d9;
+}
+
+.container {
+  background-color: #eeeeee;
+  width: 448px;
+  margin: 110px auto;
+}
+
+.bucket-list-title {
+  background-color: #ffffff;
+  color: #ff007a;
+}
+
+
+.bucket-item {
+  background-color: #ffffff;
+  color: #888888;
+}
