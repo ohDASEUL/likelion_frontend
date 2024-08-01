@@ -21,6 +21,7 @@ li {
 /* font  */
 :root {
   font-family: "arial";
+  line-height: 0
 }
 
 /* Design */
@@ -38,7 +39,7 @@ body {
 
 .bucket-list-title {
   background-color: #ffffff;
-  padding: 40px;
+  padding: 46px;
   border-radius: 20px 20px 0 0;
   position: relative;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
@@ -48,7 +49,6 @@ body {
   color: #ff007a;
   font-weight: 700;
   font-size: 24px;
-  line-height: 28px;
 }
 
 .bucket-list-title::before {
