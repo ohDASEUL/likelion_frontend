@@ -40,16 +40,34 @@ body{
 
 .bucketlist{
   background-color: #EEE;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .bucketlist-header{
   background-color: white;
+  padding: 46px 0;
+  border-bottom: 4px solid #DDD;
+  position: relative;
 }
 
 .bucketlist-header h1{
   color: #FF007A;
   font-weight: bold;
   font-size: 24px;
+  padding-left: 30px;
+}
+
+.bucketlist-header::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 32px;
+  background-color: #ff007a;
+  border-radius: 0px 10px 10px 0px;
 }
 
 .lists li{
