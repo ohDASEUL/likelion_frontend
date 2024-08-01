@@ -1,0 +1,23 @@
+/* CSS Reset for the given HTML */
+html,
+body,
+div,
+section,
+header,
+h1,
+main,
+ul,
+li {
+  margin: unset;
+  padding: unset;
+}
+
+h1 {
+  font-size: unset;
+  font-weight: unset;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
