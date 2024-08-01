@@ -47,10 +47,13 @@ body{
 }
 
 .bucketlist-header h1{
-  color: #FF007A
+  color: #FF007A;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .lists li{
   background-color: white;
   color: #888;
+  font-size: 16px;
 }
