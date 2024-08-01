@@ -1,22 +1,29 @@
-html,
+/* Reset */
 body,
-div,
-h1,
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
+html,ul,li {
+  margin: unset;
+  border: unset;
+  padding: unset;
   vertical-align: baseline;
 }
 
-ol,
-ul {
-  list-style: none;
+h1 {
+  font: unset;
+  font-size: unset;
+  font-weight: unset;
 }
 
+ul,
+li {
+  list-style-type: none;
+}
+
+/* font  */
+:root {
+  font-family: "arial";
+}
+
+/* Design */
 body {
   background-color: #d9d9d9;
 }
@@ -24,62 +31,63 @@ body {
 .container {
   background-color: #eeeeee;
   width: 448px;
-  margin: 90px auto;
+  margin: 110px auto;
   border-radius: 20px;
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bucket-list-title {
   background-color: #ffffff;
-  color: #ff007a;
-  padding: 50px 40px;
+  padding: 40px;
   border-radius: 20px 20px 0 0;
+  position: relative;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
 
-  font-family: "Arial";
-  font-style: normal;
+.bucket-list-title h1 {
+  color: #ff007a;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-
-  position: relative;
 }
 
 .bucket-list-title::before {
-  content: ""; /* 내용 없음 */
-  position: absolute; /* 절대 위치 설정 */
-  left: 0px; /* 왼쪽으로 위치 조정 */
-  top: 50%; /* 수직 중앙 정렬 */
-  transform: translateY(-50%); /* 중앙 정렬 조정 */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 8px;
   height: 32px;
   background-color: #ff007a;
 }
 
 .bucket-list {
-  padding: 22px 42px;
+  padding: 40px 38px;
 }
 
 .bucket-item {
   background-color: #ffffff;
   color: #888888;
-  margin-top: 22px;
+  margin-top: 21px;
   border-radius: 10px;
   border: 4px solid #d9d9d9;
   padding: 10px 5px;
-
-  font-family: "Arial";
-  font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
 }
 
 .bucket-item.selected {
-  background-color: #ffffff;
   border-color: #759cff;
   color: #759cff;
-  background-image: url(images/check.png);
-  background-repeat: no-repeat;
-  background-position: right center;
+  background: #ffffff url(images/check.png) no-repeat right center;
+}
+
+.bucket-item:nth-of-type(1) {
+  margin-top: 0;
+}
+
+.bucket-item:nth-of-type(5) {
+  margin-bottom: 0;
 }
