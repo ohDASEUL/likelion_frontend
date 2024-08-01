@@ -43,10 +43,14 @@ body{
 }
 
 .bucketlist-header{
+  background-color: white;
+}
+
+.bucketlist-header h1{
   color: #FF007A
 }
 
-
 .lists li{
+  background-color: white;
   color: #888;
 }
