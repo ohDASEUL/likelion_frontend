@@ -38,13 +38,32 @@ html, body, h1, p, ul, article, section, figure, footer {
 
   .poketmon-img{
     background-color: black;
+    width: 219px;
+    margin: 0 auto;
   }
 
   .poketmon-contents{
     background-color: white;
+    padding: 78px 20px 44px 20px;
   }
 
   .poketmon-footer{
     background-color: #EEE;
+  }
+
+  .poketmon-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .poketmon-footer li {
+    display: inline-block;
+    margin: 0 4px; /* 아이콘 사이의 간격 조절 */
+  }
+  
+  .poketmon-footer img {
+    vertical-align: middle;
   }
 
