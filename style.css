@@ -1,0 +1,50 @@
+/* 여러 요소에 공통 적용되는 초기화 */
+html, body, h1, p, ul, article, section, figure, footer {
+    margin: unset;
+    padding: unset;
+  }  
+  
+  /* 기본 폰트 설정 및 텍스트 렌더링 최적화 */
+  body {
+    font-family: unset;
+  }
+  
+  /* 제목 요소 초기화 */
+  h1 {
+    font-size: unset;
+    font-weight: unset;
+  }
+  
+  /* 리스트 초기화 */
+  ul {
+    list-style: none;
+  }
+  
+  /* 링크 초기화 */
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+
+  .wrapper {
+    width: 300px;
+    margin: 258px auto;
+  }
+
+  body{
+    background-color: #DDD;
+    text-align: center;
+  }
+
+  .poketmon-img{
+    background-color: black;
+  }
+
+  .poketmon-contents{
+    background-color: white;
+  }
+
+  .poketmon-footer{
+    background-color: #EEE;
+  }
+
