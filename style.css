@@ -1,0 +1,170 @@
+/* CSS Reset */
+html,
+body,
+div,
+section,
+header,
+h1,
+h2,
+p,
+main {
+  margin: unset;
+  padding: unset;
+}
+
+h1,
+h2 {
+  font-size: unset;
+  font-weight: unset;
+}
+
+/* Font 설정 */
+:root {
+  font-family: "arial";
+  color: #ffa500;
+}
+
+/* 헤더 컨테이너 스타일 */
+.wood-header-container {
+  
+  background-image: url("images/header-bg.png");
+}
+
+.l_wrapper{
+  width: 960px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-width: 30px 30px 0px 30px;
+  border-style: solid;
+  border-color: #ffa500;
+  overflow: hidden; 
+}
+
+
+/* 헤더 텍스트 및 컨테이너 스타일 */
+.wood-header-text,
+.wood-container {
+  display: inline-block;
+  vertical-align: top; /* 수직 정렬 */
+}
+
+/* 헤더 텍스트 스타일 */
+.wood-header-text {
+  margin: 70px 60px 70px 54px;
+  max-width: 480px; /* 최대 너비 설정 */
+  border-radius: 12px;
+}
+
+/* 헤더 텍스트 h1 스타일 */
+.wood-header-text h1 {
+  font-size: 32px;
+  letter-spacing: 0.17em;
+}
+
+.wood-header-text h1 span {
+  font-weight: bold;
+}
+
+/* 헤더 텍스트 p 스타일 */
+.wood-header-text p {
+  font-size: 16px;
+}
+
+/* 헤더 텍스트 구분선 스타일 */
+.wood-header-text hr {
+  width: 373px;
+  height: 4px;
+  margin-left: 0;
+  border: none;
+  background: #ffa500;
+  border-radius: 12px;
+}
+
+/* 이미지 컨테이너 스타일 */
+.wood-container img {
+  display: block;
+  max-width: 100%;
+  margin-top: 54px;
+}
+
+/* 카드 그룹 스타일 */
+.wood-card-group {
+  background-color: #ddd;
+  padding: 30px 0;
+  text-align: center;
+}
+
+/* 카드 스타일 */
+.wood-card {
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* 첫 번째 카드 왼쪽 여백 제거 */
+.wood-card:nth-of-type(1) {
+  margin-left: 0;
+}
+
+/* 세 번째 카드 오른쪽 여백 제거 */
+.wood-card:nth-of-type(3) {
+  margin-right: 0;
+}
+
+/* 카드 제목 스타일 */
+.card-title {
+  background-color: #fff;
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  border-radius: 0 0 10px 10px;
+  border-top: 5px solid;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 카드 제목 h2 스타일 */
+.card-title h2 {
+  margin-top: 15px;
+  margin-left: 10px;
+  font-size: 16px; /* 글자 크기 */
+  font-weight: bold; /* 두꺼운 글씨 */
+  float: left; /* 왼쪽 정렬 */
+}
+
+/* 카드 이미지 div 스타일 */
+.card-img {
+  border-bottom: 0;
+  padding: 0;
+}
+
+/* 카드 이미지 설정 */
+.card-img img {
+  height: 100%;
+  vertical-align: bottom; /* 이미지 하단 공백 생기는거 지우기 */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* 카드 제목 버튼 스타일 */
+.card-title button {
+  background-color: transparent; /* 투명 배경 */
+  border: none; 
+  cursor: pointer; 
+  float: right; 
+}
+
+/* 푸터 스타일 */
+.wood-footer {
+  background-color: #fff; 
+  bottom: 0; /* 하단 고정 */
+  width: 100%; 
+  height: 60px; 
+  box-sizing: border-box; 
+}
+
+/* 푸터 텍스트 스타일 */
+.wood-footer p {
+  text-align: center;
+  font-size: 14px; 
+  color: #aaa; 
+  line-height: 55px; 
+}
