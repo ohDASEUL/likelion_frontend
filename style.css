@@ -24,22 +24,36 @@ h2 {
   color: #ffa500;
 }
 
-/* 헤더 컨테이너 스타일 */
-.wood-header-container {
-  
-  background-image: url("images/header-bg.png");
+.wood-header-container{
+  background-image: url(images/header-bg.png);
+  padding-top: 100px;
 }
 
-.l_wrapper{
+/* 헤더 컨테이너 스타일 */
+.l_wrapper {
   width: 960px;
   margin: 0 auto;
   box-sizing: border-box;
   border-width: 30px 30px 0px 30px;
   border-style: solid;
   border-color: #ffa500;
-  overflow: hidden; 
+  overflow: visible; /* 이미지가 컨테이너 밖으로 나갈 수 있게 함 */
+  position: relative; /* 자식 요소의 위치 기준점 */
 }
 
+.l_wrapper {
+  width: 960px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-width: 30px 30px 0px 30px;
+  border-style: solid;
+  border-color: #ffa500;
+}
+
+.l_wrapper img {
+  position: relative;
+  bottom: -58px; /* 이미지를 아래로 이동시키는 값 */
+}
 
 /* 헤더 텍스트 및 컨테이너 스타일 */
 .wood-header-text,
@@ -59,39 +73,41 @@ h2 {
 .wood-header-text h1 {
   font-size: 32px;
   letter-spacing: 0.17em;
-}
-
-.wood-header-text h1 span {
-  font-weight: bold;
+  margin-bottom: 24px;
+  width: fit-content;
 }
 
 /* 헤더 텍스트 p 스타일 */
 .wood-header-text p {
   font-size: 16px;
+  line-height: 160%;
 }
 
 /* 헤더 텍스트 구분선 스타일 */
-.wood-header-text hr {
+.wood-header-text h1::after{
+  content: '';
+  background-color: currentColor;
+  display: block;
+  border-radius: 4px;
+  height: 4px;
+
+}
+/* .wood-header-text hr {
   width: 373px;
   height: 4px;
   margin-left: 0;
   border: none;
   background: #ffa500;
   border-radius: 12px;
-}
-
-/* 이미지 컨테이너 스타일 */
-.wood-container img {
-  display: block;
-  max-width: 100%;
-  margin-top: 54px;
-}
+} */
 
 /* 카드 그룹 스타일 */
 .wood-card-group {
   background-color: #ddd;
   padding: 30px 0;
   text-align: center;
+  position: relative; /* 카드 그룹을 이미지 위에 올리기 위해 */
+  z-index: 1; /* 이미지보다 위에 나타나도록 */
 }
 
 /* 카드 스타일 */
