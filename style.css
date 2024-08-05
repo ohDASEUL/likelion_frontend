@@ -184,3 +184,32 @@ h2 {
   color: #aaa; 
   line-height: 55px; 
 }
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .l_wrapper {
+    width: 90%; /* 화면 크기가 줄어들 때 너비 조정 */
+    padding: 0 10px; /* 좌우 패딩 추가 */
+  }
+
+  .wood-header-text {
+    margin: 40px 20px; /* 텍스트 영역의 여백 조정 */
+    max-width: 100%; /* 최대 너비를 100%로 설정 */
+  }
+
+  .wood-header-text h1 {
+    font-size: 24px; /* 제목 크기 줄이기 */
+  }
+
+  .wood-header-text p {
+    font-size: 14px; /* 본문 크기 줄이기 */
+  }
+
+  .wood-card {
+    display: block; /* 카드들을 세로로 쌓이게 하기 */
+    margin: 15px 0; /* 카드 사이 여백 조정 */
+  }
+  .l_wrapper img {
+    display: none; /* 이미지 숨기기 */
+  }
+}
