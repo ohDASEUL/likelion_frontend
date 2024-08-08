@@ -1,8 +1,4 @@
-/*
- * 한글 폰트 설정
-  font-family: "Noto Sans KR", sans-serif;
-*/
-
+/* CSS 초기화 */
 html,
 body,
 div,
@@ -48,4 +44,87 @@ a {
 
 .ko-text {
   font-family: "Noto Sans KR", Arial, sans-serif;
+}
+
+/* 레이아웃 */
+.wraper{
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* 컴포넌트 */
+body{
+  background-color: #D9D9D9;
+}
+
+header{
+  background-color: #F4F4F4;
+}
+
+.header-group h1{
+  color: #F60;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.card h1{
+  background-color: rgba(0, 0, 0, 0.80);
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.card.hotdog h1{
+  color: #F60;
+}
+
+.card.burger h1{
+  color: #17A651;
+}
+
+.card.pizza h1{
+  color: #0075FF;
+}
+
+.card p{
+  background-color: #FFF;
+  font-size: 14px;
+  line-height: 140%;
+  color: #666;
+}
+
+.hotdog strong {
+  color: #F60; 
+}
+
+.burger strong {
+  color: #17A651; 
+}
+
+.pizza strong {
+  color: #0075FF; 
+}
+
+.tags{
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #F4F4F4;
+  color: #FFF;
+}
+
+.hotdog .tag {
+  background-color: #F60; 
+}
+
+.burger .tag {
+  background-color: #17A651; 
+}
+
+.pizza .tag {
+  background-color: #0075FF; 
+}
+
+.footer-text p{
+  color: #AAA;
+  font-size: 12px;
+  letter-spacing: 24%;
 }
