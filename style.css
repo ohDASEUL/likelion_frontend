@@ -29,6 +29,13 @@ a {
 /* Font 설정 */
 :root {
   font-family: "arial";
+  --color-orange: #f60;
+  --color-green: #17a651; 
+  --color-blue: #0075ff;
+  --color-gray: #666;
+
+  --font-size-h1: 24px;
+  --font-size-tag-footer: 12px;
 }
 
 /* 한글 텍스트에 대해서만 폰트 설정 */
@@ -47,84 +54,134 @@ a {
 }
 
 /* 레이아웃 */
-.wraper{
-  width: 960px;
+.wraper {
+  width: 100%;
+  max-width: 960px;
   margin: 0 auto;
 }
 
 /* 컴포넌트 */
-body{
-  background-color: #D9D9D9;
+body {
+  background-color: #d9d9d9;
 }
 
-header{
-  background-color: #F4F4F4;
+header {
+  background-color: #f4f4f4;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-.header-group h1{
-  color: #F60;
+.header-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-group h1 {
+  color: var(--color-orange);
   font-weight: bold;
-  font-size: 24px;
+  font-size: var(--font-size-h1);
+  margin: 0;
 }
 
-.card h1{
-  background-color: rgba(0, 0, 0, 0.80);
+.header-group img{
+  margin-right: 0;
+}
+
+.grid {
+  display: flex;
+  margin-top: 30px;
+  gap: 30px;
+}
+
+.card{
+  width: 300px;
+}
+
+.card img{
+  border-radius: 12px 12px 0px 0px;
+  margin-bottom: -48px;
+}
+
+.card h1 {
+  display: inline-flex;
+  background-color: rgba(0, 0, 0, 0.8);
   font-weight: bold;
-  font-size: 24px;
+  font-size: var(--font-size-h1);
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 12px 0px 0px;
 }
 
-.card.hotdog h1{
-  color: #F60;
+.card.hotdog h1 {
+  color: var(--color-orange);
 }
 
-.card.burger h1{
-  color: #17A651;
+.card.burger h1 {
+  color: var(--color-green);
 }
 
-.card.pizza h1{
-  color: #0075FF;
+.card.pizza h1 {
+  color: var(--color-blue);
 }
 
-.card p{
-  background-color: #FFF;
+.card p {
+  background-color: #fff;
   font-size: 14px;
   line-height: 140%;
   color: #666;
+  padding: 20px;
 }
 
 .hotdog strong {
-  color: #F60; 
+  color: var(--color-orange);
 }
 
 .burger strong {
-  color: #17A651; 
+  color: var(--color-green);
 }
 
 .pizza strong {
-  color: #0075FF; 
+  color: var(--color-blue);
 }
 
-.tags{
-  font-size: 12px;
+.tags {
+  display: flex;
+  gap: 6px;
+  font-size: var(--font-size-tag-footer);
   line-height: 16px;
-  background-color: #F4F4F4;
-  color: #FFF;
+  background-color: #f4f4f4;
+  color: #fff;
+  border-radius: 0px 0px 12px 12px;
+  padding: 26px 18px 26px 18px;
+  margin-bottom: 30px;
+}
+
+.tag{
+  border-radius: 48px;
+  padding: 2px 8px 4px 8px;
+}
+
+.hash {
+  color: rgba(255, 255, 255, 0.50); /* # 문자에만 반투명 색상 적용 */
 }
 
 .hotdog .tag {
-  background-color: #F60; 
+  background-color: var(--color-orange);
 }
 
 .burger .tag {
-  background-color: #17A651; 
+  background-color: var(--color-green);
 }
 
 .pizza .tag {
-  background-color: #0075FF; 
+  background-color: var(--color-blue);
 }
 
-.footer-text p{
-  color: #AAA;
-  font-size: 12px;
+.footer-text p {
+  color: #aaa;
+  font-size: var(--font-size-tag-footer);
   letter-spacing: 24%;
+  padding: 0 10px;
 }
