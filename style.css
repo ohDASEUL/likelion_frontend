@@ -2,3 +2,50 @@
  * 한글 폰트 설정
   font-family: "Noto Sans KR", sans-serif;
 */
+
+html,
+body,
+div,
+h1,
+h2,
+p,
+header,
+footer {
+  margin: unset;
+  padding: unset;
+}
+
+h1,
+h2 {
+  font-size: unset;
+  font-weight: unset;
+}
+
+img {
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+/* Font 설정 */
+:root {
+  font-family: "arial";
+}
+
+/* 한글 텍스트에 대해서만 폰트 설정 */
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Sans KR"),
+    url(https://fonts.gstatic.com/s/notosanskr/v13/Pby6FmXiEBPT4ITbgNA5CgmOsn7uwpY.woff2)
+      format("woff2");
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF; /* 한글 유니코드 범위 */
+}
+
+.ko-text {
+  font-family: "Noto Sans KR", Arial, sans-serif;
+}
