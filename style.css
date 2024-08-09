@@ -188,3 +188,24 @@ header {
   letter-spacing: 24%;
   padding: 0 10px;
 }
+
+
+/* 반응형 */
+
+/* 1. 600 픽셀 이하로 떨어질 때 : 모바일 화면 */
+@media(max-width:600px){
+  .header-group{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /* 메인 카드가 1줄에 1개씩 나오도록 조정 */
+  .l_col {
+    width: calc(100% - 60px); /* 전체 너비에서 양쪽 여백을 제외 */
+    margin: 0 30px 30px 30px; /* 카드 사이의 여백 및 좌우 여백 추가 */
+  }
+
+  .footer-text{
+    text-align: center;
+  }
+}
