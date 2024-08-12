@@ -1,10 +1,22 @@
 /* CSS 초기화 */
-html, body, div, h1, h2, h3, p, header, aside, section, button, nav {
+html,
+body,
+div,
+h1,
+h2,
+p,
+header,
+aside,
+section,
+button,
+nav {
   margin: 0;
   padding: 0;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-size: unset;
   font-weight: unset;
 }
@@ -23,21 +35,21 @@ a {
   font-family: "Montserrat", sans-serif;
 }
 
-body{
+body {
   background-image: url(images/background.png);
 }
 
-.wrapper{
+.wrapper {
   width: auto;
   max-width: 1076px;
   margin: 271px auto;
 }
 
-.coffee{
+.coffee {
   display: flex;
 }
 
-.sidebar{
+.sidebar {
   background-image: url(images/sidebar-background.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -49,39 +61,38 @@ body{
   box-sizing: border-box;
 }
 
-.sidebar-header{
+.sidebar-header {
   display: flex;
   justify-content: space-between;
 }
 
-.sidebar-header h1{
+.sidebar-header h1 {
   font-size: 24px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 1;
   margin: 16px 27px 0 0;
   border-bottom: 8px solid #666666;
 }
 
-.sidebar-header img{
+.sidebar-header img {
   margin-top: -16px;
 }
 
-.sidebar-main p{
+.sidebar-main p {
   font-size: 14px;
   line-height: 140%;
   color: #999999;
   padding: 7.5px 0 26px 0;
 }
 
-.sidebar-btn-inside{
+.sidebar-btn-inside {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  
 }
 
-.sidebar-btn-inside button{
+.sidebar-btn-inside button {
   font-size: 12px;
   font-weight: bold;
   line-height: 120%;
@@ -91,11 +102,79 @@ body{
   padding: 4px 0;
 }
 
-.sidebar-btn-inside button:first-child{
-  background-color: #0468FF;
-  color: #FFFFFF;
+.sidebar-btn-inside button:first-child {
+  background-color: #0468ff;
+  color: #ffffff;
 }
 
-.sidebar-btn-inside button:last-child{
-  background-color: #D9D9D9;
+.sidebar-btn-inside button:last-child {
+  background-color: #d9d9d9;
+}
+
+.contents {
+  background-color: #ffffff;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.gallery-title {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 8px solid #eeeeee;
+}
+
+.gallery-title h2 {
+  margin-right: auto;
+  color: #666666;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.gallery-title a {
+  background-color: #eeeeee;
+  border-radius: 56px;
+  color: #666;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 10px;
+  padding: 11px 4px;
+  margin-bottom: 7px;
+}
+
+.gallery-imgs {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0 34px 0;
+}
+
+.gallery-imgs img {
+  flex: 0 0 auto;
+}
+
+.review-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.review {
+  border-radius: 6px;
+  background: #eee;
+  padding: 16px;
+  box-sizing: border-box;
+  max-width: 256px;
+  min-height: 250px;
+}
+
+.review p {
+  color: #333;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.review h2 {
+  color: #111;
+  text-align: right;
+  font-size: 14px;
+  line-height: 140%;
 }
