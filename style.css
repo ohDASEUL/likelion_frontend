@@ -1,4 +1,25 @@
+/* CSS 초기화 */
+html, body, div, h1, h2, h3, p, header, aside, section, button, nav {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-size: unset;
+  font-weight: unset;
+}
+
+img {
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
 /* Typography */
 :root {
   font-family: "Montserrat", sans-serif;
 }
+
