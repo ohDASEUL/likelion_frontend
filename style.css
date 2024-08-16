@@ -1,0 +1,408 @@
+:root {
+    --color-background: #222222;
+    --color-background-dark: #111111;
+    --color-text: #fff;
+    --color-text-light: #999;
+    --color-text-lighter: #aaa;
+    --color-accent: #ff2e00;
+  }
+  
+  /* CSS 초기화 */
+  html,
+  body,
+  div,
+  h1,
+  h2,
+  p,
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul,
+  li {
+    list-style-type: none;
+  }
+  
+  h1,
+  h2 {
+    font-size: unset;
+    font-weight: unset;
+  }
+  
+  img {
+    vertical-align: top;
+    max-width: 100%;
+  }
+  
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+  
+  .casts img {
+    width: 64px;
+    border-radius: 32px;
+  }
+  
+  /* Typography */
+  :lang(en) {
+    font-family: Arial, sans-serif;
+  }
+  
+  :lang(ko) {
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  
+  /* Layouts */
+  .wrapper {
+    max-width: 1200px;
+    width: auto;
+    margin: 60px auto;
+  }
+  
+  body {
+    background-color: var(--color-background);
+  }
+  
+  .cover {
+    aspect-ratio: 24 / 9;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, var(--color-background-dark) 0%, rgba(17, 17, 17, 0) 81.45%);
+    z-index: -1;
+  }
+  
+  .cover img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -2;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .new {
+    border-radius: 8px;
+    background: var(--color-accent);
+    padding: 4px 12px;
+    position: absolute;
+    bottom: 80px;
+    left: 60px;
+  }
+  
+  .new p {
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.16px;
+  }
+  
+  .cover h1 {
+    color: var(--color-text);
+    font-size: 64px;
+    font-weight: 700;
+    padding-left: 60px;
+  }
+  
+  .contents {
+    background-color: var(--color-background-dark);
+    padding: 60px;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .container-sidebar {
+    width: 240px;
+    margin-left: 100px;
+    margin-top: -80px;
+  }
+  
+  .container-main {
+    flex-basis: 0;
+    flex-grow: 1;
+    min-width: 0;
+  }
+  
+  .container-main p {
+    color: var(--color-text-light);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 160%;
+    margin-bottom: 20px;
+  }
+  
+  .container-main p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .sidebar-title {
+    color: var(--color-text);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 160%;
+    margin: 40px 0 20px 0;
+  }
+  
+  .sidebar-title:first-child {
+    margin-top: 0;
+  }
+  .genre {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .genre li {
+    background: var(--color-background);
+    padding: 0px 14px;
+    margin: 0 4px 6px 0;
+    border-radius: 12px;
+  }
+  
+  .genre li:nth-child(3),
+  .genre li:nth-child(6) {
+    margin-right: 0;
+  }
+  
+  .genre li a {
+    color: var(--color-text-lighter);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 160%;
+  }
+  
+  .star-ratings {
+    position: relative;
+    width: 240px;
+    height: 48px;
+  }
+  
+  .stars-empty,
+  .stars-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 48px;
+    overflow: hidden;
+  }
+  
+  .stars-empty img,
+  .stars-filled img {
+    width: 240px;
+    height: 96px;
+    object-fit: cover;
+    object-position: 0 0;
+  }
+  
+  .stars-filled {
+    width: 144px; /*240px의 3/5*/
+  }
+  
+  .stars-filled img {
+    object-position: 0 -48px;
+  }
+  
+  .casts {
+    position: relative;
+  }
+  
+  .casts img {
+    width: 64px;
+    border: 4px solid var(--color-background-dark);
+    border-radius: 50%;
+    position: absolute;
+  }
+  
+  .casts img:nth-child(1) {
+    left: 0;
+    z-index: 1;
+  }
+  .casts img:nth-child(2) {
+    left: 50px;
+    z-index: 2;
+  }
+  .casts img:nth-child(3) {
+    left: 100px;
+    z-index: 3;
+  }
+  .casts img:nth-child(4) {
+    left: 150px;
+    z-index: 4;
+  }
+  
+/* 기존 CSS 코드는 그대로 유지하고, 아래의 미디어 쿼리를 추가합니다 */
+
+/* 태블릿 (가로 모드) */
+@media screen and (max-width: 1024px) {
+    .wrapper {
+      margin: 40px auto;
+    }
+  
+    .cover h1 {
+      font-size: 48px;
+    }
+  
+    .contents {
+      padding: 40px;
+    }
+  
+    .container-sidebar {
+      margin-left: 60px;
+    }
+  }
+  
+  /* 태블릿 (세로 모드) */
+  @media screen and (max-width: 768px) {
+    .wrapper {
+      margin: 30px auto;
+    }
+  
+    .cover {
+      aspect-ratio: 16 / 9;
+    }
+  
+    .cover h1 {
+      font-size: 36px;
+      padding-left: 30px;
+    }
+  
+    .new {
+      bottom: 60px;
+      left: 30px;
+    }
+  
+    .contents {
+      padding: 30px;
+    }
+  
+    .container {
+      flex-direction: column;
+    }
+  
+    .container-sidebar {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 40px;
+    }
+  
+    .container-main p:last-child {
+      margin-bottom: 30px;
+    }
+  }
+  
+  /* 모바일 (가로 모드) */
+  @media screen and (max-width: 700px) {
+    .wrapper {
+      margin: 20px auto;
+    }
+  
+    .cover h1 {
+      font-size: 28px;
+    }
+  
+    .contents {
+      padding: 20px;
+    }
+  
+    .container-main p {
+      font-size: 14px;
+    }
+  
+    .sidebar-title {
+      font-size: 14px;
+    }
+  
+    .genre li a {
+      font-size: 12px;
+    }
+  }
+  
+  /* 모바일 (세로 모드) */
+  @media screen and (max-width: 480px) {
+    .cover {
+      aspect-ratio: 4 / 3;
+    }
+  
+    .cover h1 {
+      font-size: 24px;
+      padding-left: 20px;
+    }
+  
+    .new {
+      bottom: 40px;
+      left: 20px;
+      padding: 2px 8px;
+    }
+  
+    .new p {
+      font-size: 10px;
+    }
+  
+    .contents {
+      padding: 15px;
+    }
+  
+    .container-main p {
+      font-size: 13px;
+    }
+  
+    .sidebar-title {
+      font-size: 13px;
+      margin: 30px 0 15px 0;
+    }
+  
+    .genre li {
+      padding: 0px 10px;
+    }
+  
+    .genre li a {
+      font-size: 11px;
+    }
+  
+    .star-ratings,
+    .stars-empty,
+    .stars-filled {
+      width: 180px;
+      height: 36px;
+    }
+  
+    .stars-empty img,
+    .stars-filled img {
+      width: 180px;
+      height: 72px;
+    }
+  
+    .stars-filled {
+      width: 108px; /* 180px의 3/5 */
+    }
+  
+    .stars-filled img {
+      object-position: 0 -36px;
+    }
+  
+    .casts img {
+      width: 48px;
+    }
+  
+    .casts img:nth-child(2) {
+      left: 40px;
+    }
+    .casts img:nth-child(3) {
+      left: 80px;
+    }
+    .casts img:nth-child(4) {
+      left: 120px;
+    }
+  }
