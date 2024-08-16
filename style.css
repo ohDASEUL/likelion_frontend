@@ -101,7 +101,7 @@
     left: 60px;
   }
   
-  .new p {
+  .new strong {
     color: var(--color-text);
     font-size: 12px;
     font-weight: 700;
@@ -342,7 +342,7 @@
       padding: 2px 8px;
     }
   
-    .new p {
+    .new strong {
       font-size: 10px;
     }
   
