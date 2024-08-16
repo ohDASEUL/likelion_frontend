@@ -67,7 +67,7 @@
   }
   
   .cover {
-    aspect-ratio: 24 / 9;
+    aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -269,10 +269,6 @@
       margin: 30px auto;
     }
   
-    .cover {
-      aspect-ratio: 16 / 9;
-    }
-  
     .cover h1 {
       font-size: 36px;
       padding-left: 30px;
@@ -332,7 +328,7 @@
   /* 모바일 (세로 모드) */
   @media screen and (max-width: 480px) {
     .cover {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 1 / 1; /* 16:9에서 더 정사각형에 가깝게 변경 */
     }
   
     .cover h1 {
