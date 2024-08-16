@@ -117,7 +117,7 @@
   
   .contents {
     background-color: var(--color-background-dark);
-    padding: 60px;
+    padding: 0 100px 60px 60px;
   }
   
   .container {
