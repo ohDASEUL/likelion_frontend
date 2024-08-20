@@ -461,3 +461,21 @@ a {
     width: 100%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .top-section .section-header .left h1 {
+    font-size: 32px;
+  }
+
+  .top-section .card__content {
+    padding: 16px;
+  }
+
+  .bottom-section .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-section .card {
+    min-height: auto;
+  }
+}
