@@ -119,7 +119,6 @@ a {
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: fit-content;
   height: 26px;
   background-color: var(--color-orange);
   z-index: -1;
@@ -188,10 +187,9 @@ a {
   z-index: 1;
 }
 
-.top-section .card__media img {
+.top-section .card__media .media-img {
   width: 100%;
   max-height: 148px;
-  z-index: 0;
   height: 100%;
   object-fit: cover;
   display: block;
@@ -211,9 +209,10 @@ a {
 
 .top-section .card__content {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: repeat( 1, minmax( 0, 1fr ) );
   background-color: #fff;
   padding: 16px 0 21px 22px;
+  box-sizing: border-box;
 }
 
 .top-section .card__subtitle {
@@ -225,6 +224,10 @@ a {
 .top-section .card__list {
   display: grid;
   gap: 10px;
+}
+
+.top-section .card__list:nth-child(2){
+  padding-right: 61px;
 }
 
 .top-section .card__list li {
@@ -310,7 +313,7 @@ a {
 
 .bottom-section .card {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: minmax(auto, auto) repeat(1, minmax(0, 1fr)) minmax(auto, auto);
   background-color: var(--color-white);
   min-height: 593px;
   box-shadow: 0px 0px 12px 0px var(--color-shadow);
@@ -318,17 +321,28 @@ a {
 
 .bottom-section .card__header {
   grid-row: 1;
+  position: relative;
+  overflow: hidden;
 }
 
-.bottom-section .card__header img {
+.bottom-section .card__header .cover-image {
   width: 100%;
   height: 255px;
   object-fit: cover;
 }
 
+.bottom-section .card__header .badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  z-index: 1;
+}
+
 .bottom-section .card__main {
   grid-row: 2;
-  grid-template-rows: auto auto 1fr;
   width: 340px;
   padding: 20px;
   box-sizing: border-box;
@@ -371,7 +385,7 @@ a {
 .bottom-section .card__footer {
   grid-row: 3;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr repeat(1, auto);
   align-items: center;
   position: relative;
   padding: 20px 0 23px 22px;
@@ -387,7 +401,7 @@ a {
   background-color: var(--color-footer-line);
 }
 
-.bottom-section .card__footer img {
+.bottom-section .card__footer .people-img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -404,4 +418,102 @@ a {
   color: var(--color-text-light-gray);
   font-size: 14px;
   font-weight: 400;
+}
+
+@media screen and (min-width:1024px) {
+	/* Desktop */
+  .wrapper {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .content {
+    padding: 0 20px;
+  }
+}
+@media screen and (min-width:768px) and (max-width: 1023px) {
+	/* Tablet */
+  .top-section, .bottom-section{
+    height: auto;
+    padding: 60px 0;
+  }
+
+  .top-section .section-header,
+  .bottom-section .section-header {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .content{
+    width: 90%;
+  }
+
+  .top-section .section-header .right::before {
+    display: none;
+  }
+
+  .top-section .section-header .right p {
+    width: 100%;
+  }
+
+  .top-section .card-container {
+    gap: 20px;
+  }
+
+  .bottom-section .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+  }
+
+  .bottom-section .card:last-child {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+@media screen and (max-width:767px){ 
+	/* Mobile */
+  .top-section,.bottom-section {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .content {
+    width: 90%;
+  }
+
+  .top-section .section-header,
+  .bottom-section .section-header {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .top-section .section-header .right::before {
+    display: none;
+  }
+
+  .top-section .section-header .right p {
+    width: 100%;
+  }
+
+  .top-section .card-container {
+    gap: 30px;
+  }
+
+  .top-section .card--horizontal,.bottom-section .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-section .card {
+    min-height: 0;
+  }
+
+  .bottom-section .card__main {
+    width: 100%;
+  }
 }
