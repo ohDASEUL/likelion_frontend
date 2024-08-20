@@ -1,12 +1,13 @@
 body,
 h1,
+h3,
 p,
 ul {
   margin: unset;
   padding: unset;
 }
 
-h1 {
+h1,h3 {
   font-size: unset;
   font-weight: unset;
 }
@@ -23,6 +24,11 @@ ul {
 
 img {
   vertical-align: top;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
 }
 
 :root {
@@ -106,18 +112,18 @@ img {
   width: 460px;
 }
 
-.card--horizontal {
+.top-section .card--horizontal {
   display: flex;
 }
 
-.card__media {
+.top-section .card__media {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-.card__media::before {
+.top-section .card__media::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -125,15 +131,15 @@ img {
   z-index: 1;
 }
 
-.card__media img {
+.top-section .card__media img {
   width: 100%;
-  max-width: 280px;
+  min-width: 280px;
   height: 148px;
   display: block;
   z-index: 0;
 }
 
-.card__title {
+.top-section .card__title {
   position: absolute;
   z-index: 2;
   color: #fff;
@@ -143,7 +149,7 @@ img {
   font-family: Montserrat;
 }
 
-.card__content {
+.top-section .card__content {
   background-color: #fff;
   width: 100%;
   max-width: 800px;
@@ -151,26 +157,26 @@ img {
   box-sizing: border-box;
 }
 
-.card {
+.top-section .card {
   margin-bottom: 30px;
 }
 
-.card:first-child {
+.top-section .card:first-child {
   margin-top: 105px;
 }
 
-.card:last-child {
+.top-section .card:last-child {
   margin-bottom: 0;
 }
 
-.card__subtitle {
+.top-section .card__subtitle {
   color: #6230a2;
   font-family: Montserrat;
   font-size: 18px;
   font-weight: 700;
 }
 
-.card__list li {
+.top-section .card__list li {
   color: #111;
   font-family: Montserrat;
   font-size: 14px;
@@ -179,7 +185,7 @@ img {
   padding-left: 14px;
 }
 
-.card__list li::before {
+.top-section .card__list li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -240,6 +246,104 @@ img {
   font-weight: 700;
 }
 
+.bottom-section .card__list{
+    display: flex;
+    margin-top: 100px;
+    gap: 30px;
+}
+
+.bottom-section .card{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    height: 100%;
+    min-height: 593px;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.10);
+}
+
+.bottom-section .card__header img{
+    width: 340px;
+    height: 255px;
+}
+
+.bottom-section .card__main{
+    width: 340px;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-section .card__main .tag{
+    display: inline-block;
+    padding: 2px 12px 3px 12px;
+    background-color: #EBDBFF;
+    border-radius: 12px;
+    color: #623BA2;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.bottom-section .card__main .card__title{
+    color: #111;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 227px;
+}
+
+.bottom-section .card__main .card__content{
+    margin-top: 20px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    max-width: 300px;
+    flex-grow: 1;
+}
+
+.bottom-section .card__footer{
+    padding: 20px 0 23px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* border-top: 4px solid #eee; */
+}
+
+.bottom-section .card__footer img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: -14px;
+    border: 2px solid #FFF;
+    box-sizing: border-box;
+}
+
+.bottom-section .card__footer img:last-child {
+  margin-right: 16px;
+}
+
+.bottom-section .card__footer p {
+  color: #999;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+
+.bottom-section .card__footer p::before {
+  content: "";
+  position: absolute;
+  top: -20px; 
+  left: 0; 
+  width: 320px; 
+  height: 4px; 
+  background-color: #eee; 
+}
+
 .top-section,
 .bottom-section {
   display: flex;
@@ -247,9 +351,3 @@ img {
   align-items: center;
 }
 
-.content {
-  width: 100%;
-  max-width: calc(1920px - 840px); /* 1920px - (420px * 2) */
-  padding: 0 20px;
-  box-sizing: border-box;
-}
