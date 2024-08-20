@@ -479,3 +479,21 @@ a {
     min-height: auto;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .top-section .section-header .left h1 {
+    font-size: 28px;
+  }
+
+  .top-section .card__title {
+    font-size: 24px;
+  }
+
+  .bottom-section .section-header .left h1 {
+    font-size: 28px;
+  }
+
+  .bottom-section .card__main .card__title {
+    font-size: 20px;
+  }
+}
