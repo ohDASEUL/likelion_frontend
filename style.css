@@ -1,0 +1,37 @@
+body{
+    margin: unset;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.top-section {
+    background-color: #6230a2;
+    height: 932px;
+    padding: 92px 0 102px;
+    box-sizing: border-box;
+}
+
+.bottom-section {
+    background-color: #fff5ed;
+    height: 975px;
+    padding: 92px 0 100px;
+    box-sizing: border-box;
+}
+
+.top-section,
+.bottom-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 100%;
+    max-width: calc(1920px - 840px); /* 1920px - (420px * 2) */
+    padding: 0 20px;
+    box-sizing: border-box;
+}
