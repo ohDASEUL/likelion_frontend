@@ -261,7 +261,7 @@ a {
   align-items: center;
 }
 
-.bottom-section .content {
+.bottom-section .section-contents {
   max-width: 1080px;
   margin: 0 auto;
   width: 100%; 
@@ -431,7 +431,7 @@ a {
     overflow-x: hidden;
   }
 
-  .content {
+  .section-contents {
     padding: 0 20px;
   }
 }
@@ -451,7 +451,7 @@ a {
     gap: 30px;
   }
 
-  .content{
+  .section-contents{
     width: 90%;
   }
 
@@ -484,7 +484,7 @@ a {
     padding: 40px 0;
   }
 
-  .content {
+  .section-contents {
     width: 90%;
   }
 
