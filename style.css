@@ -74,8 +74,8 @@ a {
   margin: 0 auto;
 }
 
-/* top-section (Flex version) */
-.top-section {
+/* theme_purple (Flex version) */
+.theme_purple {
   background-color: var(--color-purple);
   height: 930px;
   padding: 92px 0 102px;
@@ -85,18 +85,18 @@ a {
   align-items: center;
 }
 
-.top-section .section-header {
+.theme_purple .section-header {
   display: flex;
   gap: 22px;
   align-items: center;
 }
 
-.top-section .section-header .left {
+.theme_purple .section-header .left {
   width: 100%;
   max-width: 258px;
 }
 
-.top-section .section-header .left h1 {
+.theme_purple .section-header .left h1 {
   font-size: 40px;
   line-height: 2.75rem;
   color: var(--color-white);
@@ -104,13 +104,13 @@ a {
   z-index: 1;
 }
 
-.top-section .section-header .left h1:nth-of-type(2),
-.top-section .section-header .left h1:nth-of-type(3) {
+.theme_purple .section-header .left h1:nth-of-type(2),
+.theme_purple .section-header .left h1:nth-of-type(3) {
   font-weight: 700;
 }
 
-.top-section .section-header .left h1:nth-of-type(2)::after,
-.top-section .section-header .left h1:nth-of-type(3)::after {
+.theme_purple .section-header .left h1:nth-of-type(2)::after,
+.theme_purple .section-header .left h1:nth-of-type(3)::after {
   content: "";
   position: absolute;
   bottom: -6px;
@@ -121,50 +121,50 @@ a {
   z-index: -1;
 }
 
-.top-section .section-header .left h1:nth-of-type(2)::after {
+.theme_purple .section-header .left h1:nth-of-type(2)::after {
   width: 100%;
 }
 
-.top-section .section-header .left h1:nth-of-type(3)::after {
+.theme_purple .section-header .left h1:nth-of-type(3)::after {
   width: 197px;
 }
 
-.top-section .section-header .right {
+.theme_purple .section-header .right {
   display: flex;
   gap: 32px;
   align-items: center;
 }
 
-.top-section .section-header .right::before {
+.theme_purple .section-header .right::before {
   content: "";
   width: 90px;
   height: 1px;
   background-color: var(--color-light-purple);
 }
 
-.top-section .section-header .right p {
+.theme_purple .section-header .right p {
   font-size: 14px;
   line-height: 1.2857rem;
   color: var(--color-light-purple);
   width: 460px;
 }
 
-.top-section .card--horizontal {
+.theme_purple .card--horizontal {
   display: flex;
 }
 
-.top-section .card--reversed {
+.theme_purple .card--reversed {
   flex-direction: row-reverse;
 }
 
-.top-section .card__media {
+.theme_purple .card__media {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-.top-section .card__media::before {
+.theme_purple .card__media::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -172,7 +172,7 @@ a {
   z-index: 1;
 }
 
-.top-section .card__media .media-img {
+.theme_purple .card__media .media-img {
   width: 100%;
   min-width: 280px;
   max-height: 148px;
@@ -180,7 +180,7 @@ a {
   z-index: 0;
 }
 
-.top-section .card__title {
+.theme_purple .card__title {
   position: absolute;
   z-index: 2;
   color: var(--color-white);
@@ -189,7 +189,7 @@ a {
   line-height: 2.75rem;
 }
 
-.top-section .card__content {
+.theme_purple .card__content {
   background-color: var(--color-white);
   width: 100%;
   max-width: 800px;
@@ -198,26 +198,26 @@ a {
   min-height: 148px;
 }
 
-.top-section .card {
+.theme_purple .card {
   margin-bottom: 30px;
 }
 
-.top-section .card:first-child {
+.theme_purple .card:first-child {
   margin-top: 105px;
 }
 
-.top-section .card:last-child {
+.theme_purple .card:last-child {
   margin-bottom: 0;
 }
 
-.top-section .card__subtitle {
+.theme_purple .card__subtitle {
   color: var(--color-purple);
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 14px;
 }
 
-.top-section .card__list li {
+.theme_purple .card__list li {
   color: var(--color-text-dark);
   font-size: 14px;
   font-weight: 400;
@@ -227,11 +227,11 @@ a {
   margin-bottom: 12px;
 }
 
-.top-section .card__list li:last-child {
+.theme_purple .card__list li:last-child {
   margin-bottom: 0;
 }
 
-.top-section .card__list li::before {
+.theme_purple .card__list li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -441,13 +441,13 @@ a {
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   /* Tablet */
-  .top-section,
+  .theme_purple,
   .bottom-section {
     height: auto;
     padding: 60px 0;
   }
 
-  .top-section .section-header,
+  .theme_purple .section-header,
   .bottom-section .section-header {
     display: flex;
     justify-content: center;
@@ -460,24 +460,24 @@ a {
     width: 90%;
   }
 
-  .top-section .section-header .right::before {
+  .theme_purple .section-header .right::before {
     display: none;
   }
 
-  .top-section .section-header .right p {
+  .theme_purple .section-header .right p {
     width: 100%;
   }
 
-  .top-section .card-container {
+  .theme_purple .card-container {
     gap: 20px;
   }
 
-  .top-section .card__list li {
+  .theme_purple .card__list li {
     margin-bottom: 5px;
     font-size: 12px;
   }
 
-  .top-section .card__list li:last-child {
+  .theme_purple .card__list li:last-child {
     margin-bottom: 0;
   }
 
@@ -495,7 +495,7 @@ a {
 
 @media screen and (max-width: 767px) {
   /* Mobile */
-  .top-section,
+  .theme_purple,
   .bottom-section {
     height: auto;
     padding: 40px 0;
@@ -505,7 +505,7 @@ a {
     width: 90%;
   }
 
-  .top-section .section-header,
+  .theme_purple .section-header,
   .bottom-section .section-header {
     display: flex;
     justify-content: center;
@@ -514,27 +514,27 @@ a {
     gap: 20px;
   }
 
-  .top-section .section-header .right::before {
+  .theme_purple .section-header .right::before {
     display: none;
   }
 
-  .top-section .section-header .right p {
+  .theme_purple .section-header .right p {
     width: 100%;
   }
 
-  .top-section .card-container {
+  .theme_purple .card-container {
     gap: 30px;
   }
 
-  .top-section .card--horizontal {
+  .theme_purple .card--horizontal {
     flex-direction: column;
   }
 
-  .top-section .card--reversed {
+  .theme_purple .card--reversed {
     flex-direction: column;
   }
 
-  .top-section .card__media .media-img {
+  .theme_purple .card__media .media-img {
     width: 100%;
     min-width: auto;
     height: auto;
