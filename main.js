@@ -47,16 +47,18 @@ function displayCategories() {
       productCheckBox.value = product.name;
       productCheckBox.dataset.price = product.price;
 
-      productCheckBox.addEventListener('change', function () {
-        if(this.checked){
+      productCheckBox.addEventListener("change", function () {
+        if (this.checked) {
           selectedProducts.push({
             name: this.value,
             price: parseInt(this.dataset.price),
-          })
-        }else{
-          selectedProducts = selectedProducts.filter((product) => product.name !== this.value)
+          });
+        } else {
+          selectedProducts = selectedProducts.filter(
+            (product) => product.name !== this.value
+          );
         }
-        checkingProduct()
+        checkingProduct();
       });
 
       const productLabel = document.createElement("label");
@@ -78,7 +80,7 @@ function checkingProduct() {
   const selectedProductsDiv = document.getElementById("selected-products");
   selectedProductsDiv.innerHTML = "";
 
-  console.log("현재 선택된 상품: ", selectedProducts); 
+  console.log("현재 선택된 상품: ", selectedProducts);
 
   if (selectedProducts.length === 0) {
     selectedProductsDiv.textContent = "선택된 상품이 없습니다.";
@@ -92,11 +94,17 @@ function checkingProduct() {
     const productItem = document.createElement("li");
     productItem.textContent = `${product.name} - ${product.price}원`;
     productList.appendChild(productItem);
-    totalPrice += product.price
+    totalPrice += product.price;
   });
+
+  const totalPriceProduct = document.createElement("li");
+  totalPriceProduct.style.display = "inline-block"; 
+  totalPriceProduct.style.border = "1px solid black";
+  totalPriceProduct.textContent = `총가격 ${totalPrice} 원`;
+  productList.appendChild(totalPriceProduct);
 
   selectedProductsDiv.appendChild(productList);
 }
 
 displayCategories();
-checkingProduct()
+checkingProduct();
