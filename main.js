@@ -27,6 +27,7 @@ let categories = [
 ];
 
 let selectedProducts = [];
+let paymentWindow;
 
 function displayCategories() {
   const categoryContainer = document.getElementById("category-container");
@@ -112,6 +113,12 @@ const paying = () => {
     selectedProductsDiv.textContent = "선택된 상품이 없습니다.";
     alert('선택된 상품이 없습니다.');
     return;
+  }else{
+    paymentWindow = window.open(
+      "payment.html",
+      "_blank",
+      "width=500,height=300"
+    );
   }
 }
 
