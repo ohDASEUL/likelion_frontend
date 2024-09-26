@@ -42,8 +42,11 @@
           }
         });
 
+        opener.child = this
         if (isComplete) {
           alert(`입력하신 신용카드 ${cardNumber}로 ${totalPrice}원이 결제완료되었습니다`);
+          opener.location.href = 'index.html';
+          window.close()
         } else {
           alert("카드번호를 정확히 입력해주세요");
         }
