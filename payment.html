@@ -6,13 +6,15 @@
     <link rel="stylesheet" href="style.css" />
     <title>결제창</title>
     <script>
-      let totalPrice = ''; // Store total price globally
+      let totalPrice = ""; // Store total price globally
 
       window.onload = function () {
         const params = new URLSearchParams(window.location.search);
         totalPrice = params.get("totalPrice");
         if (totalPrice) {
-          document.getElementById("total-price").textContent = `${totalPrice}원을 결제하겠습니다`;
+          document.getElementById("total-price").textContent = `${parseInt(
+            totalPrice
+          ).toLocaleString()}원을 결제하겠습니다`;
         }
       };
 
@@ -42,11 +44,15 @@
           }
         });
 
-        opener.child = this
+        opener.child = this;
         if (isComplete) {
-          alert(`입력하신 신용카드 ${cardNumber}로 ${totalPrice}원이 결제완료되었습니다`);
-          opener.location.href = 'index.html';
-          window.close()
+          alert(
+            `입력하신 신용카드 ${cardNumber}로 ${parseInt(
+              totalPrice
+            ).toLocaleString()}원이 결제완료되었습니다`
+          );
+          opener.location.href = "index.html";
+          window.close();
         } else {
           alert("카드번호를 정확히 입력해주세요");
         }

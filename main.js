@@ -63,7 +63,7 @@ function displayCategories() {
       });
 
       const productLabel = document.createElement("label");
-      productLabel.textContent = `${product.name} - ${product.price}원`;
+      productLabel.textContent = `${product.name} - ${parseInt(product.price).toLocaleString()}원`;
 
       productItem.appendChild(productCheckBox);
       productItem.appendChild(productLabel);
@@ -93,7 +93,7 @@ function checkingProduct() {
 
   selectedProducts.forEach((product) => {
     const productItem = document.createElement("li");
-    productItem.textContent = `${product.name} - ${product.price}원`;
+    productItem.textContent = `${product.name} - ${parseInt(product.price).toLocaleString()}원`;
     productList.appendChild(productItem);
     totalPrice += product.price;
   });
@@ -119,7 +119,7 @@ const paying = () => {
       0
     );
     paymentWindow = window.open(
-      `payment.html?totalPrice=${totalPrice}`,
+      `payment.html?totalPrice=${parseInt(totalPrice).toLocaleString()}`,
       "_blank",
       "width=700,height=300"
     );
