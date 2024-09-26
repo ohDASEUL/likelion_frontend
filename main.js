@@ -106,5 +106,14 @@ function checkingProduct() {
   selectedProductsDiv.appendChild(productList);
 }
 
+const paying = () => {
+  if (selectedProducts.length === 0) {
+    const selectedProductsDiv = document.getElementById("selected-products");
+    selectedProductsDiv.textContent = "선택된 상품이 없습니다.";
+    alert('선택된 상품이 없습니다.');
+    return;
+  }
+}
+
 displayCategories();
 checkingProduct();
