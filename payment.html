@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        
+      window.onload = function () {
+        const params = new URLSearchParams(window.location.search);
+        const totalPrice = params.get("totalPrice");
+        if (totalPrice) {
+          document.getElementById(
+            "total-price"
+          ).textContent = `${totalPrice}원을 결제하겠습니다`;
+        }
+      };
     </script>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h1>결제창</h1>
+    <p id="total-price">총 금액이 표시됩니다.</p>
+    <p>신용카드 번호를 입력하고 결제하기 버튼을 눌러주세요</p>
+    <input type="number" id="cardNumber" />
+    <button>결제하기</button>
+  </body>
 </html>

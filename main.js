@@ -99,7 +99,7 @@ function checkingProduct() {
   });
 
   const totalPriceProduct = document.createElement("li");
-  totalPriceProduct.style.display = "inline-block"; 
+  totalPriceProduct.style.display = "inline-block";
   totalPriceProduct.style.border = "1px solid black";
   totalPriceProduct.textContent = `총가격 ${totalPrice} 원`;
   productList.appendChild(totalPriceProduct);
@@ -111,16 +111,20 @@ const paying = () => {
   if (selectedProducts.length === 0) {
     const selectedProductsDiv = document.getElementById("selected-products");
     selectedProductsDiv.textContent = "선택된 상품이 없습니다.";
-    alert('선택된 상품이 없습니다.');
+    alert("선택된 상품이 없습니다.");
     return;
-  }else{
+  } else {
+    let totalPrice = selectedProducts.reduce(
+      (sum, product) => sum + product.price,
+      0
+    );
     paymentWindow = window.open(
-      "payment.html",
+      `payment.html?totalPrice=${totalPrice}`,
       "_blank",
       "width=500,height=300"
     );
   }
-}
+};
 
 displayCategories();
 checkingProduct();
