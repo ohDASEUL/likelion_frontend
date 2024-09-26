@@ -122,7 +122,7 @@ const paying = () => {
     paymentWindow = window.open(
       `payment.html?totalPrice=${totalPrice}`,
       "_blank",
-      "width=700,height=300"
+      "width=800,height=300"
     );
   }
 };

@@ -1,92 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <title>결제창</title>
-    <script>
-      let totalPrice = "";
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const totalPrice = parseInt(urlParams.get("totalPrice"));
-        if (!isNaN(totalPrice)) {
-          const formattedPrice = totalPrice.toLocaleString("ko-KR", {
-            style: "currency",
-            currency: "KRW",
-          });
-          document.querySelector(
-            "p"
-          ).textContent = `총 금액: ${formattedPrice}을 결제하겠습니다.`;
-        }
-      });
-
-      function inputCardNumber(cardNum) {
-        if (isNaN(cardNum.value)) {
-          alert("카드번호는 숫자만 입력할 수 있습니다.");
-          cardNum.value = "";
-          return false;
-        }
-
-        const max = cardNum.getAttribute("maxlength");
-        if (cardNum.value.length >= max) {
-          cardNum.nextElementSibling.focus();
-        }
-      }
-
-      const paying = () => {
-        const cardInputs = document.querySelectorAll(".cardNumber");
-        let isComplete = true;
-        let cardNumber = "";
-
-        cardInputs.forEach((input) => {
-          if (input.value.length !== 4) {
-            isComplete = false;
-          } else {
-            cardNumber += input.value;
-          }
-        });
-
-        opener.child = this;
-        if (isComplete) {
-          alert(
-            `입력하신 신용카드 ${cardNumber}로 ${parseInt(
-              totalPrice
-            ).toLocaleString()}원이 결제완료되었습니다`
-          );
-          opener.location.href = "index.html";
-          window.close();
-        } else {
-          alert("카드번호를 정확히 입력해주세요");
-        }
-      };
-    </script>
   </head>
   <body>
     <h1>결제창</h1>
-    <p id="total-price">총 금액이 표시됩니다.</p>
+    <p id="total-price"></p>
     <p>신용카드 번호(16자리)를 입력하고 결제하기 버튼을 눌러주세요</p>
     <div>
-      <input
-        type="text"
-        class="cardNumber"
-        onKeyup="inputCardNumber(this);"
-        maxlength="4"
-      />&nbsp;-&nbsp;
-      <input
-        type="text"
-        class="cardNumber"
-        onKeyup="inputCardNumber(this);"
-        maxlength="4"
-      />&nbsp;-&nbsp;
-      <input
-        type="text"
-        class="cardNumber"
-        onKeyup="inputCardNumber(this);"
-        maxlength="4"
-      />
+      <input type="text" class="card-input" maxlength="4" /> -
+      <input type="text" class="card-input" maxlength="4" /> -
+      <input type="text" class="card-input" maxlength="4" /> -
+      <input type="text" class="card-input" maxlength="4" />
     </div>
     <button onclick="paying()">결제하기</button>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const totalPrice = parseInt(urlParams.get("totalPrice"));
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const totalPriceElement = document.getElementById("total-price");
+        if (totalPriceElement) {
+          totalPriceElement.textContent = `총 금액: ${totalPrice.toLocaleString()}원`;
+        }
+      });
+
+      function paying() {
+        const cardInputs = document.querySelectorAll(".card-input");
+        let cardNumber = "";
+
+        cardInputs.forEach((input) => {
+          cardNumber += input.value;
+        });
+
+        if (cardNumber.length === 16) {
+          alert(
+            `입력하신 신용카드 ${cardNumber}로 ${totalPrice.toLocaleString()}원이 결제완료되었습니다`
+          );
+          window.close();
+        } else {
+          alert("올바른 카드 번호를 입력해주세요 (16자리)");
+        }
+      }
+
+      document
+        .querySelectorAll(".card-input")
+        .forEach((input, index, inputs) => {
+          input.addEventListener("input", function () {
+            if (this.value.length === this.maxLength) {
+              if (index < inputs.length - 1) {
+                inputs[index + 1].focus();
+              }
+            }
+          });
+        });
+    </script>
   </body>
 </html>
