@@ -3,59 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css"/>
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>결제창</title>
     <script>
+      let totalPrice = ''; // Store total price globally
+
       window.onload = function () {
         const params = new URLSearchParams(window.location.search);
-        const totalPrice = params.get("totalPrice");
+        totalPrice = params.get("totalPrice");
         if (totalPrice) {
-          document.getElementById(
-            "total-price"
-          ).textContent = `${totalPrice}원을 결제하겠습니다`;
+          document.getElementById("total-price").textContent = `${totalPrice}원을 결제하겠습니다`;
         }
       };
 
-      function inputMoveNumber(num) {
-        if (isFinite(num.value) == false) {
+      function inputCardNumber(cardNum) {
+        if (isNaN(cardNum.value)) {
           alert("카드번호는 숫자만 입력할 수 있습니다.");
-          num.value = "";
+          cardNum.value = "";
           return false;
         }
 
-        max = num.getAttribute("maxlength");
-
-        if (num.value.length >= max) {
-          num.nextElementSibling.focus();
+        const max = cardNum.getAttribute("maxlength");
+        if (cardNum.value.length >= max) {
+          cardNum.nextElementSibling.focus();
         }
       }
+
+      const paying = () => {
+        const cardInputs = document.querySelectorAll(".cardNumber");
+        let isComplete = true;
+        let cardNumber = "";
+
+        cardInputs.forEach((input) => {
+          if (input.value.length !== 4) {
+            isComplete = false;
+          } else {
+            cardNumber += input.value;
+          }
+        });
+
+        if (isComplete) {
+          alert(`입력하신 신용카드 ${cardNumber}로 ${totalPrice}원이 결제완료되었습니다`);
+        } else {
+          alert("카드번호를 정확히 입력해주세요");
+        }
+      };
     </script>
   </head>
   <body>
     <h1>결제창</h1>
     <p id="total-price">총 금액이 표시됩니다.</p>
     <p>신용카드 번호(16자리)를 입력하고 결제하기 버튼을 눌러주세요</p>
-    <!-- <input type="number" id="cardNumber" /> -->
     <div>
       <input
         type="text"
-        class="moveNumber"
-        onKeyup="inputMoveNumber(this);"
+        class="cardNumber"
+        onKeyup="inputCardNumber(this);"
         maxlength="4"
       />&nbsp;-&nbsp;
       <input
         type="text"
-        class="moveNumber"
-        onKeyup="inputMoveNumber(this);"
+        class="cardNumber"
+        onKeyup="inputCardNumber(this);"
         maxlength="4"
       />&nbsp;-&nbsp;
       <input
         type="text"
-        class="moveNumber"
-        onKeyup="inputMoveNumber(this);"
+        class="cardNumber"
+        onKeyup="inputCardNumber(this);"
         maxlength="4"
       />
     </div>
-    <button>결제하기</button>
+    <button onclick="paying()">결제하기</button>
   </body>
 </html>
