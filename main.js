@@ -118,8 +118,9 @@ const paying = () => {
       (sum, product) => sum + product.price,
       0
     );
+
     paymentWindow = window.open(
-      `payment.html?totalPrice=${parseInt(totalPrice).toLocaleString()}`,
+      `payment.html?totalPrice=${totalPrice}`,
       "_blank",
       "width=700,height=300"
     );

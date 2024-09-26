@@ -6,17 +6,21 @@
     <link rel="stylesheet" href="style.css" />
     <title>결제창</title>
     <script>
-      let totalPrice = ""; // Store total price globally
+      let totalPrice = "";
 
-      window.onload = function () {
-        const params = new URLSearchParams(window.location.search);
-        totalPrice = params.get("totalPrice");
-        if (totalPrice) {
-          document.getElementById("total-price").textContent = `${parseInt(
-            totalPrice
-          ).toLocaleString()}원을 결제하겠습니다`;
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const totalPrice = parseInt(urlParams.get("totalPrice"));
+        if (!isNaN(totalPrice)) {
+          const formattedPrice = totalPrice.toLocaleString("ko-KR", {
+            style: "currency",
+            currency: "KRW",
+          });
+          document.querySelector(
+            "p"
+          ).textContent = `총 금액: ${formattedPrice}을 결제하겠습니다.`;
         }
-      };
+      });
 
       function inputCardNumber(cardNum) {
         if (isNaN(cardNum.value)) {
