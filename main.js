@@ -31,6 +31,7 @@ let paymentWindow;
 
 function displayCategories() {
   const categoryContainer = document.getElementById("category-container");
+  categoryContainer.innerHTML = ''; // Clear existing content
 
   categories.forEach((category) => {
     const categoryDiv = document.createElement("div");
@@ -98,13 +99,12 @@ function checkingProduct() {
     totalPrice += product.price;
   });
 
-  const totalPriceProduct = document.createElement("li");
-  totalPriceProduct.style.display = "inline-block";
-  totalPriceProduct.style.border = "1px solid black";
-  totalPriceProduct.textContent = `총가격 ${totalPrice} 원`;
-  productList.appendChild(totalPriceProduct);
-
   selectedProductsDiv.appendChild(productList);
+
+  const totalPriceDiv = document.createElement("div");
+  totalPriceDiv.id = "total-price";
+  totalPriceDiv.textContent = `총가격: ${parseInt(totalPrice).toLocaleString()} 원`;
+  selectedProductsDiv.appendChild(totalPriceDiv);
 }
 
 const paying = () => {
@@ -124,8 +124,23 @@ const paying = () => {
       "_blank",
       "width=800,height=300"
     );
+
+    window.addEventListener('message', function(event) {
+      if (event.data === 'paymentComplete') {
+        resetSelection();
+      }
+    });
   }
 };
+
+function resetSelection() {
+  selectedProducts = [];
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.checked = false;
+  });
+  checkingProduct();
+}
 
 displayCategories();
 checkingProduct();

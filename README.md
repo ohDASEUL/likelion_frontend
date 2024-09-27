@@ -24,8 +24,32 @@
      - 확인 버튼을 클릭하면 초기 화면으로 돌아갑니다.
 
 ---
-### 현재 과제 진행 상황
-기능 요구 사항을 모두 충족하였으나, 코드 개선의 여지가 있는지 평가 중입니다. 또한, 디자인 스타일이 다소 단조로워 보이므로 이에 대한 개선 방안을 모색하고 있습니다.
+
+## 결과 화면
+
+아래는 쇼핑몰과 결제 창 관련 화면입니다.
+1. **초기 쇼핑몰 화면**
+   ![Initial Shopping Mall Screen](./previews/initial-index_html.jpeg)
+
+2. **상품을 선택하지 않은 경우**
+   ![No Product Selected](./previews/no_product_is_selected.png)
+
+3. **상품 선택 후 전체 화면**
+   ![Product Selection Screen](./previews/product_selection-index_html.jpeg)
+
+4. **상품을 선택하고 결제 창을 띄운 경우**
+   ![Payment Window](./previews/payment_window.png)
+
+5. **카드 번호에 숫자가 아닌 문자가 포함된 경우**
+   ![Invalid Card Number](./previews/didn't_enter_the%20_numbers.png)
+
+6. **카드 번호를 모두 입력하지 않은 경우**
+   ![Card Number Not Fully Entered](./previews/didn't_enter_all%20_the_numbers.png)
+
+7. **카드 번호가 올바르게 입력된 경우**
+   ![Correct Card Number Entered](./previews/enter_the_numbers_correctly.png)
+
+
 
 ### 배포 링크
 https://ohdaseul.github.io/likelion_shopping-mall-cart/
