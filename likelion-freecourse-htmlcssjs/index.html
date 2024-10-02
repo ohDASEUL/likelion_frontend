@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MBTI 테스트를 통해 나랑 닮은 동물 찾기" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="동물 MBTI TEST" />
+    <meta property="og:description" content="MBTI 테스트를 통해 나랑 닮은 동물 찾기" />
+    <meta property="og:image" content="https://16animals-mbti-test.netlify.app/cat.jpg" />
+    <meta property="og:url" content="https://16animals-mbti-test.netlify.app/" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>동물 MBTI TEST</title>
+  </head>
+  <body class="container">
+    <article class="start">
+      <h1 class="mt-5 text-center">나랑 꼭 닮은 동물은?</h1>
+      <button class="btn btn-primary mt-5" onclick="start()">
+        테스트 시작하기
+      </button>
+    </article>
+    <article class="question mt-5">
+      <div
+        class="progress mt-5"
+        role="progressbar"
+        aria-label="Basic example"
+        aria-valuenow="25"
+      >
+        <div class="progress-bar" style="width: calc(100 / 12 * 1%)"></div>
+      </div>
+      <h2 class="text-center" id="title">문제</h2>
+      <input id="type" type="hidden" value="EI" />
+      <button id="A" type="button" class="btn btn-primary mt-5">Primary</button>
+      <button id="B" type="button" class="btn btn-primary mt-5">Primary</button>
+    </article>
+    <article class="result">
+      <img id="img" class="rounded-circle mt-5" src="lion.jpg" alt="animal" />
+      <h2 id="animal" class="text-center mt-5">동물이름</h2>
+      <h3 id="explain" class="text-center mt-5">설명</h3>
+      <div class="share a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_x"></a>
+        <a class="a2a_button_threads"></a>
+        <a class="a2a_dd"></a>
+      </div>
+    </article>
+    <article class="kakao_ad mt-5">
+      <ins
+        class="kakao_ad_area"
+        style="display: none"
+        data-ad-unit="DAN-9fIhs8aWlv19oFY1"
+        data-ad-width="300"
+        data-ad-height="250"
+      ></ins>
+    </article>
+    <a
+      class="mt-5 banner"
+      href="https://www.likelion.net/catalog?utm_source=animal_test&utm_medium=web_lecture&utm_campaign=comeseul312"
+    >
+      <img class="baner_img" src="banner.png" alt="banner" />
+    </a>
+    <script
+      type="text/javascript"
+      src="//t1.daumcdn.net/kas/static/ba.min.js"
+      async
+    ></script>
+    <input type="hidden" id="EI" value="0" />
+    <input type="hidden" id="SN" value="0" />
+    <input type="hidden" id="TF" value="0" />
+    <input type="hidden" id="JP" value="0" />
+
+    <script
+      async
+      src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@popperjs/core": "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js",
+          "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.esm.min.js"
+        }
+      }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      var num = 1;
+      var q = {
+        1: {
+          title: "에너지 충전 방식",
+          type: "EI",
+          A: "사람들과의 대화 후에 에너지가 더 생긴다",
+          B: "혼자 있는 시간이 에너지를 회복하는 데 도움이 된다",
+        },
+        2: {
+          title: "스트레스 해소 방법",
+          type: "EI",
+          A: "친구들과의 만남이 스트레스를 해소하는 데 도움이 된다",
+          B: "혼자서 책을 읽거나 영화를 보는 것이 더 편안하다",
+        },
+        3: {
+          title: "문제 해결 접근법",
+          type: "EI",
+          A: "다른 사람과 협력하는 것을 선호한다",
+          B: "혼자서 깊이 고민하는 것이 더 효과적이라고 느낀다",
+        },
+        4: {
+          title: "미래에 대한 시각",
+          type: "SN",
+          A: "현재의 상황이나 경험에 기반하여 미래를 예측한다",
+          B: "미래의 가능성이나 상상력을 통해 예측한다",
+        },
+        5: {
+          title: "학습 스타일",
+          type: "SN",
+          A: "실제 사례나 경험을 통해 배우는 것을 선호한다",
+          B: "이론적 개념이나 추상적인 아이디어를 통해 배우는 것을 선호한다",
+        },
+        6: {
+          title: "변화에 대한 반응",
+          type: "SN",
+          A: "불안하다",
+          B: "새로운 기회라고 생각한다",
+        },
+        7: {
+          title: "의사결정 방식",
+          type: "TF",
+          A: "논리적이고 객관적인 정보를 우선시한다",
+          B: "사람의 감정이나 관계를 더 중요하게 생각한다",
+        },
+        8: {
+          title: "대인 관계에서의 우선순위",
+          type: "TF",
+          A: "효율성과 결과를 중시한다",
+          B: "감정적 유대와 사람 간의 관계를 중시한다",
+        },
+        9: {
+          title: "정보 처리 방식",
+          type: "TF",
+          A: "구체적이고 측정 가능한 목표를 선호",
+          B: "사람들과의 관계나 감정적 만족을 고려한다",
+        },
+        10: {
+          title: "시간 관리",
+          type: "JP",
+          A: "마감일을 지키기 위해 미리 준비하는 것이 중요하다",
+          B: "마감일이 다가올 때까지 기다리며 유연하게 대처하는 것이 더 편하다",
+        },
+        11: {
+          title: "일의 마무리",
+          type: "JP",
+          A: "모든 세부사항을 체크하고 완벽하게 끝내는 것을 중요하게 생각한다",
+          B: " 대략적인 마무리만 해도 괜찮다고 느낀다",
+        },
+        12: {
+          title: "목표 설정",
+          type: "JP",
+          A: "구체적이고 명확한 목표를 세우는 것을 선호한다",
+          B: "유연하게 접근하고 다양한 가능성을 고려하는 것을 좋아한다",
+        },
+      };
+      var result = {
+        ISTJ: {
+          animal: "거북이",
+          explain: "세상의 소금형-청렴결백한 논리주의자",
+          img: "turtle.jpg",
+        },
+        ISFJ: {
+          animal: "코뿔소",
+          explain: "임금 뒷편의 권력형-용감한 수호자",
+          img: "rhinoceros.jpg",
+        },
+        INFJ: {
+          animal: "판다",
+          explain: "예언자형-선의의 옹호자",
+          img: "panda.jpg",
+        },
+        INTJ: {
+          animal: "호랑이",
+          explain: "과학자형-용의주도한 전략가",
+          img: "tiger.jpg",
+        },
+        ISTP: {
+          animal: "뱀",
+          explain: "백과사전형-만능 재주꾼",
+          img: "snake.jpg",
+        },
+        ISFP: {
+          animal: "고양이",
+          explain: "성인군자형-호기심 많은 예술가",
+          img: "cat.jpg",
+        },
+        INFP: {
+          animal: "물개",
+          explain: "잔다르크형-열정적인 중재자",
+          img: "seal.jpg",
+        },
+        INTP: {
+          animal: "올빼미",
+          explain: "아이디어 뱅크형-논리적인 사색가",
+          img: "owl.jpg",
+        },
+        ESTP: {
+          animal: "하이에나",
+          explain: "수완좋은 활동가형-모험을 즐기는 사업가",
+          img: "hyena.jpg",
+        },
+        ESFP: {
+          animal: "돌고래",
+          explain: "사교적인 유형-자유로운 영혼의 연예인",
+          img: "dolphin.jpg",
+        },
+        ENFP: {
+          animal: "침팬지",
+          explain: "스파크형-재기발랄한 활동가",
+          img: "chimpanzee.jpg",
+        },
+        ENTP: {
+          animal: "앵무새",
+          explain: "발명가형-뜨거운 논쟁을 즐기는 변론가",
+          img: "parrot.jpg",
+        },
+        ESTJ: {
+          animal: "늑대",
+          explain: "사업가형-엄격한 관리자",
+          img: "wolf.jpg",
+        },
+        ESFJ: {
+          animal: "코끼리",
+          explain: "친선도모형-사교적인 외교관",
+          img: "elephant.jpg",
+        },
+        ENFJ: {
+          animal: "강아지",
+          explain: "언변능숙형-정의로운 사회운동가",
+          img: "puppy.jpg",
+        },
+        ENTJ: {
+          animal: "사자",
+          explain: "지도자형-대담한 통솔자",
+          img: "lion.jpg",
+        },
+      };
+      function start() {
+        $(".start").hide();
+        $(".question").show();
+        next();
+      }
+      $("#A").click(function () {
+        var type = $("#type").val();
+        var preValue = $("#" + type).val();
+        $("#" + type).val(parseInt(preValue) + 1);
+        next();
+      });
+      $("#B").click(function () {
+        next();
+      });
+      function next() {
+        if (num == 13) {
+          $(".question").hide();
+          $(".result").show();
+          var mbti = "";
+          mbti += $("#EI").val() < 2 ? "I" : "E";
+          mbti += $("#SN").val() < 2 ? "N" : "S";
+          mbti += $("#TF").val() < 2 ? "F" : "T";
+          mbti += $("#JP").val() < 2 ? "P" : "J";
+
+          $("#img").attr("src", result[mbti]["img"]);
+          $("#animal").html(result[mbti]["animal"]);
+          $("#explain").html(result[mbti]["explain"]);
+        } else {
+          $(".progress-bar").attr("style", "width:calc(100/12*" + num + "%)");
+          $("#title").html(q[num]["title"]);
+          $("#type").val(q[num]["type"]);
+          $("#A").html(q[num]["A"]);
+          $("#B").html(q[num]["B"]);
+          num++;
+        }
+      }
+    </script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+  </body>
+</html>
