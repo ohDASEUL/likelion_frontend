@@ -1,0 +1,211 @@
+/* CSS 초기화 */
+html, body, div, h1, h2, p, header, footer {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  font-size: unset;
+  font-weight: unset;
+}
+
+img {
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+/* Font 설정 */
+:root {
+  font-family: "Arial";
+  --color-orange: #f60;
+  --color-green: #17a651;
+  --color-blue: #0075ff;
+  --color-gray: #666;
+
+  --font-size-h1: 24px;
+  --font-size-tag-footer: 12px;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Sans KR"), url(https://fonts.gstatic.com/s/notosanskr/v13/Pby6FmXiEBPT4ITbgNA5CgmOsn7uwpY.woff2) format("woff2");
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF; /* 한글 유니코드 범위 */
+}
+
+.ko-text {
+  font-family: "Noto Sans KR", Arial, sans-serif;
+}
+
+/* 기본 레이아웃 및 스타일 */
+body {
+  background-color: #d9d9d9;
+}
+
+.wraper {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #f4f4f4;
+  padding: 30px 0;
+}
+
+.header-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-group h1 {
+  color: var(--color-orange);
+  font-weight: bold;
+  font-size: var(--font-size-h1);
+  margin: 0;
+}
+
+.header-group img {
+  margin-right: 0;
+}
+
+/* 그리드 시스템 */
+
+/* .grid {
+  display: flex;
+  margin-top: 30px;
+  gap: 30px;
+} */
+
+
+.l_row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  row-gap: 30px;
+  margin-top: 30px;
+}
+
+.l_col {
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+
+.l_col_12_12 { width: 100%; }
+.l_col_11_12 { width: 91.66666667%; }
+.l_col_10_12 { width: 83.33333333%; }
+.l_col_9_12 { width: 75%; }
+.l_col_8_12 { width: 66.66666667%; }
+.l_col_7_12 { width: 58.33333333%; }
+.l_col_6_12 { width: 50%; }
+.l_col_5_12 { width: 41.66666667%; }
+.l_col_4_12 { width: 33.33333333%; }
+.l_col_3_12 { width: 25%; }
+.l_col_2_12 { width: 16.66666667%; }
+.l_col_1_12 { width: 8.33333333%; }
+
+/* 카드 컴포넌트 */
+.card {
+  /* width: 300px; <-- .l_col 클래스의 넓이를 통해 카드 크기 조절 가능*/
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  /* 추가 */
+  width: 100%;
+  height: auto;
+  /* 기존 코드 */
+  border-radius: 12px 12px 0 0;
+  margin-bottom: -48px;
+}
+
+.card h1 {
+  display: inline-flex;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  font-size: var(--font-size-h1);
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 12px 0 0;
+}
+
+.card.hotdog h1 { color: var(--color-orange); }
+.card.burger h1 { color: var(--color-green); }
+.card.pizza h1 { color: var(--color-blue); }
+
+.card p {
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 140%;
+  color: #666;
+  padding: 20px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.hotdog strong { color: var(--color-orange); }
+.burger strong { color: var(--color-green); }
+.pizza strong { color: var(--color-blue); }
+
+/* 태그 스타일 */
+.tags {
+  display: flex;
+  gap: 6px;
+  font-size: var(--font-size-tag-footer);
+  line-height: 16px;
+  background-color: #f4f4f4;
+  color: #fff;
+  border-radius: 0 0 12px 12px;
+  padding: 26px 18px;
+}
+
+.tag {
+  border-radius: 48px;
+  padding: 2px 8px 4px 8px;
+}
+
+.hash {
+  color: rgba(255, 255, 255, 0.5); /* # 문자에만 반투명 색상 적용 */
+}
+
+.hotdog .tag { background-color: var(--color-orange); }
+.burger .tag { background-color: var(--color-green); }
+.pizza .tag { background-color: var(--color-blue); }
+
+/* 푸터 텍스트 스타일 */
+.footer-text p {
+  color: #aaa;
+  font-size: var(--font-size-tag-footer);
+  letter-spacing: 24%;
+  padding: 0 10px;
+}
+
+
+/* 반응형 */
+
+/* 1. 600 픽셀 이하로 떨어질 때 : 모바일 화면 */
+@media(max-width:600px){
+  .header-group{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /* 메인 카드가 1줄에 1개씩 나오도록 조정 */
+  .l_col {
+    width: calc(100% - 60px); /* 전체 너비에서 양쪽 여백을 제외 */
+    margin: 0 30px 30px 30px; /* 카드 사이의 여백 및 좌우 여백 추가 */
+  }
+
+  .footer-text{
+    text-align: center;
+  }
+}
