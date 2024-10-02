@@ -1,0 +1,101 @@
+/* CSS Reset */
+html,
+body,
+div,
+section,
+header,
+h1,
+main,
+ul,
+li {
+  margin: unset;
+  padding: unset;
+}
+
+h1 {
+  font-size: unset;
+  font-weight: unset;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+/* Font */
+:root {
+  font-family: "arial";
+}
+
+/* Layouts */
+.wrapper {
+  width: 448px;
+  margin: 110px auto;
+}
+
+/* Design */
+body {
+  background-color: #d9d9d9;
+}
+
+.bucketlist {
+  background-color: #eee;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bucketlist-header {
+  background-color: white;
+  padding: 44px 0;
+  border-bottom: 4px solid #ddd;
+  position: relative;
+}
+
+.bucketlist-header h1 {
+  color: #ff007a;
+  font-weight: bold;
+  font-size: 24px;
+  padding-left: 40px;
+}
+
+.bucketlist-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 32px;
+  background-color: #ff007a;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.bucketlist-content {
+  padding: 36px 38px 38px 38px;
+}
+
+.lists li {
+  background-color: white;
+  color: #888;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 4px solid #d9d9d9;
+  padding: 10px 34px 10px 10px;
+  transition: transform 0.3s ease;
+}
+
+.lists li + li {
+  margin-top: 14px;
+}
+
+.lists li.selected {
+  border-color: currentColor;
+  color: #759cff;
+  background-image: url(imgaes/check.svg);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  border: 2px solid;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
