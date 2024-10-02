@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>결제창</title>
+  </head>
+  <body>
+    <h1>결제창</h1>
+    <p id="total-price"></p>
+    <p>신용카드 번호(16자리)를 입력하고 결제하기 버튼을 눌러주세요</p>
+    <div>
+      <input
+        type="text"
+        class="card-input"
+        maxlength="4"
+        oninput="inputMoveNumber(this)"
+      />
+      -
+      <input
+        type="text"
+        class="card-input"
+        maxlength="4"
+        oninput="inputMoveNumber(this)"
+      />
+      -
+      <input
+        type="text"
+        class="card-input"
+        maxlength="4"
+        oninput="inputMoveNumber(this)"
+      />
+      -
+      <input
+        type="text"
+        class="card-input"
+        maxlength="4"
+        oninput="inputMoveNumber(this)"
+      />
+    </div>
+    <button onclick="paying()">결제하기</button>
+    <script>
+      // URL에서 전달된 쿼리 문자열을 파싱하여 결제할 금액을 가져옴
+      const urlParams = new URLSearchParams(window.location.search);
+      const totalPrice = parseInt(urlParams.get("totalPrice"));
+
+      // 페이지가 로드되면 결제할 총 금액을 화면에 표시하는 이벤트를 설정
+      document.addEventListener("DOMContentLoaded", () => {
+        const totalPriceElement = document.getElementById("total-price");
+        if (totalPriceElement) {
+          // 선택한 상품의 총 금액을 화면에 표시
+          totalPriceElement.textContent = `선택하신 상품의 총 금액: ${totalPrice.toLocaleString()}원을 결제하겠습니다`;
+        }
+      });
+
+      // 결제 버튼을 눌렀을 때 호출되는 함수
+      function paying() {
+        // 카드 번호 입력 필드들을 모두 선택
+        const cardInputs = document.querySelectorAll(".card-input");
+        let cardNumber = "";
+
+        // 각 입력 필드의 값을 하나로 합쳐 카드 번호를 생성
+        cardInputs.forEach((input) => {
+          cardNumber += input.value; // 각 4자리 입력을 이어 붙여 카드 번호 생성
+        });
+
+        // 카드 번호가 16자리인 경우 결제를 진행
+        if (cardNumber.length === 16) {
+          // 결제 완료 메시지와 카드 번호, 결제 금액을 알림으로 표시
+          alert(
+            `입력하신 신용카드 ${cardNumber}로 ${totalPrice.toLocaleString()}원이 결제완료되었습니다`
+          );
+          // 결제가 완료되었다는 메시지를 부모 창으로 전송
+          window.opener.postMessage("paymentComplete", "*");
+          // 결제창 닫기
+          window.close();
+        } else {
+          // 카드 번호가 16자리가 아닌 경우 경고 메시지를 표시
+          alert("올바른 카드 번호를 입력해주세요 (16자리)");
+        }
+      }
+
+      // 카드 번호 입력 필드에서 숫자가 아닌 문자가 입력되면 경고 메시지를 표시하고 해당 값 제거
+      function inputMoveNumber(num) {
+        if (isFinite(num.value) == false) {
+          alert("카드번호는 숫자만 입력할 수 있습니다.");
+          num.value = ""; // 숫자가 아닌 값은 입력 필드에서 제거
+          return false;
+        }
+      }
+
+      // 각 카드 번호 입력 필드에 입력 이벤트를 추가하여, 4자리가 입력되면 다음 입력 필드로 포커스를 이동
+      document
+        .querySelectorAll(".card-input")
+        .forEach((input, index, inputs) => {
+          input.addEventListener("input", function () {
+            // 입력 필드가 최대 글자수에 도달하면 다음 필드로 포커스를 자동으로 이동
+            if (this.value.length === this.maxLength) {
+              if (index < inputs.length - 1) {
+                inputs[index + 1].focus(); // 다음 입력 필드로 포커스 이동
+              }
+            }
+          });
+        });
+    </script>
+  </body>
+</html>
