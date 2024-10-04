@@ -17,6 +17,12 @@ function displayNewsCards(articles) {
     const card = document.createElement("div");
     card.classList.add("bg-white", "rounded-lg", "shadow-lg", "flex", "mb-4");
 
+     // 이미지 추가
+     const image = document.createElement("img");
+     image.classList.add("w-1/4", "rounded-l-lg");
+     image.src = article.urlToImage || "https://via.placeholder.com/150"; // 뉴스 이미지 없으면 가상의 이미지 추가
+     card.appendChild(image);
+
     // 뉴스 정보 컨테이너
     const newsInfo = document.createElement("div");
     newsInfo.classList.add("p-4", "w-3/4");
