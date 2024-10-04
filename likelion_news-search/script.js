@@ -1,10 +1,10 @@
 "use strict";
 
 // 버튼 요소와 입력 필드 가져오기
-const searchButton = document.querySelector("button");
+const newsSearchBtn = document.getElementById("newsSearchBtn");
 const searchInput = document.querySelector('input[type="text"]');
 
-searchButton.addEventListener("click", function () {
+newsSearchBtn.addEventListener("click", function () {
   // 검색어가 비어있는지 확인
   if (!searchInput.value.trim()) {
     alert("검색어를 입력하세요.");
