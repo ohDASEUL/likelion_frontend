@@ -6,43 +6,43 @@ const searchInput = document.querySelector('input[type="text"]');
 const headerContainer = document.getElementById("headerContainer");
 const newsContainer = document.getElementById("newsContainer");
 
-// 검색 결과를 테이블로 표시하는 함수
-function displayNewsTable(articles) {
+// 검색 결과를 카드 형식으로 표시하는 함수
+function displayNewsCards(articles) {
   // 뉴스 컨테이너 초기화
   newsContainer.innerHTML = "";
 
-  // 테이블 생성
-  const table = document.createElement("table");
-  table.classList.add("min-w-full", "bg-white", "border");
+  // 카드 형식으로 뉴스 표시
+  articles.forEach((article) => {
+    // 카드 생성
+    const card = document.createElement("div");
+    card.classList.add("bg-white", "rounded-lg", "shadow-lg", "flex", "mb-4");
 
-  // 테이블 헤더 생성
-  const thead = document.createElement("thead");
-  thead.innerHTML = `
-    <tr>
-      <th class="py-2 px-4 border">번호</th>
-      <th class="py-2 px-4 border">뉴스 제목</th>
-    </tr>
-  `;
-  table.appendChild(thead);
+    // 뉴스 정보 컨테이너
+    const newsInfo = document.createElement("div");
+    newsInfo.classList.add("p-4", "w-3/4");
 
-  // 테이블 바디 생성
-  const tbody = document.createElement("tbody");
-  articles.forEach((article, index) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td class="py-2 px-4 border text-center">${index + 1}</td>
-      <td class="py-2 px-4 border">${article.title}</td>
-    `;
-    tbody.appendChild(row);
+    // 뉴스 제목
+    const title = document.createElement("h2");
+    title.classList.add("font-bold", "text-lg", "mb-2");
+    title.textContent = article.title;
+    newsInfo.appendChild(title);
+
+    // 뉴스 설명
+    const description = document.createElement("p");
+    description.classList.add("text-sm", "text-gray-800", "mb-4");
+    description.textContent = article.description;
+    newsInfo.appendChild(description);
+
+    // 뉴스 정보를 카드에 추가
+    card.appendChild(newsInfo);
+
+    // 카드를 뉴스 컨테이너에 추가
+    newsContainer.appendChild(card);
+
+    // 제목과 검색 바를 상단으로 이동
+    headerContainer.classList.remove("h-screen");
+    headerContainer.classList.add("h-auto");
   });
-  table.appendChild(tbody);
-
-  // 테이블을 뉴스 컨테이너에 추가
-  newsContainer.appendChild(table);
-
-  // 제목과 검색 바를 상단으로 이동
-  headerContainer.classList.remove("h-screen");
-  headerContainer.classList.add("h-auto");
 }
 
 // 검색 함수 정의
@@ -53,7 +53,7 @@ async function searchNews() {
   } else {
     const newsTopic = searchInput.value.trim();
     const newsApiKey = "f692390650b44a1f9846e90dd406fada";
-    let newsUrl = `https://newsapi.org/v2/everything?q=${newsTopic}&apiKey=${newsApiKey}`;
+    let newsUrl = `https://newsapi.org/v2/everything?q=${newsTopic}&language=ko&sortBy=relevancy&apiKey=${newsApiKey}`;
 
     let xhr = new XMLHttpRequest();
     xhr.open("get", newsUrl);
@@ -62,8 +62,11 @@ async function searchNews() {
         let result = xhr.responseText;
         let resultObj = JSON.parse(result);
 
-        // 뉴스 기사 테이블로 표시
-        displayNewsTable(resultObj.articles);
+        // articles 부분만 console에 출력
+        console.log(resultObj.articles);
+
+        // 뉴스 기사 카드 형식으로 표시
+        displayNewsCards(resultObj.articles);
       } else {
         console.error("뉴스 데이터를 가져오는 데 실패했습니다.");
       }
