@@ -42,8 +42,13 @@
 - 한국어 검색 결과: ![한국어 검색 결과](preview/Search_results-KO.jpeg)
 - 중국어 검색 결과: ![중국어 검색 결과](preview/Search_results-ZH.jpeg)
 
+### 뉴스 기사 결과를 출력한 콘솔 로그 화면
+![뉴스 결과 콘솔](preview/newsApiArticlesConsoleLog.png)
+
 ### 검색 결과 없는 상태
 ![검색 결과 없는 상태](preview/No_search_results.jpeg)
 
 ### 해당 기사의 원문 보러가기
 ![전체 기사 보기](preview/news_details.gif)
+
+---
