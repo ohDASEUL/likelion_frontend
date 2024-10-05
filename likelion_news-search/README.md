@@ -30,3 +30,20 @@
 - JavaScript
 - AJAX (비동기 통신)
 - [News API](https://newsapi.org)
+
+
+## 결과 화면
+
+### 초기 화면
+![초기 화면](preview/Initial_screen.jpeg)
+
+### 뉴스 검색 결과 화면
+- 영어 검색 결과: ![영어 검색 결과](preview/Search_results-EN.jpeg)
+- 한국어 검색 결과: ![한국어 검색 결과](preview/Search_results-KO.jpeg)
+- 중국어 검색 결과: ![중국어 검색 결과](preview/Search_results-ZH.jpeg)
+
+### 검색 결과 없는 상태
+![검색 결과 없는 상태](preview/No_search_results.jpeg)
+
+### 해당 기사의 원문 보러가기
+![전체 기사 보기](preview/news_details.gif)
