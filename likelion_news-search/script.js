@@ -17,11 +17,11 @@ function displayNewsCards(articles) {
     const card = document.createElement("div");
     card.classList.add("bg-white", "rounded-lg", "shadow-lg", "flex", "mb-4");
 
-     // 이미지 추가
-     const image = document.createElement("img");
-     image.classList.add("w-1/4", "rounded-l-lg");
-     image.src = article.urlToImage || "https://via.placeholder.com/150"; // 뉴스 이미지 없으면 가상의 이미지 추가
-     card.appendChild(image);
+    // 이미지 추가
+    const image = document.createElement("img");
+    image.classList.add("w-1/4", "rounded-l-lg");
+    image.src = article.urlToImage || "https://via.placeholder.com/150x100?text=No+Image"; // 뉴스 이미지 없으면 가상의 이미지 추가
+    card.appendChild(image);
 
     // 뉴스 정보 컨테이너
     const newsInfo = document.createElement("div");
@@ -72,34 +72,54 @@ function displayNewsCards(articles) {
 }
 
 // 검색 함수 정의
-async function searchNews() {
+function searchNews() {
   // 검색어가 비어있는지 확인
   if (!searchInput.value.trim()) {
     alert("검색어를 입력하세요.");
   } else {
     const newsTopic = searchInput.value.trim();
     const newsApiKey = "f692390650b44a1f9846e90dd406fada";
-    let newsUrl = `https://newsapi.org/v2/everything?q=${newsTopic}&language=ko&sortBy=relevancy&apiKey=${newsApiKey}`;
+
+    let newsUrl = `https://newsapi.org/v2/everything?q=${newsTopic}&sortBy=relevancy&apiKey=${newsApiKey}`;
 
     let xhr = new XMLHttpRequest();
-    xhr.open("get", newsUrl);
+    xhr.open("GET", newsUrl);
     xhr.onload = function () {
       if (xhr.status === 200) {
-        let result = xhr.responseText;
-        let resultObj = JSON.parse(result);
+        let resultObj = JSON.parse(xhr.responseText);
 
-        // articles 부분만 console에 출력
-        console.log(resultObj.articles);
+        // 뉴스 컨테이너 초기화
+        newsContainer.innerHTML = "";
 
-        // 뉴스 기사 카드 형식으로 표시
-        displayNewsCards(resultObj.articles);
+        // 검색 결과가 없는 경우 메시지 표시
+        if (resultObj.articles.length === 0) {
+          const noResultsMessage = document.createElement("p");
+          noResultsMessage.classList.add(
+            "text-gray-700",
+            "font-semibold",
+            "mt-4"
+          );
+          noResultsMessage.textContent = "해당 뉴스 기사가 없습니다.";
+          newsContainer.appendChild(noResultsMessage);
+
+          console.log("No articles found");
+        } else {
+          // 뉴스 기사 카드 형식으로 표시
+          displayNewsCards(resultObj.articles);
+        }
+
+        // 제목과 검색 바를 상단으로 이동
+        headerContainer.classList.remove("h-screen");
+        headerContainer.classList.add("h-auto");
       } else {
         console.error("뉴스 데이터를 가져오는 데 실패했습니다.");
       }
     };
+
     xhr.onerror = function () {
-      console.error("오류 발생:", xhr.status);
+      console.error("오류 발생:", xhr.statusText);
     };
+
     xhr.send();
   }
 }
