@@ -15,7 +15,7 @@ function displayNewsCards(articles) {
   articles.forEach((article) => {
     // 카드 생성
     const card = document.createElement("div");
-    card.classList.add("bg-white", "rounded-lg", "shadow-lg", "flex", "mb-4");
+    card.classList.add("bg-white", "rounded-lg", "shadow-lg", "flex", "mb-6");
 
     // 이미지 추가
     const image = document.createElement("img");
@@ -88,6 +88,9 @@ function searchNews() {
       if (xhr.status === 200) {
         let resultObj = JSON.parse(xhr.responseText);
 
+        // articles 부분만 console에 출력
+        console.log(resultObj.articles);
+
         // 뉴스 컨테이너 초기화
         newsContainer.innerHTML = "";
 
@@ -102,7 +105,7 @@ function searchNews() {
           noResultsMessage.textContent = "해당 뉴스 기사가 없습니다.";
           newsContainer.appendChild(noResultsMessage);
 
-          console.log("No articles found");
+          console.log("해당 뉴스 기사가 없습니다.");
         } else {
           // 뉴스 기사 카드 형식으로 표시
           displayNewsCards(resultObj.articles);
