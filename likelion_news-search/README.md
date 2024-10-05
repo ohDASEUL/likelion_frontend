@@ -1,54 +1,105 @@
+
 # 멋쟁이사자처럼 프론트엔드 11기
 
 ## 자바스크립트 2차 과제 : 뉴스 검색 프로젝트
 
-### 주요 기능
-1. **뉴스 검색 입력창 및 버튼**
-    - 사용자가 검색어를 입력하고, 검색 버튼을 클릭하여 뉴스를 검색할 수 있습니다.
-2. **뉴스 검색 결과 출력**
-    - 입력한 검색어에 따라 News API로부터 결과를 받아 화면에 뉴스 리스트를 출력합니다.
-3. **뉴스 상세보기**
-    - 각 뉴스 항목에 URL이 제공될 경우, "more" 링크를 통해 실제 뉴스 페이지로 이동할 수 있습니다.
+## 기능
 
-### 요구사항
-1. **검색창과 버튼**
-    - 사용자는 검색어를 입력하고, 버튼을 클릭하여 뉴스를 검색할 수 있어야 합니다.
-2. **AJAX를 통한 데이터 요청**
-    - `News API`에서 데이터를 받아와서 화면에 뉴스 리스트를 출력합니다.
-3. **상세보기**
-    - 뉴스 항목의 URL을 통해 뉴스 사이트로 이동할 수 있는 "more" 링크를 제공합니다.
+1. **뉴스 검색 기능**
+   - 사용자는 검색어를 입력하고 검색 버튼을 클릭하거나 Enter 키를 눌러 뉴스 검색을 실행할 수 있습니다.
+   - 입력된 검색어는 `News API`로 전송되며, `AJAX`를 이용하여 비동기적으로 데이터를 받아옵니다.
+   - API를 통해 받아온 뉴스 기사는 카드 형식으로 화면에 표시됩니다.
+   - 검색 결과가 없으면 "해당 뉴스 기사가 없습니다."라는 메시지를 표시합니다.
 
-### 프로젝트 실행 방법
-1. [News API](https://newsapi.org)에 가입하여 API Key를 발급받습니다.
-2. 프로젝트 파일을 로컬 환경에 클론합니다.
-3. 프로젝트 내 JavaScript 파일에서 발급받은 API Key를 입력합니다.
-4. 브라우저에서 `index.html` 파일을 열어 프로젝트를 실행합니다.
+2. **뉴스 상세보기 기능**
+   - 각 뉴스 기사에는 "전체 기사 보러 가기" 링크가 포함되어 있으며, 클릭 시 해당 기사의 원문 페이지가 새로운 탭에서 열립니다.
 
-### 사용된 기술
-- HTML
-- CSS (Bootstrap 또는 사용자 정의 CSS 가능)
-- JavaScript
-- AJAX (비동기 통신)
-- [News API](https://newsapi.org)
+3. **반응형 디자인**
+   - Tailwind CSS를 사용하여 반응형 웹 디자인을 구현했습니다.
+   - 화면 크기에 따라 뉴스 카드 레이아웃이 자동으로 조정됩니다.
 
+## 주요 구현
 
-## 결과 화면
+### 1. 뉴스 검색 및 결과 표시
 
-### 초기 화면
-![초기 화면](preview/Initial_screen.jpeg)
+- 검색 버튼 클릭 시 또는 Enter 키 입력 시 `searchNews()` 함수가 호출됩니다.
+- 사용자가 입력한 검색어를 기반으로 `News API`에 요청을 보내며, 결과를 JSON 형식으로 받아옵니다.
+- `displayNewsCards()` 함수가 호출되어 받아온 뉴스 기사를 카드 형식으로 화면에 동적으로 표시합니다.
+  
+```javascript
+function displayNewsCards(articles) {
+  articles.forEach((article) => {
+    const card = document.createElement("div");
+    card.classList.add("bg-white", "rounded-lg", "shadow-lg", "flex", "mb-6");
 
-### 뉴스 검색 결과 화면
-- 영어 검색 결과: ![영어 검색 결과](preview/Search_results-EN.jpeg)
-- 한국어 검색 결과: ![한국어 검색 결과](preview/Search_results-KO.jpeg)
-- 중국어 검색 결과: ![중국어 검색 결과](preview/Search_results-ZH.jpeg)
+    const image = document.createElement("img");
+    image.src = article.urlToImage || "https://via.placeholder.com/150x100?text=No+Image";
+    card.appendChild(image);
 
-### 뉴스 기사 결과를 출력한 콘솔 로그 화면
-![뉴스 결과 콘솔](preview/newsApiArticlesConsoleLog.png)
+    const newsInfo = document.createElement("div");
+    const title = document.createElement("h2");
+    title.textContent = article.title;
+    newsInfo.appendChild(title);
 
-### 검색 결과 없는 상태
-![검색 결과 없는 상태](preview/No_search_results.jpeg)
+    const author = document.createElement("p");
+    author.textContent = `${article.author || "기자명 알 수 없음"} · ${new Date(article.publishedAt).toLocaleDateString()}`;
+    newsInfo.appendChild(author);
 
-### 해당 기사의 원문 보러가기
-![전체 기사 보기](preview/news_details.gif)
+    const description = document.createElement("p");
+    description.textContent = article.description;
+    newsInfo.appendChild(description);
 
----
+    const link = document.createElement("a");
+    link.href = article.url;
+    link.textContent = "전체 기사 보러 가기";
+    newsInfo.appendChild(link);
+
+    card.appendChild(newsInfo);
+    newsContainer.appendChild(card);
+  });
+}
+```
+
+### 2. AJAX를 통한 비동기 데이터 처리
+
+- `XMLHttpRequest` 객체를 이용하여 API 서버로 요청을 보냅니다. 응답을 받은 후, 결과를 파싱하여 뉴스 목록을 화면에 출력합니다.
+- 요청 도중 네트워크 오류가 발생하면 사용자에게 오류 메시지를 표시합니다.
+
+```javascript
+function searchNews() {
+  const newsTopic = searchInput.value.trim();
+  const newsApiKey = "API_KEY"; // API 키 입력
+  let newsUrl = `https://newsapi.org/v2/everything?q=${newsTopic}&sortBy=relevancy&apiKey=${newsApiKey}`;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", newsUrl);
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      let resultObj = JSON.parse(xhr.responseText);
+      displayNewsCards(resultObj.articles);
+    }
+  };
+
+  xhr.onerror = function () {
+    const errorMessage = document.createElement("p");
+    errorMessage.textContent = "뉴스 데이터를 가져오는 중 오류가 발생했습니다.";
+    newsContainer.appendChild(errorMessage);
+  };
+
+  xhr.send();
+}
+```
+
+## 사용 기술
+
+- **HTML5**: 기본적인 구조와 콘텐츠 표시.
+- **Tailwind CSS**: 반응형 디자인을 손쉽게 구현하기 위해 사용.
+- **JavaScript**: DOM 조작 및 AJAX 통신을 통한 뉴스 데이터 처리.
+- **News API**: 실제 뉴스 데이터를 받아오기 위한 외부 API.
+
+## 실행 방법
+
+1. 이 레포지토리를 클론하거나 다운로드합니다.
+2. 브라우저에서 `index.html` 파일을 엽니다.
+3. 뉴스 검색어를 입력하고 검색 버튼을 클릭하거나 Enter 키를 눌러 관련 뉴스를 확인할 수 있습니다.
+

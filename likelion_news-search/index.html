@@ -10,12 +10,12 @@
     <!-- 뉴스 사이트 제목 및 검색 바를 포함하는 컨테이너 -->
     <div
       id="headerContainer"
-      class="flex flex-col items-center justify-center h-screen"
+      class="flex flex-col items-center justify-center h-[100vh] overflow-hidden"
     >
       <!-- 뉴스 사이트 제목 -->
       <h1 id="title" class="text-4xl font-bold text-gray-900 mb-8">
         <a href="index.html">전 세계 뉴스 검색</a>
-      </h1> 
+      </h1>
 
       <!-- 검색 바와 검색 버튼 컨테이너 -->
       <div class="flex items-center w-full max-w-md">
@@ -24,7 +24,7 @@
           id="searchInput"
           type="text"
           class="w-full px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="뉴스를 검색하세요."
+          placeholder="검색할 뉴스 기사를 입력하세요."
         />
 
         <!-- 검색 버튼 -->

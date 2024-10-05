@@ -56,7 +56,7 @@ function displayNewsCards(articles) {
       "text-sm",
       "font-semibold"
     );
-    link.textContent = "전체 기사 보기";
+    link.textContent = "전체 기사 보러 가기";
     newsInfo.appendChild(link);
 
     // 뉴스 정보를 카드에 추가
@@ -75,8 +75,9 @@ function displayNewsCards(articles) {
 function searchNews() {
   // 검색어가 비어있는지 확인
   if (!searchInput.value.trim()) {
-    alert("검색어를 입력하세요.");
+    alert("검색할 뉴스 기사를 입력하세요.");
   } else {
+    newsContainer.innerHTML = "<p class='text-center'>해당 뉴스 기사를 가져오는 중 입니다...</p>"; // 로딩 상태 표시
     const newsTopic = searchInput.value.trim();
     const newsApiKey = "f692390650b44a1f9846e90dd406fada";
 
@@ -85,14 +86,12 @@ function searchNews() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", newsUrl);
     xhr.onload = function () {
+      newsContainer.innerHTML = ""; // 로딩 메시지 삭제
       if (xhr.status === 200) {
         let resultObj = JSON.parse(xhr.responseText);
 
         // articles 부분만 console에 출력
         console.log(resultObj.articles);
-
-        // 뉴스 컨테이너 초기화
-        newsContainer.innerHTML = "";
 
         // 검색 결과가 없는 경우 메시지 표시
         if (resultObj.articles.length === 0) {
@@ -116,11 +115,21 @@ function searchNews() {
         headerContainer.classList.add("h-auto");
       } else {
         console.error("뉴스 데이터를 가져오는 데 실패했습니다.");
+        // 에러 메시지 표시
+        const errorMessage = document.createElement("p");
+        errorMessage.classList.add("text-red-500", "font-semibold", "mt-4");
+        errorMessage.textContent = "뉴스 데이터를 가져오는 중 오류가 발생했습니다. 다시 시도해주세요.";
+        newsContainer.appendChild(errorMessage);
       }
     };
 
     xhr.onerror = function () {
       console.error("오류 발생:", xhr.statusText);
+      // 에러 메시지 표시
+      const errorMessage = document.createElement("p");
+      errorMessage.classList.add("text-red-500", "font-semibold", "mt-4");
+      errorMessage.textContent = "네트워크 오류가 발생했습니다. 다시 시도해주세요.";
+      newsContainer.appendChild(errorMessage);
     };
 
     xhr.send();
