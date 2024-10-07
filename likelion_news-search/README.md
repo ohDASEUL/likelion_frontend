@@ -90,6 +90,9 @@ function searchNews() {
 }
 ```
 
+## 참고
+news api Developer($0) 플랜에서는 한 번의 요청으로 최대 100개의 기사를 받아올 수 있으며, 한 달에 최대 500 요청까지 가능합니다.
+
 ## 사용 기술
 
 - **HTML5**: 기본적인 구조와 콘텐츠 표시.
@@ -100,6 +103,15 @@ function searchNews() {
 ## 실행 방법
 
 1. 이 레포지토리를 클론하거나 다운로드합니다.
-2. 브라우저에서 `index.html` 파일을 엽니다.
+2. live server로 `index.html` 파일을 실행시켜줍니다.
 3. 뉴스 검색어를 입력하고 검색 버튼을 클릭하거나 Enter 키를 눌러 관련 뉴스를 확인할 수 있습니다.
 
+## 결과화면
+### 초기 화면
+![Initial Screen](/previews/search-empty.jpeg)
+
+### 검색 결과 화면
+![Search Results](/previews/news-results.png)
+
+### 검색 결과 없음
+![No Results](/previews/no-results.jpeg)
