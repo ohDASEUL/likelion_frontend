@@ -1,4 +1,3 @@
-
 # 멋쟁이사자처럼 프론트엔드 11기
 
 ## 자바스크립트 2차 과제 : 뉴스 검색 프로젝트
@@ -28,34 +27,64 @@
   
 ```javascript
 function displayNewsCards(articles) {
-  articles.forEach((article) => {
-    const card = document.createElement("div");
-    card.classList.add("bg-white", "rounded-lg", "shadow-lg", "flex", "mb-6");
+  // 뉴스 컨테이너 초기화 (이전 결과 제거)
+  newsContainer.innerHTML = "";
 
+  // 각 뉴스 기사를 카드 형식으로 화면에 표시
+  articles.forEach((article) => {
+    // 카드 생성 (각 기사를 하나의 카드로 보여줌)
+    const card = document.createElement("div");
+    card.classList.add(
+      "bg-white",  // 카드의 배경색을 하얀색으로 설정
+      "rounded-lg",  // 모서리를 둥글게 처리
+      "shadow-lg",  // 그림자 추가
+      "flex",  // 카드 내용을 가로로 배치
+      "mb-6",  // 카드 하단에 여백 추가
+      "max-w-3xl",   // 카드의 최대 너비를 설정 (화면 꽉 차지 않도록)
+      "mx-auto",     // 카드를 가운데 정렬
+      "p-4"          // 카드 안쪽에 패딩 추가 (내용 여백)
+    );
+
+    // 이미지 추가 (있으면 해당 뉴스 이미지, 없으면 대체 이미지)
     const image = document.createElement("img");
-    image.src = article.urlToImage || "https://via.placeholder.com/150x100?text=No+Image";
+    image.classList.add("w-1/4", "rounded-l-lg");  // 이미지 너비 1/4, 좌측 둥근 모서리
+    image.src = article.urlToImage || "https://via.placeholder.com/150x100?text=No+Image";  // 이미지가 없을 경우 대체 이미지
     card.appendChild(image);
 
+    // 뉴스 정보 컨테이너 생성 (제목, 설명, 기자 정보 등 포함)
     const newsInfo = document.createElement("div");
+    newsInfo.classList.add("p-4", "w-3/4");  // 패딩과 너비 설정
+
+    // 뉴스 제목 추가
     const title = document.createElement("h2");
-    title.textContent = article.title;
+    title.classList.add("font-bold", "text-lg", "mb-2");  // 굵은 글씨, 크기 설정
+    title.textContent = article.title;  // 제목을 뉴스 데이터에서 가져옴
     newsInfo.appendChild(title);
 
+    // 기자명과 발행 날짜 표시
     const author = document.createElement("p");
-    author.textContent = `${article.author || "기자명 알 수 없음"} · ${new Date(article.publishedAt).toLocaleDateString()}`;
+    author.classList.add("text-sm", "text-gray-600", "mb-2");  // 작은 글씨, 회색
+    author.textContent = `${article.author || "기자명 알 수 없음"} · ${new Date(article.publishedAt).toLocaleDateString()}`;  // 기자명과 발행 날짜
     newsInfo.appendChild(author);
 
+    // 뉴스 설명 추가
     const description = document.createElement("p");
-    description.textContent = article.description;
+    description.classList.add("text-sm", "text-gray-800", "mb-4");  // 작은 글씨, 어두운 회색
+    description.textContent = article.description;  // 뉴스 설명
     newsInfo.appendChild(description);
 
+    // 전체 기사 보러 가기 링크 추가
     const link = document.createElement("a");
-    link.href = article.url;
-    link.textContent = "전체 기사 보러 가기";
+    link.href = article.url;  // 뉴스 기사 링크
+    link.classList.add("text-blue-500", "hover:underline", "text-sm", "font-semibold");  // 파란색 텍스트, 마우스 호버 시 밑줄 표시
+    link.textContent = "전체 기사 보러 가기";  // 링크 텍스트
     newsInfo.appendChild(link);
 
+    // 뉴스 정보를 카드에 추가
     card.appendChild(newsInfo);
-    newsContainer.appendChild(card);
+
+    // 생성한 카드를 뉴스 카드 컨테이너에 추가
+    newsCardsContainer.appendChild(card);
   });
 }
 ```
@@ -67,26 +96,68 @@ function displayNewsCards(articles) {
 
 ```javascript
 function searchNews() {
-  const newsTopic = searchInput.value.trim();
-  const newsApiKey = "API_KEY"; // API 키 입력
-  let newsUrl = `https://newsapi.org/v2/everything?q=${newsTopic}&sortBy=relevancy&apiKey=${newsApiKey}`;
+  // 검색어가 비어있는지 확인
+  if (!searchInput.value.trim()) {
+    // 검색어가 없을 경우 경고창 표시
+    alert("검색할 뉴스 기사를 입력하세요.");
+  } else {
+    // 검색어가 있으면 로딩 상태 메시지 표시
+    newsContainer.innerHTML =
+      "<p class='text-center'>해당 뉴스 기사를 가져오는 중 입니다...</p>"; // 로딩 중 메시지
 
-  let xhr = new XMLHttpRequest();
-  xhr.open("GET", newsUrl);
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      let resultObj = JSON.parse(xhr.responseText);
-      displayNewsCards(resultObj.articles);
-    }
-  };
+    const newsTopic = searchInput.value.trim(); // 입력된 검색어를 가져옴
+    const newsApiKey = "f692390650b44a1f9846e90dd406fada"; // 뉴스 API 키
 
-  xhr.onerror = function () {
-    const errorMessage = document.createElement("p");
-    errorMessage.textContent = "뉴스 데이터를 가져오는 중 오류가 발생했습니다.";
-    newsContainer.appendChild(errorMessage);
-  };
+    // API 요청 URL 생성
+    let newsUrl = `https://newsapi.org/v2/everything?q=${newsTopic}&sortBy=relevancy&apiKey=${newsApiKey}`;
 
-  xhr.send();
+    // AJAX 요청 생성
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", newsUrl); // GET 요청 설정
+    xhr.onload = function () {
+      newsContainer.innerHTML = ""; // 로딩 메시지 제거
+      if (xhr.status === 200) {
+        // 요청이 성공했을 때 응답 데이터 처리
+        let resultObj = JSON.parse(xhr.responseText); // JSON 데이터를 객체로 변환
+
+        console.log(resultObj.articles); // 콘솔에 결과 출력
+
+        // 결과가 없을 경우 처리
+        if (resultObj.articles.length === 0) {
+          newsContainer.innerHTML =
+            "<p class='text-center text-gray-700 font-semibold mt-4'>해당 뉴스 기사가 없습니다.</p>"; // 뉴스 없음 메시지
+          newsCardsContainer.innerHTML = ""; // 이전 뉴스 카드 초기화
+        } else {
+          // 결과가 있으면 뉴스 카드 표시
+          displayNewsCards(resultObj.articles);
+        }
+
+        // 헤더 레이아웃 조정
+        headerContainer.classList.remove("h-screen");
+        headerContainer.classList.add("h-auto");
+      } else {
+        // 요청 실패 시 오류 메시지 표시
+        console.error("뉴스 데이터를 가져오는 데 실패했습니다.");
+        newsContainer.innerHTML =
+          "<p class='text-center text-red-500 font-semibold mt-4'>뉴스 데이터를 가져오는 중 오류가 발생했습니다.<br>다시 시도해주세요.</p>"; // 오류 메시지
+        newsCardsContainer.innerHTML = ""; // 이전 뉴스 카드 초기화
+      }
+    };
+
+    // 네트워크 오류 처리
+    xhr.onerror = function () {
+      console.error("오류 발생:", xhr.statusText); // 콘솔에 오류 메시지 출력
+      // 네트워크 오류 메시지 표시
+      const errorMessage = document.createElement("p");
+      errorMessage.classList.add("text-red-500", "font-semibold", "mt-4"); // 빨간색 텍스트, 굵은 글씨
+      errorMessage.textContent =
+        "네트워크 오류가 발생했습니다. 다시 시도해주세요.";
+      newsContainer.appendChild(errorMessage); // 오류 메시지 추가
+    };
+
+    // API 요청 전송
+    xhr.send();
+  }
 }
 ```
 
@@ -115,3 +186,7 @@ news api Developer($0) 플랜에서는 한 번의 요청으로 최대 100개의 
 
 ### 검색 결과 없음
 ![No Results](/previews/no-results.jpeg)
+
+### 에러 화면 1
+![Error1](/previews/errorOne.jpeg)
+
