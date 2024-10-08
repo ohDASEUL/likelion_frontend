@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h2>로그인</h2>
+    <form id="loginForm">
+      <label for="loginId">
+        ID:
+        <input type="text" id="loginId" name="loginId" autocomplete="username" />
+      </label>
+      <div id="idError" aria-live="polite"></div>
+
+      <label for="loginPW">
+        PW:
+        <input type="password" id="loginPW" name="loginPW" autocomplete="current-password" />
+      </label>
+      <div id="pwError" aria-live="polite"></div>
+
+      <div id="passwordStrength"></div>
+
+      <button type="submit">로그인</button>
+    </form>
+    <div id="result"></div>
+    <script src="main.js"></script>
+  </body>
+</html>

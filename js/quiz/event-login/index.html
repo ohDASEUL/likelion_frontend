@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>로그인</h2>
+    <form id="loginForm">
+      <label for="loginId">
+        ID:
+        <input type="text" id="loginId" name="name" />
+        <!-- 검색하다가 알게된 것
+        type="username" 은 사용자 이름 입력을 위해 특화된 HTML 입력 필드로
+        현대 브라우저 지원되지만 호환성 측면에서는 type="text"가 모든 브라우저에서 지원되므로 더 안전 -->
+        <!-- <input type="username" id="loginId" name="name" /> -->
+      </label>
+
+      <label for="loginPW">
+        PW:
+        <input type="password" id="loginPW" name="loginPW" />
+      </label>
+
+      <button type="submit">로그인</button>
+    </form>
+    <div id="result"></div>
+    <script src="main.js"></script>
+  </body>
+</html>
