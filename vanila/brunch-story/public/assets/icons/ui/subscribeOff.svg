@@ -1,0 +1,12 @@
+<svg width="70" height="36" viewBox="0 0 70 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="0.5" y="0.5" width="69" height="35" rx="17.5" fill="white"/>
+<rect x="0.5" y="0.5" width="69" height="35" rx="17.5" stroke="#00C6BE"/>
+<rect width="17" height="17" transform="translate(12.3901 9.45996)" fill="url(#pattern0_1_1767)"/>
+<path d="M42.6861 12.7471V13.8111C42.6861 14.9451 42.6861 16.2191 42.3361 17.9551H44.1421V18.8511H39.1301V24.1151H38.0381V18.8511H33.0821V17.9551H41.2441C41.6221 16.2191 41.6221 14.9451 41.6221 13.8111V13.6431H34.4541V12.7471H42.6861ZM56.2417 18.0111V18.9071H45.1817V18.0111H50.1657V16.5551H46.5817V12.4391H54.8697V13.3351H47.6457V15.6591H54.9817V16.5551H51.2297V18.0111H56.2417ZM46.3857 20.9511V20.0831H54.8977V24.1991H53.8337V20.9511H46.3857Z" fill="#00C6BE"/>
+<defs>
+<pattern id="pattern0_1_1767" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_1_1767" transform="scale(0.0294118)"/>
+</pattern>
+<image id="image0_1_1767" width="34" height="34" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiAQMAAAAAiZmBAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURUdwTADGvi5TahIAAAABdFJOUwBA5thmAAAAGUlEQVQI12NgIAocIJtk/v//A4ykxBwiAABTehTj/uJoSwAAAABJRU5ErkJggg=="/>
+</defs>
+</svg>
