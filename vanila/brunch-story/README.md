@@ -79,6 +79,58 @@
 
       서버 실행 후 터미널의 안내 메세지에 따라 웹 브라우저로 접속(http://localhost:4173)
 
+7. ESLint
+
+   ```shell
+   npm init @eslint/config
+   또는
+   npx eslint --init
+
+   * How would you like to use ESLint?
+     - To check syntax and find problems
+   * What type of modules does your project use?
+     - JavaScript modules (import/export)
+   * Which framework does your project use?
+     - None of these
+   * Does your project use TypeScript?
+     - No
+   * Where does your code run?
+     - Browser
+   * What format do you want your config file to be in?
+     - JavaScript
+   ```
+
+   .eslintrc.js
+
+   ```js
+   import globals from "globals";
+   import pluginJs from "@eslint/js";
+
+   export default [
+     { languageOptions: { globals: globals.browser } },
+     pluginJs.configs.recommended,
+   ];
+   ```
+
+   1. 실행
+
+   - 현재 폴더내의 모든 파일 검사
+
+   ```shell
+   npx eslint .
+   ```
+
+   - 지정한 폴더내의 모든 파일 검사
+
+     ```shell
+     npx eslint ./src
+     ```
+
+   - 지정한 파일 검사
+     ```shell
+     npx eslint ./src/App.js
+     ```
+
 ## 프로젝트 폴더 구조
 
 ```
@@ -167,6 +219,7 @@
 ┣ 📜package.json
 ┣ 📜README.md
 ┗ 📜vite.config.js
+┗ 📜eslint.config.js
 ```
 
 ## 📂 node_modules
@@ -176,15 +229,22 @@
 ## 📂 public
 
 - **assets**: 웹사이트에서 사용되는 모든 정적 자원을 저장합니다.
-- **icons**: 웹사이트 UI의 아이콘을 분류하여 저장합니다.
-  - **actions**: 사용자 동작을 나타내는 아이콘 (예: 등록, 삭제 등).
-  - **navigation**: 네비게이션에 사용되는 아이콘 (예: 홈, 검색, 글쓰기 등).
-  - **social**: 소셜 미디어 관련 아이콘 (예: 페이스북, 카카오).
-  - **status**: 상태 변경을 나타내는 아이콘 (예: 새로운 알림).
-  - **ui**: 일반적인 사용자 인터페이스 요소 (예: 검색, 좋아요).
-- **images**: 웹사이트에서 사용하는 이미지 파일.
-- **logos**: 웹사이트 로고 파일.
+  - **icons**: 웹사이트 UI의 아이콘을 분류하여 저장합니다.
+    - **actions**: 사용자 동작을 나타내는 아이콘 (예: 등록, 삭제 등).
+    - **navigation**: 네비게이션에 사용되는 아이콘 (예: 홈, 검색, 글쓰기 등).
+    - **social**: 소셜 미디어 관련 아이콘 (예: 페이스북, 카카오).
+    - **status**: 상태 변경을 나타내는 아이콘 (예: 새로운 알림).
+    - **ui**: 일반적인 사용자 인터페이스 요소 (예: 검색, 좋아요).
+  - **images**: 웹사이트에서 사용하는 이미지 파일.
+  - **logos**: 웹사이트 로고 파일.
 - **html**: 각 페이지의 HTML 파일을 포함합니다. 이는 웹사이트의 각 섹션에 대한 구조를 제공합니다.
+  - **author.html**: 작가 소개 페이지.
+  - **detail.html**: 상세 정보 페이지.
+  - **discover.html**: 발견(탐색) 페이지.
+  - **home.html**: 홈 페이지.
+  - **myBox.html**: 마이 박스 페이지.
+  - **start.html**: 시작 페이지.
+  - **write.html**: 글 작성 페이지.
   - **index.html**: 웹사이트의 진입점. 웹사이트를 방문했을 때 처음으로 로드되는 파일입니다.
 
 ## 📂 src
@@ -205,22 +265,11 @@
   - **header.css**: 헤더에 적용되는 스타일.
   - **main.css**: 전체 사이트에 공통적으로 적용되는 스타일.
 
-## 📜 .gitignore
+## 기타 파일
 
-용도: Git 버전 관리에서 제외할 파일 및 폴더 목록을 지정합니다.
-
-## 📂 .github/ISSUE_TEMPLATE
-
-용도: 프로젝트에서 발생할 수 있는 다양한 이슈 유형(버그 보고, 기능 요청, 문서 개선 등)에 대한 템플릿을 제공합니다. 이 폴더에 저장된 템플릿들은 GitHub에서 새로운 이슈를 생성할 때 사용되어, 이슈 제출 과정을 표준화하고 정보의 일관성을 유지하는 데 도움을 줍니다.
-
-## 📜 package-lock.json & 📜 package.json
-
-용도: 프로젝트의 의존성 및 메타데이터를 관리합니다. `package.json`은 의존성 및 스크립트를 정의하고, `package-lock.json`은 설치된 패키지의 정확한 버전을 보장합니다.
-
-## 📜 README.md
-
-용도: 프로젝트 설명, 설정 및 사용 방법에 대한 안내서.
-
-## 📜 vite.config.js
-
-용도: Vite 프로젝트 구성을 위한 파일. 빌드 및 개발 서버 옵션 설정.
+- **.gitignore**: Git에서 추적하지 않을 파일을 정의합니다.
+- **eslint.config.js**: 코드 품질을 보장하기 위한 ESLint 설정 파일.
+- **package-lock.json**: 프로젝트 의존성 버전을 고정하는 파일.
+- **package.json**: 프로젝트의 메타데이터와 의존성 목록을 관리하는 파일.
+- **README.md**: 프로젝트 설명 파일.
+- **vite.config.js**: Vite 번들러 설정 파일.
