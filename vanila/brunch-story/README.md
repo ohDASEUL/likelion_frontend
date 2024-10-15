@@ -30,15 +30,15 @@
    - 프로젝트 루트에 vite.config.js 파일 생성
 
    ```js
-   import { defineConfig } from "vite";
-   import { resolve } from "path";
+   import { defineConfig } from 'vite';
+   import { resolve } from 'path';
 
    export default defineConfig({
-     root: "./public", // Vite 서버가 참조할 루트 디렉토리를 지정
+     root: './public', // Vite 서버가 참조할 루트 디렉토리를 지정
      build: {
        rollupOptions: {
          input: {
-           index: resolve(__dirname, "./public/index.html"), // 기본 index.html
+           index: resolve(__dirname, './public/index.html'), // 기본 index.html
          },
        },
      },
@@ -103,13 +103,13 @@
    .eslintrc.js
 
    ```js
-   import globals from "globals";
-   import pluginJs from "@eslint/js";
+   import globals from 'globals';
+   import pluginJs from '@eslint/js';
 
    export default [
      { languageOptions: { globals: globals.browser } },
      pluginJs.configs.recommended,
-     { rules: { "no-unused-vars": "warn" } },
+     { rules: { 'no-unused-vars': 'warn' } },
    ];
    ```
 
@@ -151,13 +151,13 @@
      // 들여쓰기 너비 2칸(기본값 2)
      tabWidth: 2,
      // 여러 줄의 쉼표로 구분된 구문 구조에서 후행 쉼표를 추가(none: 설정 안함, es5: 객체,배열에 설정, all(기본값): 함수 정의나 호출 등 가능한 모든 곳에 설정)
-     trailingComma: "all",
+     trailingComma: 'all',
      // 한줄에 80 글자가 넘어가면 줄바꿈(기본값 80)
      printWidth: 80,
      // 화살표 함수의 매개변수가 하나만 지정될 때 괄호 생략(always: 항상 괄호 명시, avoid: 가능하면 생략)
-     arrowParens: "avoid",
+     arrowParens: 'avoid',
      // windows에 뜨는 'Delete cr' 에러 해결
-     endOfLine: "auto",
+     endOfLine: 'auto',
    };
    ```
 
@@ -187,15 +187,10 @@
    npm i -D eslint-config-prettier
    ```
 
-    - 다른 구성을 재정의하기 위해 .eslintrc 파일 extends의 마지막에 추가
-      ```json
-      {
-        "extends": [
-          ......
-          "prettier"
-        ]
-      }
-      ```
+   - 다른 구성을 재정의하기 위해 .eslintrc 파일 extends의 마지막에 추가
+     ```json
+     {extends: "prettier"},
+     ```
 
 ## 프로젝트 폴더 구조
 
