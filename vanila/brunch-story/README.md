@@ -195,6 +195,7 @@
      ```
 
 ## 프로젝트 폴더 구조
+
 📦 brunch-story
 ┣ 📂node_modules
 ┣ 📂src
