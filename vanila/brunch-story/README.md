@@ -198,143 +198,156 @@
 
 ```
 📦brunch-story
-┣ 📂.github
-┃ ┗ 📂ISSUE_TEMPLATE
-┃ ┃ ┣ 📜bug_report.md
-┃ ┃ ┗ 📜enhancement_request.md
-┣ 📂node_modules ...
-┣ 📂public
-┃ ┣ 📂assets
-┃ ┃ ┣ 📂icons
-┃ ┃ ┃ ┣ 📂actions
-┃ ┃ ┃ ┣ 📂navigation
-┃ ┃ ┃ ┃ ┣ 📜homeOff.svg
-┃ ┃ ┃ ┃ ┣ 📜homeOn.svg
-┃ ┃ ┃ ┃ ┣ 📜myBoxOff.svg
-┃ ┃ ┃ ┃ ┣ 📜myBoxOn.svg
-┃ ┃ ┃ ┃ ┣ 📜searchOff.svg
-┃ ┃ ┃ ┃ ┣ 📜searchOn.svg
-┃ ┃ ┃ ┃ ┣ 📜writeOff.svg
-┃ ┃ ┃ ┃ ┗ 📜writeOn.svg
-┃ ┃ ┃ ┣ 📂social
-┃ ┃ ┃ ┃ ┣ 📜facebook.svg
-┃ ┃ ┃ ┃ ┣ 📜kakao.svg
-┃ ┃ ┃ ┃ ┗ 📜x.svg
-┃ ┃ ┃ ┣ 📂status
-┃ ┃ ┃ ┃ ┗ 📜new.svg
-┃ ┃ ┃ ┗ 📂ui
-┃ ┃ ┃ ┃ ┣ 📜doneOff.svg
-┃ ┃ ┃ ┃ ┣ 📜doneOn.svg
-┃ ┃ ┃ ┃ ┣ 📜exit.svg
-┃ ┃ ┃ ┃ ┣ 📜eyeOff.svg
-┃ ┃ ┃ ┃ ┣ 📜eyeOn.svg
-┃ ┃ ┃ ┃ ┣ 📜formatAlignCenter.svg
-┃ ┃ ┃ ┃ ┣ 📜formatAlignLeft.svg
-┃ ┃ ┃ ┃ ┣ 📜formatAlignRight.svg
-┃ ┃ ┃ ┃ ┣ 📜keyboard.svg
-┃ ┃ ┃ ┃ ┣ 📜keyboard_hide.svg
-┃ ┃ ┃ ┃ ┣ 📜likeOff.svg
-┃ ┃ ┃ ┃ ┣ 📜likeOn.svg
-┃ ┃ ┃ ┃ ┣ 📜next.svg
-┃ ┃ ┃ ┃ ┣ 📜notice.svg
-┃ ┃ ┃ ┃ ┣ 📜noticeOn.svg
-┃ ┃ ┃ ┃ ┣ 📜picture.svg
-┃ ┃ ┃ ┃ ┣ 📜registerDefault.svg
-┃ ┃ ┃ ┃ ┣ 📜registerVariant.svg
-┃ ┃ ┃ ┃ ┣ 📜search.svg
-┃ ┃ ┃ ┃ ┣ 📜start.svg
-┃ ┃ ┃ ┃ ┣ 📜subscribeOff.svg
-┃ ┃ ┃ ┃ ┣ 📜subscribeOn.svg
-┃ ┃ ┃ ┃ ┗ 📜up.svg
-┃ ┃ ┣ 📂images
-┃ ┃ ┗ 📂logos
-┃ ┃ ┃ ┣ 📜default.svg
-┃ ┃ ┃ ┣ 📜short.svg
-┃ ┃ ┃ ┣ 📜symbol.svg
-┃ ┃ ┃ ┗ 📜white.svg
-┃ ┣ 📂html
-┃ ┃ ┣ 📜author.html
-┃ ┃ ┣ 📜detail.html
-┃ ┃ ┣ 📜discover.html
-┃ ┃ ┣ 📜home.html
-┃ ┃ ┣ 📜myBox.html
-┃ ┃ ┣ 📜start.html
-┃ ┃ ┗ 📜write.html
-┃ ┗ 📜index.html
-┣ 📂src
-┃ ┣ 📂components
-┃ ┃ ┣ 📜Footer.js
-┃ ┃ ┗ 📜Header.js
-┃ ┣ 📂pages
-┃ ┃ ┣ 📜AuthorPage.js
-┃ ┃ ┣ 📜DetailPage.js
-┃ ┃ ┣ 📜DiscoveryPage.js
-┃ ┃ ┣ 📜HomePage.js
-┃ ┃ ┣ 📜ProfilePage.js
-┃ ┃ ┣ 📜StartPage.js
-┃ ┃ ┗ 📜WritePage.js
-┃ ┗ 📂styles
-┃ ┃ ┣ 📜footer.css
-┃ ┃ ┣ 📜header.css
-┃ ┃ ┗ 📜main.css
-┣ 📜.gitignore
-┣ 📜package-lock.json
-┣ 📜package.json
-┣ 📜README.md
-┗ 📜vite.config.js
-┗ 📜eslint.config.js
-┗ 📜.prettierrc.js
+ ┣ 📂node_modules
+ ┣ 📂src
+ ┃ ┣ 📂assets
+ ┃ ┃ ┣ 📂icons
+ ┃ ┃ ┃ ┣ 📂actions
+ ┃ ┃ ┃ ┣ 📂navigation
+ ┃ ┃ ┃ ┣ 📂social
+ ┃ ┃ ┃ ┣ 📂status
+ ┃ ┃ ┃ ┗ 📂ui
+ ┃ ┃ ┣ 📂images
+ ┃ ┃ ┗ 📂logos
+ ┃ ┣ 📂features
+ ┃ ┃ ┣ 📂Author
+ ┃ ┃ ┃ ┣ 📜author.html
+ ┃ ┃ ┃ ┗ 📜authorPage.js
+ ┃ ┃ ┣ 📂Detail
+ ┃ ┃ ┃ ┣ 📜detail.html
+ ┃ ┃ ┃ ┗ 📜detailPage.js
+ ┃ ┃ ┣ 📂Discover
+ ┃ ┃ ┃ ┣ 📜discover.html
+ ┃ ┃ ┃ ┗ 📜discoveryPage.js
+ ┃ ┃ ┣ 📂Home
+ ┃ ┃ ┃ ┣ 📜home.html
+ ┃ ┃ ┃ ┗ 📜homePage.js
+ ┃ ┃ ┣ 📂MyBox
+ ┃ ┃ ┃ ┣ 📜myBox.html
+ ┃ ┃ ┃ ┗ 📜myBoxPage.js
+ ┃ ┃ ┣ 📂Start
+ ┃ ┃ ┃ ┣ 📜start.html
+ ┃ ┃ ┃ ┗ 📜startPage.js
+ ┃ ┃ ┗ 📂Write
+ ┃ ┃ ┃ ┣ 📜write.html
+ ┃ ┃ ┃ ┗ 📜writePage.js
+ ┃ ┣ 📂shared
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┣ 📜footer.js
+ ┃ ┃ ┃ ┗ 📜header.js
+ ┃ ┃ ┗ 📂styles
+ ┃ ┃ ┃ ┣ 📜footer.css
+ ┃ ┃ ┃ ┗ 📜header.css
+ ┣ 📜.gitignore
+ ┣ 📜.prettierrc.js
+ ┣ 📜eslint.config.js
+ ┣ 📜index.html
+ ┣ 📜main.js
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜README.md
+ ┗ 📜vite.config.js
 ```
 
-## 📂 node_modules
+# 📂 brunch-story 폴더 구조 설명
 
-용도: 프로젝트에 필요한 모든 외부 라이브러리와 프레임워크를 포함합니다. `npm install` 명령을 실행하면 자동으로 생성됩니다.
+---
 
-## 📂 public
+## 1. 📂 node_modules
 
-- **assets**: 웹사이트에서 사용되는 모든 정적 자원을 저장합니다.
-  - **icons**: 웹사이트 UI의 아이콘을 분류하여 저장합니다.
-    - **actions**: 사용자 동작을 나타내는 아이콘 (예: 등록, 삭제 등).
-    - **navigation**: 네비게이션에 사용되는 아이콘 (예: 홈, 검색, 글쓰기 등).
-    - **social**: 소셜 미디어 관련 아이콘 (예: 페이스북, 카카오).
-    - **status**: 상태 변경을 나타내는 아이콘 (예: 새로운 알림).
-    - **ui**: 일반적인 사용자 인터페이스 요소 (예: 검색, 좋아요).
-  - **images**: 웹사이트에서 사용하는 이미지 파일.
-  - **logos**: 웹사이트 로고 파일.
-- **html**: 각 페이지의 HTML 파일을 포함합니다. 이는 웹사이트의 각 섹션에 대한 구조를 제공합니다.
-  - **author.html**: 작가 소개 페이지.
-  - **detail.html**: 상세 정보 페이지.
-  - **discover.html**: 발견(탐색) 페이지.
-  - **home.html**: 홈 페이지.
-  - **myBox.html**: 마이 박스 페이지.
-  - **start.html**: 시작 페이지.
-  - **write.html**: 글 작성 페이지.
-  - **index.html**: 웹사이트의 진입점. 웹사이트를 방문했을 때 처음으로 로드되는 파일입니다.
+- **용도**: 프로젝트에서 사용하는 외부 라이브러리와 의존성들이 포함된 폴더입니다. `npm install` 명령을 통해 자동으로 생성되며, 코드에 사용되는 모든 패키지가 이곳에 설치됩니다.
 
-## 📂 src
+---
 
-- **components**: 재사용 가능한 UI 컴포넌트.
-  - **Footer.js**: 페이지 하단에 표시되는 푸터 섹션.
-  - **Header.js**: 페이지 상단에 표시되는 헤더 섹션.
-- **pages**: 각 웹 페이지의 스크립트 파일.
-  - **AuthorPage.js**: 작가 소개 페이지.
-  - **DetailPage.js**: 상세 정보 페이지.
-  - **DiscoveryPage.js**: 발견(탐색) 페이지.
-  - **HomePage.js**: 홈 페이지.
-  - **ProfilePage.js**: 사용자 프로필 페이지.
-  - **StartPage.js**: 시작 페이지.
-  - **WritePage.js**: 글 작성 페이지.
-- **styles**: CSS 스타일 시트.
-  - **footer.css**: 푸터에 적용되는 스타일.
-  - **header.css**: 헤더에 적용되는 스타일.
-  - **main.css**: 전체 사이트에 공통적으로 적용되는 스타일.
+## 2. 📂 src
 
-## 기타 파일
+- **프로젝트의 주요 소스 파일**이 포함된 폴더로, 웹사이트 기능 및 스타일 파일들이 여기에서 관리됩니다.
 
-- **.gitignore**: Git에서 추적하지 않을 파일을 정의합니다.
-- **eslint.config.js**: 코드 품질을 보장하기 위한 ESLint 설정 파일.
-- **package-lock.json**: 프로젝트 의존성 버전을 고정하는 파일.
-- **package.json**: 프로젝트의 메타데이터와 의존성 목록을 관리하는 파일.
-- **README.md**: 프로젝트 설명 파일.
-- **vite.config.js**: Vite 번들러 설정 파일.
-- **.prettierrc.js**: Prettier 컨벤션 설정 파일.
+### 📂 assets
+
+- **정적 자산(assets) 폴더**로, 웹사이트에서 사용하는 이미지, 아이콘, 로고 파일 등을 저장합니다.
+  - **📂 icons**: 웹사이트의 UI 아이콘을 용도에 따라 분류하여 저장합니다.
+    - **📂 actions**: 사용자의 동작(예: 등록, 삭제 등)과 관련된 아이콘.
+    - **📂 navigation**: 네비게이션 관련 아이콘(예: 홈, 검색 등).
+    - **📂 social**: 소셜 미디어 관련 아이콘(예: 페이스북, 카카오 등).
+    - **📂 status**: 상태 변경을 나타내는 아이콘(예: 알림).
+    - **📂 ui**: 일반적인 사용자 인터페이스 요소 아이콘(예: 좋아요, 검색).
+  - **📂 images**: 웹사이트에서 사용하는 일반 이미지 파일.
+  - **📂 logos**: 웹사이트의 로고 이미지 파일.
+
+### 📂 features
+
+- **웹사이트의 주요 기능 및 페이지별 소스 파일**이 포함된 폴더입니다. 각 폴더에는 해당 기능에 관련된 HTML, JS 파일이 포함됩니다.
+  - **📂 Author**: 작가 소개 페이지.
+    - **author.html**: 작가 소개 페이지의 구조 파일.
+    - **authorPage.js**: 작가 소개 페이지에 대한 JavaScript 파일.
+  - **📂 Detail**: 상세 정보 페이지.
+    - **detail.html**: 상세 정보 페이지의 구조 파일.
+    - **detailPage.js**: 상세 정보 페이지의 JavaScript 파일.
+  - **📂 Discover**: 탐색(발견) 페이지.
+    - **discover.html**: 탐색 페이지의 구조 파일.
+    - **discoveryPage.js**: 탐색 페이지의 JavaScript 파일.
+  - **📂 Home**: 홈 페이지.
+    - **home.html**: 홈 페이지의 구조 파일.
+    - **homePage.js**: 홈 페이지의 JavaScript 파일.
+  - **📂 MyBox**: 사용자 저장함 페이지.
+    - **myBox.html**: 마이 박스 페이지의 구조 파일.
+    - **myBoxPage.js**: 마이 박스 페이지의 JavaScript 파일.
+  - **📂 Start**: 시작 페이지.
+    - **start.html**: 시작 페이지의 구조 파일.
+    - **startPage.js**: 시작 페이지의 JavaScript 파일.
+  - **📂 Write**: 글 작성 페이지.
+    - **write.html**: 글 작성 페이지의 구조 파일.
+    - **writePage.js**: 글 작성 페이지의 JavaScript 파일.
+
+### 📂 shared
+
+- **재사용 가능한 컴포넌트 및 스타일 파일**을 관리하는 폴더입니다.
+  - **📂 components**: 여러 페이지에서 공통으로 사용되는 UI 컴포넌트들이 포함된 폴더입니다.
+    - **footer.js**: 푸터(footer) 컴포넌트.
+    - **header.js**: 헤더(header) 컴포넌트.
+  - **📂 styles**: 공통 스타일 시트를 포함한 폴더입니다.
+    - **footer.css**: 푸터에 대한 CSS 스타일.
+    - **header.css**: 헤더에 대한 CSS 스타일.
+
+---
+
+## 3. 📜 index.html
+
+- **웹사이트의 메인 진입점** 역할을 하는 HTML 파일로, 웹사이트가 처음 로드될 때 불러오는 기본 페이지입니다.
+
+## 4. 📜 main.js
+
+- **애플리케이션의 메인 스크립트 파일**로, 사이트 전반에 필요한 주요 로직을 포함합니다.
+
+## 5. 📜 .gitignore
+
+- **Git 버전 관리에서 제외할 파일이나 폴더 목록**을 정의하는 파일입니다.
+
+## 6. 📜 .prettierrc.js
+
+- **Prettier 코드 포매터 설정 파일**로, 코드 스타일을 일관되게 유지하기 위한 설정이 포함됩니다.
+
+## 7. 📜 eslint.config.js
+
+- **ESLint 설정 파일**로, 코드의 품질과 일관성을 유지하기 위한 규칙을 정의합니다.
+
+## 8. 📜 package.json
+
+- **프로젝트 메타데이터 및 의존성 목록을 관리**하는 파일로, npm 명령을 통해 설치되는 패키지들이 기록됩니다.
+
+## 9. 📜 package-lock.json
+
+- **프로젝트의 의존성 버전을 고정**하기 위해 생성된 파일로, 설치된 패키지의 정확한 버전과 종속성 트리를 저장합니다.
+
+## 10. 📜 README.md
+
+- **프로젝트에 대한 설명과 사용 방법을 문서화**하는 파일로, GitHub와 같은 저장소에서 프로젝트 소개 페이지로 활용됩니다.
+
+## 11. 📜 vite.config.js
+
+- **Vite 빌드 도구의 설정 파일**로, 프로젝트의 번들링과 빌드 설정을 정의합니다.
+
+---
+
+이 폴더 구조는 기능별로 구분된 폴더 구조를 사용하여 **유지보수**와 **확장성**을 용이하게 해주며, **재사용 가능한 컴포넌트** 및 **정적 자산**을 적절히 분리하여 관리합니다.
