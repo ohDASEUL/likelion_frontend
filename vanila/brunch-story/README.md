@@ -195,6 +195,7 @@
      ```
 
 ## 프로젝트 폴더 구조
+
 ```
 📦 brunch-story
 ┣ 📂node_modules
@@ -249,6 +250,7 @@
 ┣ 📜README.md
 ┗ 📜vite.config.js
 ```
+
 ---
 
 ### 1. 📂 node_modules
