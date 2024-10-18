@@ -98,3 +98,46 @@ a:visited {
   --color-background-alt: #f8f8f8;
   --color-button-start: #231f20;
 }
+
+.header {
+  box-sizing: border-box;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px; /* 패딩 포함 높이 설정 */
+}
+.header__top-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.header__logo {
+  margin-right: 98px;
+  display: inline-block;
+}
+.header__actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.header__search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+.header__start-button {
+  background: var(--color-button-start);
+  color: var(--color-text-primary);
+  border: none;
+  border-radius: 12px;
+  padding: 5px 13px;
+  font-size: 10px;
+  line-height: 1.5;
+  width: 62px;
+  height: 24px;
+  cursor: pointer;
+}
