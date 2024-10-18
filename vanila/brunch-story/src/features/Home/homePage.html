@@ -54,7 +54,7 @@
           <!-- 작품 제목 -->
           <h1 class="cover__title">멈추어 버린 시간</h1>
           <!-- 작가명 -->
-          <p class="cover__author">by 김수정</p>
+          <p class="cover__author"><em>by</em> 김수정</p>
           <!-- 표지 이미지 영역 -->
           <figure class="cover__image-wrapper">
             <!-- 표지 대표 이미지 -->
@@ -63,21 +63,31 @@
               alt="멈추어 버린 시간"
               class="cover__image"
             />
-            <!-- 이미지 위에 표시되는 작품명 오버레이 -->
-            <figcaption class="cover__overlay">멈추어 버린 시간</figcaption>
             <!-- '응원' 뱃지 -->
-            <span class="cover__badge">응원</span>
+            <img src="/src/assets/icons/ui/cheer.svg" class="cover__badge" />
           </figure>
           <!-- 응원 정보 표시 영역 -->
           <div class="cover__support">
             <!-- 응원 아이콘 -->
             <img
-              src="/src/assets/icons/ui/cheering.svg"
+              src="/src/assets/icons/ui/won.svg"
               alt="응원 아이콘"
               class="cover__support-icon"
             />
             <!-- 응원 수 표시 -->
             <span class="cover__support-count">47명이 응원</span>
+          </div>
+          <!-- 페이지 정보 표시 영역 -->
+          <div class="cover__progress">
+            <div class="cover__progress-steps">
+              <div class="cover__progress-step active"></div>
+              <div class="cover__progress-step active"></div>
+              <div class="cover__progress-step active"></div>
+              <div class="cover__progress-step active"></div>
+              <div class="cover__progress-step"></div>
+              <div class="cover__progress-step active"></div>
+            </div>
+            <span class="cover__progress-text">5 / 6</span>
           </div>
         </section>
 
