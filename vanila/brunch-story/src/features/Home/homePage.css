@@ -68,35 +68,31 @@ a:visited {
 }
 
 :root {
-  --color-primary-text: #444444;
-  --color-background: #ffffff;
-  --color-border: #e0e0e0;
-  --color-background-primary: #8d4e8e;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #dddddd;
-  --color-text-tertiary: #333333;
-  --color-icon-shadow: rgba(0, 0, 0, 0.05);
-  --color-overlay-light: rgba(255, 255, 255, 0.1);
-  --color-active-text: #00c6be;
-  --color-inactive-text: #959595;
-  --color-text-default: #111111;
-  --color-border-default: #eeeeee;
-  --color-text-byline: #bbbbbb;
-  --color-divider-background: #f8f8f8;
-  --color-divider-border: #dddddd;
-  --color-overlay-dark: rgba(0, 0, 0, 0.05);
-  --color-text-muted: #333333;
-  --color-accent: #00c6be;
-  --color-overlay-darker: rgba(18, 18, 18, 0.9);
+  /* Text Colors */
+  --color-text-primary: #444444;
+  --color-text-secondary: #959595;
+  --color-text-light: #ffffff;
+  --color-text-muted: #666666;
   --color-text-strong: #111111;
-  --color-text-subdued: #666666;
-  --color-border-muted-light: rgba(102, 102, 102, 0.6);
-  --color-text-placeholder: #959595;
-  --color-border-subtle: #666666;
-  --color-overlay-subtle: rgba(255, 255, 255, 0.1);
-  --color-text-disabled: #959595;
-  --color-background-alt: #f8f8f8;
-  --color-button-start: #231f20;
+  --color-text-accent: #00c6be;
+
+  /* Background Colors */
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f8f8f8;
+  --color-background-accent: #8d4e8e;
+  --color-background-dark: #333333;
+  --color-background-button: #231f20;
+
+  /* Border Colors */
+  --color-border-primary: #e0e0e0;
+  --color-border-secondary: #dddddd;
+  --color-border-muted: #666666;
+
+  /* Overlay and Shadow */
+  --color-overlay-light: rgba(255, 255, 255, 0.1);
+  --color-overlay-dark: rgba(0, 0, 0, 0.05);
+  --color-overlay-darker: rgba(18, 18, 18, 0.9);
+  --color-icon-shadow: rgba(0, 0, 0, 0.05);
 }
 
 .header {
@@ -130,8 +126,8 @@ a:visited {
   height: 24px;
 }
 .header__start-button {
-  background: var(--color-button-start);
-  color: var(--color-text-primary);
+  background: var(--color-background-button);
+  color: var(--color-text-light);
   border: none;
   border-radius: 12px;
   padding: 5px 13px;
@@ -140,4 +136,39 @@ a:visited {
   width: 62px;
   height: 24px;
   cursor: pointer;
+}
+
+.footer {
+  background-color: var(--color-background-dark);
+  padding: 37px 31px;
+  height: 315px;
+  box-sizing: border-box;
+}
+
+.footer__social-list {
+  display: flex;
+  justify-content: center;
+  gap: 27px;
+  margin-top: 38px;
+  margin-bottom: 17px;
+}
+
+.footer__links {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 19px;
+  margin-bottom: 55px;
+}
+
+.footer__link:nth-child(3),
+.footer__link:nth-child(6) {
+  margin-right: 0;
+}
+
+.footer__logo{
+    display: flex;
+    justify-content: center;
 }
