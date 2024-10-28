@@ -10,6 +10,8 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
     />
+    <link rel="stylesheet" href="../components/top-menu/top-menu.css" />
+    <link rel="stylesheet" href="../components/navigation/navigation.css" />
     <title>home</title>
   </head>
   <body>
@@ -25,7 +27,10 @@
             aria-label="브런치스토리 홈으로 이동"
           >
             <!-- 로고 이미지 -->
-            <img src="/src/assets/logos/default.svg" alt="브런치스토리 로고" />
+            <img
+              src="/src/assets/logos/logo_black.svg"
+              alt="브런치스토리 로고"
+            />
           </a>
           <!-- 헤더 우측 액션 버튼 영역 -->
           <div class="header__actions">
@@ -36,7 +41,7 @@
             >
               <!-- 검색 아이콘 이미지 -->
               <img
-                src="/src/assets/icons/navigation/searchOff.svg"
+                src="/src/assets/icons/top/top_search.svg"
                 alt="검색 아이콘"
               />
             </button>
@@ -52,38 +57,41 @@
       </header>
 
       <!-- 스크롤 가능 영역 -->
-      <div class="content">
+      <section class="content">
         <!-- 메인 콘텐츠 영역 시작 -->
         <main>
           <!-- 표지(커버) 섹션 시작 -->
-          <section class="cover">
-            <!-- 작품 제목 -->
+          <!-- 커버 섹션 시작 -->
+          <div class="cover">
+            <!-- 책 제목 -->
             <h1 class="cover__title">멈추어 버린 시간</h1>
-            <!-- 작가명 -->
+            <!-- 작가 이름 -->
             <p class="cover__author"><em>by</em> 김수정</p>
-            <!-- 표지 이미지 영역 -->
-            <figure class="cover__image-wrapper">
-              <!-- 표지 대표 이미지 -->
+            <!-- 책 표지 이미지 및 응원 뱃지 -->
+            <div class="cover__image-wrapper">
               <img
-                src="/src/assets/images/hourglass.png"
+                src="/src/assets/images/home/hourglass.png"
                 alt="멈추어 버린 시간"
                 class="cover__image"
               />
-              <!-- '응원' 뱃지 -->
-              <img src="/src/assets/icons/ui/cheer.svg" class="cover__badge" />
-            </figure>
-            <!-- 응원 정보 표시 영역 -->
-            <div class="cover__support">
-              <!-- 응원 아이콘 -->
               <img
-                src="/src/assets/icons/ui/won.svg"
+                src="/src/assets/icons/like_sub/cheer.svg"
+                alt="응원"
+                class="cover__badge"
+              />
+            </div>
+            <!-- 응원 정보 -->
+            <div class="cover__support">
+              <img
+                src="/src/assets/icons/like_sub/won.svg"
                 alt="응원 아이콘"
                 class="cover__support-icon"
+                width="21px"
+                height="21px"
               />
-              <!-- 응원 수 표시 -->
               <span class="cover__support-count">47명이 응원</span>
             </div>
-            <!-- 페이지 정보 표시 영역 -->
+            <!-- 프로그레스 바 -->
             <div class="cover__progress">
               <div class="cover__progress-steps">
                 <div class="cover__progress-step active"></div>
@@ -95,7 +103,8 @@
               </div>
               <span class="cover__progress-text">5 / 6</span>
             </div>
-          </section>
+          </div>
+          <!-- 커버 섹션 끝 -->
 
           <section class="weekly-serial" aria-labelledby="weeklySerialTitle">
             <!-- 요일별 연재 섹션 시작 -->
@@ -191,7 +200,7 @@
                   <p class="weekly-serial__author"><em>by</em> Gigantes Yang</p>
                 </article>
                 <img
-                  src="/src/assets/images/serial1.png"
+                  src="/src/assets/images/home/serial1.png"
                   alt="딸과 만나기까지 100일간의 기록"
                   class="weekly-serial__image"
                 />
@@ -212,7 +221,7 @@
                   <p class="weekly-serial__author"><em>by</em> 박단단</p>
                 </article>
                 <img
-                  src="/src/assets/images/serial2.png"
+                  src="/src/assets/images/home/serial2.png"
                   alt="인류애 충전일기"
                   class="weekly-serial__image"
                 />
@@ -222,7 +231,7 @@
             <button class="weekly-serial__view-all">
               <span>연재 작품 전체 보기</span>
               <img
-                src="/src/assets/icons/ui/next.svg"
+                src="/src/assets/icons/actions/next.svg"
                 alt="다음"
                 class="icon-next"
               />
@@ -257,7 +266,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick1.png"
+                    src="/src/assets/images/home/pick1.png"
                     alt="무사히 마흔살이 될 수 있을까"
                     class="main__todays-pick__image"
                   />
@@ -278,7 +287,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick2.png"
+                    src="/src/assets/images/home/pick2.png"
                     alt="맞벌이 하루살이"
                     class="main__todays-pick__image"
                   />
@@ -299,7 +308,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick3.png"
+                    src="/src/assets/images/home/pick3.png"
                     alt="집이 있었는데, 이제는 없습니다"
                     class="main__todays-pick__image"
                   />
@@ -321,7 +330,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick4.png"
+                    src="/src/assets/images/home/pick4.png"
                     alt="나의 우울일기 2"
                     class="main__todays-pick__image"
                   />
@@ -342,7 +351,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick5.png"
+                    src="/src/assets/images/home/pick5.png"
                     alt="포카리스웨트같은 과학콘텐츠 이야기"
                     class="main__todays-pick__image"
                   />
@@ -361,7 +370,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick6.png"
+                    src="/src/assets/images/home/pick6.png"
                     alt="서울이 싫어서"
                     class="main__todays-pick__image"
                   />
@@ -380,7 +389,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick7.png"
+                    src="/src/assets/images/home/pick7.png"
                     alt="수요에세이"
                     class="main__todays-pick__image"
                   />
@@ -402,7 +411,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick8.png"
+                    src="/src/assets/images/home/pick8.png"
                     alt="강남 안에, 강북 남자"
                     class="main__todays-pick__image"
                   />
@@ -424,7 +433,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick9.png"
+                    src="/src/assets/images/home/pick9.png"
                     alt="서울에서 혼자 밥해먹고 사는 사람"
                     class="main__todays-pick__image"
                   />
@@ -446,7 +455,7 @@
                     </p>
                   </div>
                   <img
-                    src="/src/assets/images/pick10.png"
+                    src="/src/assets/images/home/pick10.png"
                     alt="이과 남편과 문과 아내의 실화극"
                     class="main__todays-pick__image"
                   />
@@ -472,7 +481,7 @@
                 </div>
                 <!-- 책 표지 이미지 -->
                 <img
-                  src="/src/assets/images/bestseller1.png"
+                  src="/src/assets/images/home/bestseller1.png"
                   class="main__best-seller-image"
                   alt="여자야구입문기"
                 />
@@ -497,7 +506,7 @@
             <button class="main__view-all-brunch-book">
               원작 브런치북 보기
               <img
-                src="/src/assets/icons/ui/whiteNext.svg"
+                src="/src/assets/icons/actions/whiteNext.svg"
                 alt="다음"
                 class="icon-next"
               />
@@ -526,7 +535,7 @@
                   <p class="featured-author__role">에세이스트</p>
                 </div>
                 <img
-                  src="/src/assets/images/author1.png"
+                  src="/src/assets/images/home/author1.png"
                   alt="동그라미 원"
                   class="featured-author__image"
                   width="80px"
@@ -544,7 +553,7 @@
               <li class="featured-author__books-item">
                 <div class="featured-author__books-image-wrapper">
                   <img
-                    src="/src/assets/images/authorBook1.png"
+                    src="/src/assets/images/home/authorBook1.png"
                     alt="행복하게 먹으려면 책 표지 이미지"
                     class="featured-author__books-image"
                   />
@@ -562,7 +571,7 @@
               <li class="featured-author__books-item">
                 <div class="featured-author__books-image-wrapper">
                   <img
-                    src="/src/assets/images/authorBook2.png"
+                    src="/src/assets/images/home/authorBook2.png"
                     alt="저는 이런 마음입니다 책 표지 이미지"
                     class="featured-author__books-image"
                   />
@@ -597,7 +606,7 @@
               <!-- 추천 도서 이미지 영역 -->
               <div class="main__featured-book-image-container">
                 <img
-                  src="/src/assets/images/featuredBook.png"
+                  src="/src/assets/images/home/featuredBook.png"
                   alt="그리움이 지칠 때 책 표지 이미지"
                   class="main__featured-book-image"
                 />
@@ -612,7 +621,7 @@
                 </p>
                 <!-- 브런치스토리 로고 심볼 -->
                 <img
-                  src="/src/assets/logos/symbol.svg"
+                  src="/src/assets/logos/logo_symbol.svg"
                   alt="브런치스토리 로고 심볼"
                   class="main__logo-symbol"
                   width="18px"
@@ -647,7 +656,7 @@
               <!-- 첫 번째 구독 작가 -->
               <article class="main__top-subscribed-author">
                 <img
-                  src="/src/assets/images/author2.png"
+                  src="/src/assets/images/home/author2.png"
                   alt="피터팬"
                   class="main__top-subscribed-author-image"
                 />
@@ -661,7 +670,7 @@
               <!-- 두 번째 구독 작가 -->
               <article class="main__top-subscribed-author">
                 <img
-                  src="/src/assets/images/author3.png"
+                  src="/src/assets/images/home/author3.png"
                   alt="빛날현"
                   class="main__top-subscribed-author-image"
                 />
@@ -675,7 +684,7 @@
               <!-- 세 번째 구독 작가 -->
               <article class="main__top-subscribed-author">
                 <img
-                  src="/src/assets/images/author4.png"
+                  src="/src/assets/images/home/author4.png"
                   alt="허사이"
                   class="main__top-subscribed-author-image"
                 />
@@ -706,13 +715,13 @@
           <section class="main__new-authors" id="mainNewAuthors">
             <!-- 새로운 작가의 탄생 섹션 시작 -->
             <img
-              src="/src/assets/images/newAuthorsTxt.png"
+              src="/src/assets/images/home/newAuthorsTxt.png"
               alt="새로운 작가의 탄생"
               class="main__section-title"
             />
             <!-- 새로운 작가의 탄생 부제목 -->
             <img
-              src="/src/assets/images/newAuthorsSubtxt.png"
+              src="/src/assets/images/home/newAuthorsSubtxt.png"
               alt="제 11회 브런치북 출판 프로젝트 수상작 보기"
               class="main__new-authors-subtitle"
             />
@@ -723,7 +732,7 @@
               <li class="main__new-authors-book-item">
                 <!-- 첫 번째 책 이미지 -->
                 <img
-                  src="/src/assets/images/newAuthor1.png"
+                  src="/src/assets/images/home/newAuthor1.png"
                   alt="태어나는 말들"
                   class="main__new-authors-book-image"
                 />
@@ -737,7 +746,7 @@
               <li class="main__new-authors-book-item">
                 <!-- 두 번째 책 이미지 -->
                 <img
-                  src="/src/assets/images/newAuthor2.png"
+                  src="/src/assets/images/home/newAuthor2.png"
                   alt="엄마 없는 농담"
                   class="main__new-authors-book-image"
                 />
@@ -751,7 +760,7 @@
               <li class="main__new-authors-book-item">
                 <!-- 세 번째 책 이미지 -->
                 <img
-                  src="/src/assets/images/newAuthor3.png"
+                  src="/src/assets/images/home/newAuthor3.png"
                   alt="인생은 방탈출"
                   class="main__new-authors-book-image"
                 />
@@ -767,7 +776,7 @@
             <a href="#" class="main__brunch-author-support">
               브런치 작가 지원 프로젝트
               <img
-                src="/src/assets/icons/ui/next.svg"
+                src="/src/assets/icons/actions/next.svg"
                 alt="다음"
                 class="icon-next"
               />
@@ -785,7 +794,7 @@
                 <li class="social__item">
                   <a href="#" class="social__link" aria-label="카카오톡">
                     <img
-                      src="/src/assets/icons/social/kakao.svg"
+                      src="/src/assets/icons/social/social_kakao.svg"
                       alt=""
                       class="social__icon social__icon--kakao"
                     />
@@ -794,7 +803,7 @@
                 <li class="social__item">
                   <a href="#" class="social__link" aria-label="페이스북">
                     <img
-                      src="/src/assets/icons/social/facebook.svg"
+                      src="/src/assets/icons/social/social_fb.svg"
                       alt=""
                       class="social__icon social__icon--facebook"
                     />
@@ -803,7 +812,7 @@
                 <li class="social__item">
                   <a href="#" class="social__link" aria-label="X (트위터)">
                     <img
-                      src="/src/assets/icons/social/x.svg"
+                      src="/src/assets/icons/social/social_x.svg"
                       alt=""
                       class="social__icon social__icon--x"
                     />
@@ -842,14 +851,14 @@
           <!-- 브랜딩 섹션 -->
           <section class="main-footer__section branding">
             <img
-              src="/src/assets/logos/white.svg"
+              src="/src/assets/logos/logo_white.svg"
               alt="브런치스토리 로고"
               class="branding__logo"
             />
           </section>
         </footer>
         <!-- 메인 푸터 섹션 끝 -->
-      </div>
+      </section>
 
       <!-- 네비게이션 푸터 섹션 시작 -->
       <footer class="app__footer navigation-footer">
@@ -863,7 +872,7 @@
                 aria-current="page"
               >
                 <img
-                  src="/src/assets/icons/navigation/homeOn.svg"
+                  src="/src/assets/icons/navigation/nav_home.svg"
                   alt=""
                   class="navigation-footer__icon navigation-footer__icon--home"
                 />
@@ -874,7 +883,7 @@
             <li class="navigation-footer__item">
               <a href="#" class="navigation-footer__link">
                 <img
-                  src="/src/assets/icons/navigation/searchOff.svg"
+                  src="/src/assets/icons/navigation/nav_search.svg"
                   alt=""
                   class="navigation-footer__icon navigation-footer__icon--search"
                 />
@@ -885,7 +894,7 @@
             <li class="navigation-footer__item">
               <a href="#" class="navigation-footer__link">
                 <img
-                  src="/src/assets/icons/navigation/writeOff.svg"
+                  src="/src/assets/icons/navigation/nav_write.svg"
                   alt=""
                   class="navigation-footer__icon navigation-footer__icon--write"
                 />
@@ -896,7 +905,7 @@
             <li class="navigation-footer__item">
               <a href="#" class="navigation-footer__link">
                 <img
-                  src="/src/assets/icons/navigation/myBoxOff.svg"
+                  src="/src/assets/icons/navigation/nav_mybox.svg"
                   alt=""
                   class="navigation-footer__icon navigation-footer__icon--library"
                 />
