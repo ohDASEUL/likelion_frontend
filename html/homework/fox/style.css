@@ -1,0 +1,70 @@
+/* Reset */
+body,
+p {
+  margin: unset;
+}
+
+h1 {
+  margin: unset;
+  font-size: unset;
+  font-weight: unset;
+}
+
+img {
+  vertical-align: top;
+  max-width: 100%;
+}
+
+/* Typography */
+body {
+  font-family: "Arial", sans-serif;
+}
+
+/* Variables */
+:root {
+  --color-white: #fff;
+  --color-brown-light: #9c6035;
+  --color-brown-medium: #e8bc9c;
+  --color-brown-dark: #46260e;
+}
+
+/* Layout */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.wrapper {
+  max-width: 300px;
+  margin: 60px auto;
+}
+
+/* Component */
+body {
+  background-image: url(images/bg.png);
+}
+
+.animal-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.animal-contents {
+  background-image: url(images/green.png);
+  background-repeat: repeat-x;
+  background-color: var(--color-brown-light);
+  color: var(--color-brown-medium);
+  padding: 63px 20px 46px;
+  border-radius: 0 0 30px 30px;
+  border-bottom: 10px solid var(--color-brown-dark);
+}
+
+.animal-contents h1 {
+  font-size: 2.25rem;
+  color: var(--color-white);
+  font-weight: 700;
+  margin-bottom: 10px;
+}

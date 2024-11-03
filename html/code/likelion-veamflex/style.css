@@ -1,0 +1,210 @@
+/* CSS Reset */
+html, body, div, section, header, h1, h2, p, ul, li, main {
+  margin: 0; 
+  padding: 0;
+}
+
+h1, h2 {
+  font-size: inherit; 
+  font-weight: inherit; 
+}
+
+img {
+  vertical-align: top;
+}
+
+ul, li {
+  list-style-type: none; 
+}
+
+/* Layouts */
+.l_wrapper {
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Typography */
+:root {
+  font-family: Arial, sans-serif;
+}
+
+/* Components */
+body {
+  color: #999; 
+  background-color: #111; 
+}
+
+/* Header */
+.header {
+  background-color: #333; 
+}
+
+.header-inside {
+  display: flex; 
+  align-items: center; 
+  height: 180px; 
+  gap: 30px; 
+}
+
+.logo {
+  width: 200px; 
+}
+
+.description {
+  display: flex; 
+  align-items: center;
+  gap: 20px; 
+}
+
+.description::before {
+  content: ""; 
+  width: 64px; 
+  height: 1px; 
+  background-color: currentColor; 
+}
+
+.anger {
+  width: 140px; 
+  margin-left: auto; 
+}
+
+/* Contents */
+.contents {
+  background-color: #000; 
+  padding: 24px 0; 
+}
+
+.container {
+  display: flex; 
+  gap: 24px; 
+  min-height: 848px;
+}
+
+/* Main Container */
+.container-main {
+  flex-grow: 1; 
+  flex-basis: 0; 
+  min-width: 0; 
+}
+
+/* Category Header */
+.category-header {
+  display: flex; 
+}
+
+.category-header::before {
+  content: ""; 
+  width: 16px; 
+  background-image: url("images/icon.png"); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+}
+
+/* Sidebar */
+.container-sidebar {
+  height: 283px; 
+  min-width: 168px; 
+}
+
+/* Category Section */
+.category-title {
+  margin-left: 9px; 
+  font-size: 16px;
+  margin-bottom: 11px; 
+}
+
+.category-section {
+  background-color: #111; 
+  border-top: 0.5px solid #fa8073;
+  padding: 8px 20px 15px; 
+}
+
+.category-sub-title {
+  font-size: 14px; 
+  color: #fa8073;
+  margin-bottom: 21px;
+}
+
+.category-item {
+  font-size: 12px; 
+  color: #999; 
+  margin-bottom: 5px; 
+  border-bottom: 1px solid #333; 
+  padding-bottom: 5px; 
+}
+
+.category-item:last-child {
+  border: none; 
+}
+
+/* Card Layout */
+.container-main {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+}
+
+.card {
+  width: 320px; 
+  box-sizing: border-box; 
+}
+
+.card-group {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start; 
+  gap: 24px; 
+}
+
+/* Card Components */
+.card-image {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold; 
+  color: #ebb3bb; 
+  margin-bottom: 16px; 
+}
+
+.card-description {
+  font-size: 12px; 
+  line-height: 150%; 
+  margin-bottom: 32px; 
+}
+
+.card-btn {
+  background-color: #111; 
+  border-radius: 10px; 
+  width: 100%; 
+  cursor: pointer;
+  border: none; 
+}
+
+.card-btn h1 {
+  font-size: 12px; 
+  font-weight: bold; 
+  color: #ff0000; 
+  letter-spacing: 2.4px; 
+  margin-bottom: 12px; 
+  padding-top: 10px;
+}
+
+.card-content {
+  border-bottom-left-radius: 16px; 
+  border-bottom-right-radius: 16px; 
+  background-color: #222;
+  padding: 20px 20px 8px; 
+}
+
+/* Footer */
+.footer {
+  background-color: #111; 
+  color: #666; 
+  padding-top: 30px;
+  padding-bottom: 29px; 
+  width: 100%; 
+}

@@ -1,0 +1,198 @@
+/* CSS 초기화 */
+html,
+body,
+div,
+h1,
+h3,
+p,
+header,
+main,
+section {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h3 {
+  font-size: unset;
+  font-weight: unset;
+}
+
+img {
+  vertical-align: top;
+}
+
+/* Typography */
+:root {
+  font-family: "Montserrat", sans-serif;
+}
+
+.movie-header {
+  background-image: url(images/insideout-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-header h1 {
+  background-color: #ea3629;
+  color: #fff;
+  font-size: 100px;
+  font-weight: 900;
+  text-align: center;
+  width: 100%;
+  padding: 13px 120px;
+  max-width: 980px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.movie-contents {
+  background-color: #ddd;
+  padding: 80px 470px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  margin-bottom: 80px;
+  align-items: center;
+}
+.sad {
+  flex-direction: row-reverse;
+}
+.card:last-child{
+  margin-bottom: 0;
+}
+
+.card-contents {
+  margin: 31px 40px 33px 62px;
+}
+
+.joy .card-img {
+  margin-bottom: 77px;
+}
+
+.sad .card-img,
+.anger .card-img {
+  margin-top: 77px;
+}
+
+.joy,
+.anger {
+  text-align: right;
+}
+
+.card-title {
+  font-size: 32px;
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+}
+
+.joy .card-title{
+  color: #FFAD08;
+}
+
+.sad .card-title{
+  color: #578DF9;
+}
+
+.anger .card-title{
+  color: #E9292C;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  margin-top: 2px;
+}
+
+.joy .card-title::after{
+  background-color: #FFE53C;
+}
+
+.sad .card-title::after{
+  background-color: #B3E2FF;
+}
+
+.anger .card-title::after{
+  background-color: #FF9680;
+}
+
+.card-text {
+  color: #aaa;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 160%;
+  column-width: 294px;
+  column-count: 2;
+  margin-top: 22px;
+}
+
+@media screen and (min-width:1024px) {
+	/* Desktop */
+}
+
+@media screen and (min-width:768px) and (max-width: 1023px) {
+  .movie-header h1 {
+    width: 100%;
+    max-width: 522px;
+    font-size: 64px;
+  }
+  .movie-contents {
+    padding: 80px 21px 80px 22px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movie-header h1 {
+    width: 100%;
+    max-width: 408px;
+    font-size: 48px;
+  }
+
+  .movie-contents {
+    padding: 35px 196px; 
+  }
+  
+  .card {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .card-title {
+    text-align: center; 
+    margin: 0; 
+    display: block;
+  }
+
+  .card-text {
+    text-align: left; 
+  }
+
+  .card-img {
+    width: 200px; 
+    height: 200px;
+    margin-bottom: 0;
+  }
+
+  .joy .card-img{
+    margin-bottom: 0;
+  }
+}
