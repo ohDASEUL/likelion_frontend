@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HAPPY CODE</title>
+    <style>
+      h1 {
+        margin: unset;
+        font-size: unset;
+        font-weight: unset;
+      }
+
+      body {
+        background-color: #222;
+      }
+
+      .box {
+        width: 500px;
+        margin: 100px auto;
+        background-color: seashell;
+        padding: 40px 0;
+        text-align: center;
+        font-size: 40px;
+        font-family: "arial";
+        color: orangered;
+        position: relative;
+      }
+
+      .box h1 {
+        width: fit-content;
+        margin: 0 auto;
+        position: relative;
+        z-index: 0;
+      }
+
+      .box h1::after {
+        content: '';
+        background-color: gold;
+        position: absolute;
+        inset: 0;
+        margin: auto -10px;
+        border-radius: 10px;
+        height: 10px;
+        z-index: -1;
+        transition: all .4s;
+      }
+
+      .box h1:hover::after {
+        height: 20px;
+        margin: auto -20px;
+      }
+
+      .box-icon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto -50px;
+        transition: all 40s;
+        transform: scale(0.4) rotate(0deg);
+      }
+
+      .box-icon.left  { left: 0; }
+      .box-icon.right { right: 0; }
+
+      .box:hover .box-icon {
+        transform: scale(1) rotate(3600000deg);
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img class="box-icon left" src="images/icon.png">
+      <h1>HAPPY CODE</h1>
+      <img class="box-icon right" src="images/icon.png">
+    </div>
+  </body>
+</html>

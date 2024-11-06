@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grid</title>
+    <style>
+      body {
+        background-color: brown;
+      }
+
+      .playground {
+        border: 10px solid maroon;
+        width: 980px;
+        height: 400px;
+        margin: 0 auto;
+        border-radius: 20px;
+        background-color: skyblue;
+        padding: 10px;
+
+        gap: 10px;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        grid-auto-columns: auto; /* 내부 콘텐츠 너비 + 정렬 justify-items에 의해 stretch 되는 값 */
+        grid-auto-rows: auto; /* 내부 콘텐츠 높이 + 정렬 justify-items에 의해 stretch 되는 값 */
+
+        justify-items: stretch;
+        align-items: stretch;
+
+
+
+      }
+      .frog {
+        background-color: mediumseagreen;
+        color: lime;
+        font-size: 40px;
+        border: 6px solid green;
+        border-radius: 10px;
+        position: absolute;
+
+      }
+
+      /* .frog:last-child{
+        grid-column: 1 / span 2;
+      } */
+
+    </style>
+  </head>
+  <body>
+
+    <div class="playground">
+      <div class="frog">Frog</div>
+      <div class="frog">Frog</div>
+      <div class="frog">Frog</div>
+      <div class="frog">Frog</div>
+
+    </div>
+
+  </body>
+</html>

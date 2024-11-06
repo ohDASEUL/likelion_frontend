@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>location test</h3>
+    <button onclick="locationTest()">location test</button>
+    <script>
+      function locationTest() {
+        console.log(location.href); // http://127.0.0.1:5500/test4-etc/index.html
+        console.log(location.protocol); // http:
+        console.log(location.host); // 127.0.0.1:5500
+        console.log(location.hostname); // 127.0.0.1
+        console.log(location.port); // 5500
+        console.log(location.pathname); // /test4-etc/index.html
+        console.log(location.search);
+        console.log(location.hash);
+        console.log(location.origin); // http://127.0.0.1:5500
+      }
+    </script>
+    <button onclick="goGoolge1()">go google - href</button>
+    <button onclick="goGoolge2()">go google - replace</button>
+    <script>
+      function goGoolge1() {
+        location.replace = "http://www.google.com";
+      }
+      function goGoolge2() {
+        location.replace("http://www.google.com");
+      }
+    </script>
+    <h3>history test</h3>
+    <button onclick="goBack()">back</button>
+    <button onclick="goForward()">forward</button>
+    <button onclick="go()">go</button>
+    <script>
+      function goBack() {
+        history.back();
+      }
+
+      function goForward() {
+        history.forward();
+      }
+      function go() {
+        let input = prompt("숫자를 입력하세요");
+        if (isNaN(input)) {
+          alert("숫자를 입력하세요");
+        } else {
+          let no = parseInt(input);
+          history.go(no);
+        }
+      }
+    </script>
+    <h3>navigator test</h3>
+    <button onclick="navigatorTest()">navigator test</button>
+    <script>
+      function navigatorTest() {
+        console.log(navigator.cookieEnabled); // true
+        console.log(navigator.language); // ko
+        console.log(navigator.onLine); // true
+        console.log(navigator.userAgent);
+        // Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0
+        // 많은 브라우저가 webkit 베이스의 브라우저이다.
+        // webkit - 브라우저를 만드는 f/w
+        // apple에서 초기 safati 브라우저를 만들다가..코드 공개, 그렇게 만들어진
+        // f/w이 webkit
+      }
+    </script>
+  </body>
+</html>

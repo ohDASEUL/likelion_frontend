@@ -1,0 +1,96 @@
+/* Resets */
+body {
+  margin: unset;
+}
+
+h1, h2 {
+  margin: unset;
+  font-weight: unset;
+  font-size: unset;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+/* Typography */
+:root {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Variables */
+:root {
+  /* wrapper 버전 두개에서 동시에 활용 가능한 변수 */
+  --wrapper-width: 960px;  /* wrapper의 너비 */
+  --wrapper-padding: 20px; /* wrapper의 좌우 패딩 (여유공간) */
+}
+
+/* Layouts */
+/* 일반 용도 */
+.l_wrapper {
+  max-width: var(--wrapper-width);
+  padding: 0 var(--wrapper-padding);
+  margin: 0 auto;
+}
+
+/* 까다로운 사장님 대응용 */
+.l_grid_wrapper {
+  box-shadow: inset 0 0 20px red;
+  display: grid;
+  /* 각 칼럼 번호대신 명시적인 이름 지정이 가능허다! */
+  grid-template-columns: 
+    [start] 
+      minmax( var(--wrapper-padding), 1fr ) 
+    [wrapper-start] 
+      minmax( 0, var(--wrapper-width) ) 
+    [wrapper-end] 
+      minmax( var(--wrapper-padding), 1fr ) 
+    [end];
+}
+
+.l_grid_wrapper-inside {
+  box-shadow: inset 0 0 20px blue;
+  /* 기본적으로 가운데 정렬 */
+  grid-column: wrapper-start / wrapper-end;
+} 
+
+/* 옵션들 ㅎㅎ / 어떤 클래스가 붙는지에 따라 달라지는 wrapper system 구축! */
+.l_grid_wrapper.type_left .l_grid_wrapper-inside   { grid-column: start / wrapper-end; }
+.l_grid_wrapper.type_right .l_grid_wrapper-inside  { grid-column: wrapper-start / end; }
+.l_grid_wrapper.type_center .l_grid_wrapper-inside { grid-column: wrapper-start / wrapper-end; }
+.l_grid_wrapper.type_full .l_grid_wrapper-inside   { grid-column: start / end; }
+
+/* Components */
+body {
+  background-color: #ddd;
+}
+
+.header {
+  background-color: #eee;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.header-logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: orangered;
+}
+
+.section-container {
+  background-color: white;
+  display: flex;
+}
+
+.section-title {
+  font-size: 30px;
+  padding: 20px 60px 20px 20px;
+  font-weight: 600;
+  color: rebeccapurple;
+}
+
+.section-contents {
+  flex-grow: 1;
+  box-shadow: inset 0 0 20px dodgerblue;
+}

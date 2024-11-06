@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 한줄 */
+      /* 여러줄 주석
+    여러줄 주석 */
+      body {
+        text-align: center;
+      }
+      #title {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!--한줄-->
+    <!-- 여러줄
+    여러줄... -->
+    <h1 id="title">JavaScript</h1>
+    <button onclick="myBtnClick()">click me</button>
+    <script>
+      // 한줄
+      /* 여러줄
+        여러줄.... */
+      const myBtnClick = () => {
+        let sum = 0;
+        for (i = 1; i < 11; i++) {
+          sum += i;
+        }
+        console.log(sum);
+      };
+    </script>
+  </body>
+</html>

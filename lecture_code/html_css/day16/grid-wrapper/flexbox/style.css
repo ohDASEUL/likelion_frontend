@@ -1,0 +1,83 @@
+/* Resets */
+body {
+  margin: unset;
+}
+
+h1, h2 {
+  margin: unset;
+  font-weight: unset;
+  font-size: unset;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+/* Typography */
+:root {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Variables */
+:root {
+
+  /* 전체 뷰포트 너비 */
+  --viewport-width: 100vw;
+
+  /* margin의 % -> 컨테이닝블록의 너비 기준으로 계산, 즉 100%는 컨테이닝블록의 너비 */
+  --containing-block-width: 100%;
+
+  /* 양쪽 날개 너비 구함 */
+  --wings-width: calc( var(--viewport-width) - var(--containing-block-width) );
+
+  /* 한쪽 날개 너비 구함 */
+  --wing-width: calc( var(--wings-width) / 2 );
+
+  /* 네거티브마진으로 변환 */
+  --wing: calc( var(--wing-width) * -1 );
+}
+
+/* Layouts */
+.l_wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Components */
+body {
+  background-color: #ddd;
+}
+
+.header {
+  background-color: #eee;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.header-logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: orangered;
+}
+
+.section-container {
+  background-color: white;
+  display: flex;
+}
+
+.section-title {
+  font-size: 30px;
+  padding: 20px 60px 20px 20px;
+  font-weight: 600;
+  color: rebeccapurple;
+}
+
+.section-contents {
+  flex-grow: 1;
+  box-shadow: inset 0 0 20px dodgerblue;
+  min-height: 400px;
+
+  margin: 0 var(--wing);
+}

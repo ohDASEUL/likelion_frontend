@@ -1,0 +1,111 @@
+body, h1, p, ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+    background-position: center;
+    background-image: url(images/bg.png);
+    color: #999;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.wrapper {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.header {
+    margin: 30px 0;
+}
+
+.header a.icon {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 210px;
+    color: #999;
+    letter-spacing: 0.4em;
+    text-indent: 0.4em;
+    margin-right: 10px;
+}
+
+.header a.icon.logo {
+    background-color: transparent;
+    background-image: url(images/logo.png);
+    text-indent: -9999px;
+}
+
+.header a.icon.orange:hover { background-image: url(images/orange.png); }
+.header a.icon.jamong:hover { background-image: url(images/jamong.png); }
+.header a.icon.lemon:hover  { background-image: url(images/lemon.png); }
+
+.header a.icon:hover {
+    text-indent: -9999px;
+}
+
+.header a.icon.orange { color: orange; }
+.header a.icon.jamong { color: orangered; }
+.header a.icon.lemon  { color: yellow; }
+
+.contents {
+    background-color: white;
+    border-radius: 50px;
+    padding: 50px;
+    background-image: url(images/contents-bg.png);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+.contents h1 {
+    color: #ff6600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contents h1 span {
+    font-size: 20px;
+    vertical-align: super;
+    font-weight: normal;
+    color: #666;
+}
+
+.contents p {
+    line-height: 1.8;
+    margin: 20px 0;
+}
+
+.contents p strong {
+    color: white;
+    background-color: #ff6600;
+    border-radius: 5px;
+    padding: 3px 8px;
+    vertical-align: 1px;
+}
+
+.contents p a {
+    color: #2da237;
+}
+
+.contents p a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    text-align: right;
+    padding: 20px;
+    color: #666;
+    letter-spacing: 5px;
+}

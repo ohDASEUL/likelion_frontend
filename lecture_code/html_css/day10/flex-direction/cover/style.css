@@ -1,0 +1,27 @@
+body {
+  margin: unset;
+}
+
+body {
+  background-color: #111;
+}
+
+.cover {
+  background-color: #222;
+  color: white;
+  height: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover-logo {
+  margin-top: auto;
+}
+
+.cover-description {
+  margin-bottom: auto;
+}
+

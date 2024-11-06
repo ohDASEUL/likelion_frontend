@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Word App</title>
+    <style>
+      body {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      #enWordFom {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      #enWord {
+        margin: 0 10px;
+        padding: 5px;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      #result {
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+
+      #result li {
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      #result li:last-child {
+        border-bottom: none;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="enWordFom">
+      <label for="enWord">
+        English word:
+        <input type="text" id="enWord" name="enWord" oninput="validateInput()" />
+        <button id="addBtn" type="button" onClick="addWord()">Add</button>
+      </label>
+      <div id="errorMessage" class="error-message"></div>
+      <div class="action-buttons">
+        <button id="mapBtn" type="button" onClick="mapWords()">Map</button>
+        <button id="filterBtn" type="button" onClick="filterWords()">Filter</button>
+        <button id="sortBtn" type="button" onClick="sortWords()">Sort</button>
+      </div>
+    </form>
+    <div id="result"></div>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주소 입력 페이지</title>
+    <script>
+      function sendDataToJoinPage() {
+        const address = document.getElementById("addressInput").value.trim();
+        if (address === "") {
+          alert("주소를 입력해주세요.");
+        } else {
+          window.opener.getAddressData(address);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>주소</h1>
+    <input type="text" id="addressInput" />
+    <button onclick="sendDataToJoinPage()">입력</button>
+  </body>
+</html>

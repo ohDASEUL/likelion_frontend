@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flexing</title>
+    <style>
+      body {
+        background-color: brown;
+      }
+      .playground {
+        border: 10px solid maroon;
+        width: 980px;
+        margin: 100px auto;
+        border-radius: 20px;
+        background-color: skyblue;
+        padding: 20px;
+
+        display: flex;
+        gap:20px
+      }
+      .frog {
+        border: 6px solid green;
+        border-radius: 10px;
+        background-color: mediumseagreen;
+        color: lime;
+        font-size: 40px;
+
+        flex-basis: 0;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="playground">
+      <div class="frog">FrogFrog</div>
+      <div class="frog">Frog</div>
+      <div class="frog last">Frog</div>
+    </div>
+
+  </body>
+</html>
