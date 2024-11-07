@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/javascript">
+      // <h1>Counter - JS로 UI 구성</h1>
+      const h1 = document.createElement("h1");
+      const h1Txt = document.createTextNode("Counter - JS로 UI 구성");
+      h1.appendChild(h1Txt);
+
+      // <p>파일 경로: <span id="filepath"></span></p>
+      const p = document.createElement("p");
+      p.setAttribute("id", "filepath");
+      const pTxt = document.createTextNode("파일 경로:");
+      const filePath = document.createElement("span");
+      filePath.setAttribute("id", "filepath");
+      p.appendChild(pTxt);
+      p.appendChild(filePath);
+
+      // <button type="button" onclick="handleDown()">-</button>
+      const downBtn = document.createElement("button");
+      const downBtnTxt = document.createTextNode("-");
+      downBtn.setAttribute("type", "button");
+      downBtn.setAttribute("onclick", "handleDown()");
+      downBtn.appendChild(downBtnTxt);
+
+      // <button type="button" onclick="handleReset(event)">0</button>
+      const zeroBtn = document.createElement("button");
+      const zeroBtnTxt = document.createTextNode("0");
+      zeroBtn.setAttribute("type", "button");
+      zeroBtn.setAttribute("onclick", "handleReset(event)");
+      zeroBtn.appendChild(zeroBtnTxt);
+
+      // <button type="button" onclick="handleUp()">+</button>
+      const plusBtn = document.createElement("button");
+      const plusBtnTxt = document.createTextNode("+");
+      plusBtn.setAttribute("type", "button");
+      plusBtn.setAttribute("onclick", "handleUp()");
+      plusBtn.appendChild(plusBtnTxt);
+
+      // <span>0</span>
+      const zero = document.createElement("span");
+      const zeroTxt = document.createTextNode("0");
+      zero.appendChild(zeroTxt);
+
+      // <header>
+      const Header = document.createElement("header");
+      Header.appendChild(h1);
+      Header.appendChild(p);
+
+      // <div id="counter">
+      const Counter = document.createElement("div");
+      Counter.setAttribute("id", "counter");
+      Counter.appendChild(downBtn);
+      Counter.appendChild(zeroBtn);
+      Counter.appendChild(plusBtn);
+      Counter.appendChild(zero);
+
+      // <div id="app">
+      const App = document.createElement("div");
+      App.setAttribute("id", "app");
+      App.appendChild(Header);
+      App.appendChild(Counter);
+
+      document.getElementById("root").appendChild(App);
+    </script>
+
+    <script type="text/javascript">
+      document.querySelector("#filepath").textContent = `ch${
+        document.URL.split("/ch")[1]
+      }index.html`;
+    </script>
+
+    <script type="text/javascript">
+      let count = 0;
+
+      const handleDown = () => {
+        // TODO: 데이터 갱신
+        count--;
+        // TODO: 화면 갱신
+        const counterSpan = document.querySelector("#counter > span");
+        counterSpan.textContent = count;
+      };
+      const handleUp = () => {
+        count++;
+        const counterSpan = document.querySelector("#counter > span");
+        counterSpan.textContent = count;
+      };
+      const handleReset = (event) => {
+        count = 0;
+        const counterSpan = document.querySelector("#counter > span");
+        counterSpan.textContent = count;
+      };
+    </script>
+  </body>
+</html>
