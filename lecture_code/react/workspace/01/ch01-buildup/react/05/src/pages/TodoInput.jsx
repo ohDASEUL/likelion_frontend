@@ -1,8 +1,8 @@
-import React from "react";
+import { useState } from "react";
 
 function TodoInput({ addItem }) {
-  const [title, setTitle] = React.useState("");
-  const [nextId, setNextId] = React.useState(4);
+  const [title, setTitle] = useState("");
+  const [nextId, setNextId] = useState(4);
 
   const handleAdd = () => {
     if (title.trim() !== "") {
