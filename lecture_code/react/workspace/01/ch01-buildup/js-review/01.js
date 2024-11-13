@@ -9,7 +9,10 @@ for (let i = 0; i < arr.length; i++) {
   arr2.push(arr[i] * arr[i]);
 }
 // for of, (ES6)
-
+var arr2 = [];
+for (let item of arr) {
+  arr2.push(item * item);
+}
 // forEach, (ES5)
 
 // map(), (ES6)
