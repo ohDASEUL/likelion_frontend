@@ -11,6 +11,9 @@ var newItem = Object.assign({}, item, { delete: true });
 // 3. item의 속성으로 새로운 객체 생성
 var newItem = { no: item.no, done: item.done, todo: item.todo };
 
+// 4. 전개 연산자를 이용한 복사
+var newItem = { ...item, done: false };
+
 // item, newItem 비교
 newItem.done = false;
 console.log(item, newItem);
