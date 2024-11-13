@@ -23,4 +23,8 @@ var arr2 = arr.map(function (item) {
   return item * item;
 });
 // Arrow function, (ES6)
+var arr2 = [];
+arr.forEach((item) => {
+  arr2.push(item * item);
+});
 console.log(arr2); // [100, 400, 900]
