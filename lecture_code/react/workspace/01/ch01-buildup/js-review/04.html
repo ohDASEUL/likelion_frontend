@@ -77,27 +77,23 @@
 
       // 3. 삼항 연산자 중첩
       function App3() {
-        var status = "online";
-        // var status = 'away';
+        let statusText;
+        switch (status) {
+          case "online":
+            statusText = "온라인 상태";
 
-        // return (
-        //   <>
-        //     {status === "online" ? (
-        //       <h1>온라인</h1>
-        //     ) : status === "away" ? (
-        //       <h1>자리 비움</h1>
-        //     ) : (
-        //       <h1>오프라인</h1>
-        //     )}
-        //   </>
-        // );
-        if (status === "online") {
-          return <h1>온라인</h1>;
-        } else if (status === "away") {
-          return <h1>자리비움</h1>;
-        } else if (status === "offline") {
-          return <h1>오프라인</h1>;
+          case "away":
+            statusText = "자리 비움 상태";
+
+          default:
+            statusText = "오프라인 상태";
         }
+
+        return (
+          <>
+            <h1>{statusText}</h1>
+          </>
+        );
       }
 
       // 4. 조건부 클래스 적용
