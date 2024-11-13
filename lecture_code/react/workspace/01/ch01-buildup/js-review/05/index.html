@@ -21,15 +21,15 @@
       document.querySelector("#filepath").textContent = `ch${
         document.URL.split("/ch")[1]
       }index.html`;
+      import MyMath, { plus, minus, avg } from "./export.js";
 
-      import { plus, minus, avg } from "./export.js";
-
-      console.log(plus(10, 20));
       console.log(minus(10, 20));
       console.log(avg(10, 20, 30));
 
-      import MyMath from "./export.js";
-      console.log(MyMath(10, 20));
+      console.log(MyMath.multiple(10, 20));
+
+      console.log(MyMath.sum(10, 20, 30));
+      console.log(MyMath.divide(10, 20));
     </script>
   </body>
 </html>
