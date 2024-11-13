@@ -14,7 +14,10 @@ for (let item of arr) {
   arr2.push(item * item);
 }
 // forEach, (ES5)
-
+var arr2 = [];
+arr.forEach(function (item) {
+  arr2.push(item * item);
+});
 // map(), (ES6)
 
 // Arrow function, (ES6)
