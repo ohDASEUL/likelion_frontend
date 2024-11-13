@@ -7,6 +7,9 @@ var itemList = [
 // 1. 대입 연산자
 var newItemList = itemList;
 
+// 2. 전개 연산자를 이용한 복사(얕은복사)
+var newItemList = [...itemList];
+
 // itemList, newItemList 비교
 newItemList[1].done = true;
 console.log(itemList, newItemList);
