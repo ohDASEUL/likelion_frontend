@@ -60,7 +60,19 @@
         ];
         // var itemList = [];
 
-        return <></>;
+        return (
+          <>
+            {itemList.length > 0 ? (
+              <ul>
+                {itemList.map((item) => (
+                  <li key={item._id}>{item.title}</li>
+                ))}
+              </ul>
+            ) : (
+              <p></p>
+            )}
+          </>
+        );
       }
 
       // 3. 삼항 연산자 중첩
