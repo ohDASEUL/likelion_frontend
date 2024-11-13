@@ -39,15 +39,15 @@
     <script type="text/babel">
       document.querySelector("#filepath").textContent = `ch${
         document.URL.split("/ch")[1]
-      }index.html`;
+      }`;
 
       // 1. 로그인 체크
       function App1() {
         var isLogin = true;
-        // var isLogin = false;
+        var isLogin = false;
 
         return (
-          <>{isLogin ? <h1>환영합니다</h1> : <h1>로그인이 필요합니다.</h1>}</>
+          <>{isLogin ? <h1>환영합니다.</h1> : <h1>로그인이 필요합니다.</h1>}</>
         );
       }
 
@@ -58,7 +58,7 @@
           { _id: 2, title: "계란" },
           { _id: 3, title: "라면" },
         ];
-        // var itemList = [];
+        var itemList = [];
 
         return (
           <>
@@ -69,7 +69,7 @@
                 ))}
               </ul>
             ) : (
-              <p></p>
+              <p>장바구니가 비었습니다.</p>
             )}
           </>
         );
@@ -77,16 +77,17 @@
 
       // 3. 삼항 연산자 중첩
       function App3() {
+        var status = "online";
+        var status = "away";
+
         let statusText;
         switch (status) {
           case "online":
             statusText = "온라인 상태";
             break;
-
           case "away":
             statusText = "자리 비움 상태";
             break;
-
           default:
             statusText = "오프라인 상태";
         }
@@ -103,15 +104,21 @@
         var isActive = true;
         // var isActive = false;
 
-        return <></>;
+        return (
+          <>
+            <button className={isActive ? "active" : "inactive"}>
+              {isActive ? "클릭" : "기다려"}
+            </button>
+          </>
+        );
       }
 
       // 5. 조건에 따라 요소를 생성하지 않기
       function App5() {
         var isShow = false;
-        // var isShow = true;
+        var isShow = true;
 
-        return <></>;
+        return <>{isShow ? <p>이곳에 보여줌</p> : null}</>;
       }
 
       function App() {
