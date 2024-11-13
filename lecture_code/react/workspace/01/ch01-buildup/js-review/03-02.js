@@ -8,6 +8,9 @@ var newItem = item;
 var newItem = Object.assign(item, { delete: true }, {}, {});
 var newItem = Object.assign({}, item, { delete: true });
 
+// 3. item의 속성으로 새로운 객체 생성
+var newItem = { no: item.no, done: item.done, todo: item.todo };
+
 // item, newItem 비교
 newItem.done = false;
 console.log(item, newItem);
