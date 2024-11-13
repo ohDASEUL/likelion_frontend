@@ -1,8 +1,5 @@
 // 06-04.js 복사
-
 function f1() {
-  const arr = new Array();
-  const xhr = new XMLHttpRequest();
   return new Promise((resolve, reject) => {
     console.log(`2. f1 작업 시작.`);
     console.log(`3. f1 작업중...`);
@@ -10,8 +7,8 @@ function f1() {
     setTimeout(() => {
       // ......
       console.log(`4. f1 작업 종료.`);
-      resolve`f1의 결과물`;
-      // reject(new Error("에러 발생"));
+      resolve(`f1의 결과물`);
+      // reject(new Error('에러 발생'));
     }, 1000);
   });
 }
@@ -24,16 +21,19 @@ function f2(f1Result) {
     setTimeout(() => {
       // ......
       console.log(`7. f2 작업 종료.`);
-      resolve`최종 결과물`;
-      // reject(new Error("에러 발생"));
+      resolve(`최종 결과물`);
     }, Math.random() * 2000);
   });
 }
 
 async function test() {
-  const f1Result = await f1();
-  const result = await f2(f1Result);
-  console.log("8. ", result);
+  try {
+    const f1Result = await f1();
+    const result = await f2(f1Result);
+    console.log("8.", result);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 console.log("1. 테스트 시작.");
