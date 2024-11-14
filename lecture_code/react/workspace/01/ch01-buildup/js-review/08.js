@@ -1,5 +1,5 @@
 // 지정한 수가 소수인지 여부를 반환
-var isPrime = function (num) {
+var isPrime = memo(function (num) {
   console.time("소요 시간");
   console.log("소수 판별 시작.", num);
 
@@ -16,7 +16,7 @@ var isPrime = function (num) {
   console.log("소수 판별 결과.", prime);
   console.timeEnd("소요 시간");
   return prime;
-};
+});
 
 // var isPrime = function (num) {
 //   // 캐시를 위한 코드
@@ -44,7 +44,7 @@ function memo(fn) {
   };
 }
 
-var isPrime = memo(isPrime); // 메모이제이션 기능 추가
+// var isPrime = memo(isPrime); // 메모이제이션 기능 추가
 isPrime(1);
 isPrime(2);
 isPrime(3);
