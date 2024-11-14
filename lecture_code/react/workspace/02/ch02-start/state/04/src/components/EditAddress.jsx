@@ -12,6 +12,7 @@ export default function EditAddress({ addressBook, handleAddressChange }) {
           value={address.value}
           onChange={handleAddressChange}
         />
+        <br />
       </Fragment>
     );
   });
