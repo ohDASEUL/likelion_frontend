@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [position, setPosition] = useState({ x: 50, y: 50 });
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>03 상태관리 대상이 객체일 경우 주의 사항</h1>
+      <div
+        onPointerMove={(event) => {
+          // 속성을 직접 수정하면 리렌더링되지 않음
+          // position.x = event.clientX;
+          // position.y = event.clientY;
+          const newPosition = { x: event.clientX, y: event.clientY };
+
+          setPosition(newPosition);
+
+          console.log(position);
+        }}
+        style={{
+          position: "relative",
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            backgroundColor: "red",
+            borderRadius: "50%",
+            transform: `translate(${position.x - 10}px, ${position.y - 10}px)`,
+            left: -10,
+            top: -10,
+            width: 20,
+            height: 20,
+          }}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
