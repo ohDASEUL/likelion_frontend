@@ -61,6 +61,9 @@ function App() {
     // immer 사용해서 불변성 유지
     // user를 복사한 새로운 객체(draft)를 만들어서 반환
     const newState = produce(user, (draft) => {
+      console.log(user);
+      console.log(draft);
+
       const address = draft.extra.addressBook.find(
         (address) => address.id === Number(event.target.name)
       );
