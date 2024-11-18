@@ -9,11 +9,7 @@ function Todo(props) {
           <li>
             <h2>쇼핑 목록</h2>
             <TodoInput addItem={props.addItem} />
-            {/* <TodoList
-              itemList={props.itemList}
-              toggleDone={props.toggleDone}
-              deleteItem={props.deleteItem}
-            /> */}
+            {/* <TodoList itemList={ props.itemList } toggleDone={ props.toggleDone } deleteItem={ props.deleteItem } /> */}
             <TodoList {...props} />
           </li>
         </ul>
