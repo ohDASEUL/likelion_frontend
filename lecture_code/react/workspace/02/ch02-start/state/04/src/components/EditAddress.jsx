@@ -4,11 +4,11 @@ export default function EditAddress({ addressBook, handleAddressChange }) {
   const list = addressBook.map((address) => {
     return (
       <Fragment key={address.id}>
-        <label htmlFor={address.id}></label>
+        <label htmlFor={address.id}>{address.name}</label>
         <input
-          type="text"
           id={address.id}
-          name={address.name}
+          type="text"
+          name={address.id}
           value={address.value}
           onChange={handleAddressChange}
         />
@@ -16,5 +16,6 @@ export default function EditAddress({ addressBook, handleAddressChange }) {
       </Fragment>
     );
   });
+
   return list;
 }
