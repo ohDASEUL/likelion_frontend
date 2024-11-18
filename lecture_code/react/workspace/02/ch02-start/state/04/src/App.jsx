@@ -40,32 +40,32 @@ function App() {
 
     // 상태의 불변성을 지키기 위해 복잡한 추가 작업 필요
     // 그나마 주솔르 바뀐다는 것은 덜 복잡함
-    const newAddressBook = user.extra.addressBook.map((address) => {
-      if (address.id === Number(event.target.name)) {
-        return { ...address, value: event.target.value };
-      } else {
-        return address;
-      }
-    });
+    // const newAddressBook = user.extra.addressBook.map((address) => {
+    //   if (address.id === Number(event.target.name)) {
+    //     return { ...address, value: event.target.value };
+    //   } else {
+    //     return address;
+    //   }
+    // });
 
-    const newState = {
-      ...user,
-      extra: {
-        ...user.extra,
-        addressBook: newAddressBook,
-      },
-    };
+    // const newState = {
+    //   ...user,
+    //   extra: {
+    //     ...user.extra,
+    //     addressBook: newAddressBook,
+    //   },
+    // };
 
     // npm i immer
 
     // immer 사용해서 불변성 유지
     // user를 복사한 새로운 객체(draft)를 만들어서 반환
-    // const newState = produce(user, (draft) => {
-    //   const address = draft.extra.addressBook.find(
-    //     (address) => address.id === Number(event.target.name)
-    //   );
-    //   address.value = event.target.value;
-    // });
+    const newState = produce(user, (draft) => {
+      const address = draft.extra.addressBook.find(
+        (address) => address.id === Number(event.target.name)
+      );
+      address.value = event.target.value;
+    });
 
     console.log("user", user === newState);
     console.log("user.extra", user.extra === newState.extra);
