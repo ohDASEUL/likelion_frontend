@@ -7,8 +7,17 @@ export class ClickMe extends Component {
   // 함수형에서는 state 변수를 여러 개 지정 가능(useState 훅)
   state = { count: 0 };
 
+  // 생성자 함수(props를 기준으로 state를 초기할 경우 등에서 작성)
+  constructor(props) {
+    // 부모 클래스의 생성자를 통해 this가 초기화 되므로
+    // super()를 호출해야 자식 클래스에서 this를 사용할 수 있고
+    // super(props)를 호출해야 자식 클래스에서 this.props를 사용할 수 있고
+    super(props); // 함수로 지정
+    this.state = { count: props.level || 2 };
+  }
   // arrow function으로 작성해야 this.state 등에 접근 가능
   handleClick = () => {
+    console.log(this);
     this.setState({ count: this.state.count + (this.props.level || 1) });
   };
   render() {
