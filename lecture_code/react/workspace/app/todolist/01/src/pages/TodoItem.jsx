@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function TodoItem({ item, toggleDone, deleteItem }) {
   return (
     <li>
@@ -11,3 +13,14 @@ export default function TodoItem({ item, toggleDone, deleteItem }) {
     </li>
   );
 }
+
+TodoItem.prototype = {
+  // item: PropTypes.object.isRequired,
+  item: PropTypes.shape({
+    _id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    done: PropTypes.bool,
+  }),
+  toggleDone: PropTypes.func.isRequired,
+  deleteItem: PropTypes.func.isRequired,
+};
