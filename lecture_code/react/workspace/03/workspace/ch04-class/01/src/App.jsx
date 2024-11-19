@@ -1,5 +1,12 @@
-function App() {
-  return <></>;
-}
+import { Component } from "react";
+import ChildComponent from "./ClassBase";
 
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <ChildComponent />
+      </div>
+    );
+  }
+}
