@@ -1,9 +1,13 @@
-export default function TodoItem({ item }) {
+export default function TodoItem({ item, toggleDone, deleteItem }) {
   return (
     <li>
       <span>{item._id}</span>
-      <span>{item.done ? <s>{item.title}</s> : item.title}</span>
-      <button type="button">삭제</button>
+      <span onClick={() => toggleDone(item._id)}>
+        {item.done ? <s>{item.title}</s> : item.title}
+      </span>
+      <button type="button" onClick={() => deleteItem(item._id)}>
+        삭제
+      </button>
     </li>
   );
 }

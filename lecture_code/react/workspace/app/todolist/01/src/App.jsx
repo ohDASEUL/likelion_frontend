@@ -1,7 +1,8 @@
+import Footer from "@components/Footer";
+import Header from "@components/Header";
+import Todo from "@pages/Todo";
+import { produce } from "immer";
 import { useState } from "react";
-import Header from "./components/Header";
-import Todo from "./pages/Todo";
-import Footer from "./components/Footer";
 
 function App() {
   // 샘플 목록
@@ -21,10 +22,15 @@ function App() {
   // 할일 완료/미완료 처리
   const toggleDone = (_id) => {
     // 데이터 갱신(상태 변경)
-    const newItemList = [...itemList];
-    const item = itemList.find((item) => item._id === _id);
-    item.done = !item.done;
-    setItemList([...itemList]);
+    const newItemList = produce(itemList, (draft) => {
+      const item = draft.find((item) => item._id === _id);
+      item.done = !item.done;
+    });
+
+    setItemList(newItemList);
+
+    console.log("예전 itemList", itemList);
+    console.log("새로운 itemList", newItemList);
   };
 
   // 할일 삭제
