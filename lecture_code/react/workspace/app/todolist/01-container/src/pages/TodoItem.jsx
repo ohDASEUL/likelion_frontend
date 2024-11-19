@@ -1,26 +1,25 @@
 import PropTypes from "prop-types";
 
-export default function TodoItem({ item, toggleDone, deleteItem }) {
+export default function TodoItem(props) {
   return (
     <li>
-      <span>{item._id}</span>
-      <span onClick={() => toggleDone(item._id)}>
-        {item.done ? <s>{item.title}</s> : item.title}
+      <span>{props.item._id}</span>
+      <span onClick={() => props.toggleDone(props.item._id)}>
+        {props.item.done ? <s>{props.item.title}</s> : props.item.title}
       </span>
-      <button type="button" onClick={() => deleteItem(item._id)}>
+      <button type="button" onClick={() => props.deleteItem(props.item._id)}>
         삭제
       </button>
     </li>
   );
 }
 
-TodoItem.prototype = {
-  // item: PropTypes.object.isRequired,
+TodoItem.propTypes = {
   item: PropTypes.shape({
     _id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     done: PropTypes.bool,
-  }),
+  }).isRequired,
   toggleDone: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
 };

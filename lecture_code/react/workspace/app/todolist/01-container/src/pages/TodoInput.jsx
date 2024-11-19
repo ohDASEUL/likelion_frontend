@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 export default function TodoInput({ addItem }) {
@@ -33,3 +34,7 @@ export default function TodoInput({ addItem }) {
     </div>
   );
 }
+
+TodoInput.propTypes = {
+  addItem: PropTypes.func.isRequired,
+};
