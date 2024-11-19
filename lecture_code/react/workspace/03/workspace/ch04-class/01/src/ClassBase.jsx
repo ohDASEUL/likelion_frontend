@@ -13,7 +13,7 @@ export class ClickMe extends Component {
     // super()를 호출해야 자식 클래스에서 this를 사용할 수 있고
     // super(props)를 호출해야 자식 클래스에서 this.props를 사용할 수 있고
     super(props); // 함수로 지정
-    this.state = { count: props.level || 2 };
+    this.state = { count: props.level || 1 };
   }
   // arrow function으로 작성해야 this.state 등에 접근 가능
   handleClick = () => {
