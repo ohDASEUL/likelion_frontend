@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Component } from "react";
 
 export class ClickMe extends Component {
@@ -8,17 +9,21 @@ export class ClickMe extends Component {
 
   // arrow function으로 작성해야 this.state 등에 접근 가능
   handleClick = () => {
-    this.setState({ count: this.state.count + this.props.level });
+    this.setState({ count: this.state.count + (this.props.level || 1) });
   };
   render() {
     return (
       <div>
-        클릭 횟수 x {this.props.level}: {this.state.count}
+        클릭 횟수 x {this.props.level || 1}: {this.state.count}
         <button onClick={this.handleClick}>클릭</button>
       </div>
     );
   }
 }
+
+ClickMe.propTypes = {
+  level: PropTypes.number,
+};
 
 export default class Parent extends Component {
   render() {
@@ -27,6 +32,7 @@ export default class Parent extends Component {
         <h1>01. 클래스컴포넌트</h1>
         <ClickMe level={2} />
         <ClickMe level={5} />
+        <ClickMe />
       </div>
     );
   }
