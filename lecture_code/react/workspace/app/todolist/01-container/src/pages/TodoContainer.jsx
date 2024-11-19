@@ -2,7 +2,7 @@ import Todo from "@pages/Todo";
 import { produce } from "immer";
 import { useState } from "react";
 
-export default function TodoContainer() {
+function TodoContainer() {
   // 샘플 목록
   const sampleItemList = [
     { _id: 1, title: "두부", done: true },
@@ -41,13 +41,13 @@ export default function TodoContainer() {
   };
 
   return (
-    <div>
-      <Todo
-        itemList={itemList}
-        addItem={addItem}
-        toggleDone={toggleDone}
-        deleteItem={deleteItem}
-      />
-    </div>
+    <Todo
+      itemList={itemList}
+      addItem={addItem}
+      toggleDone={toggleDone}
+      deleteItem={deleteItem}
+    />
   );
 }
+
+export default TodoContainer;

@@ -35,6 +35,7 @@ export default function TodoInput({ addItem }) {
   );
 }
 
+// 강사님 버전과 같음
 TodoInput.propTypes = {
   addItem: PropTypes.func.isRequired,
 };

@@ -22,14 +22,22 @@ export default function Todo(props) {
   );
 }
 
+// Todo.propTypes = {
+//   itemList: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       _id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired,
+//       done: PropTypes.bool,
+//     })
+//   ).isRequired,
+//   addItem: PropTypes.func.isRequired,
+//   toggleDone: PropTypes.func.isRequired,
+//   deleteItem: PropTypes.func.isRequired,
+// };
+
+// 강사님 버전
 Todo.propTypes = {
-  itemList: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      done: PropTypes.bool,
-    })
-  ).isRequired,
+  itemList: PropTypes.array.isRequired,
   addItem: PropTypes.func.isRequired,
   toggleDone: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,

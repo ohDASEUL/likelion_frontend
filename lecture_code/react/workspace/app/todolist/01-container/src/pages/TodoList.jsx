@@ -14,14 +14,22 @@ export default function TodoList(props) {
   return <ul className="todolist">{list}</ul>;
 }
 
+// TodoList.propTypes = {
+//   itemList: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       _id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired,
+//       done: PropTypes.bool,
+//     })
+//   ).isRequired,
+//   toggleDone: PropTypes.func.isRequired,
+//   deleteItem: PropTypes.func.isRequired,
+// };
+
+// 강사님 버전
+
 TodoList.propTypes = {
-  itemList: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      done: PropTypes.bool,
-    })
-  ).isRequired,
+  itemList: PropTypes.array.isRequired,
   toggleDone: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
 };
