@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { memo } from "react";
 
-const Shipping = memo(function Shipping({ fees, handlePayment }) {
+const Shopping = memo(function Shopping({ fees, handlePayment }) {
   return (
     <>
       <h2>배송비</h2>
@@ -16,9 +16,9 @@ const Shipping = memo(function Shipping({ fees, handlePayment }) {
   );
 });
 
-Shipping.propTypes = {
+Shopping.propTypes = {
   fees: PropTypes.number.isRequired,
   handlePayment: PropTypes.func.isRequired,
 };
 
-export default Shipping;
+export default Shopping;

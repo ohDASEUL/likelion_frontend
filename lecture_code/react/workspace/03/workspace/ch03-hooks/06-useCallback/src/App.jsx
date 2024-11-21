@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
 import Product from "./Product";
-import Shipping from "./Shipping";
+import Shopping from "./Shopping";
 
 function App() {
   const data = {
     _id: 2,
     price: 125000,
-    shippingFees: 3000,
+    shoppingFees: 3000,
     name: "나이키 잼",
     quantity: 35,
     buyQuantity: 10,
@@ -16,13 +16,13 @@ function App() {
   };
 
   const [quantity, setQuantity] = useState(1);
-  const [shippingFees, setShippingFees] = useState(data.shippingFees);
+  const [shoppingFees, setShoppingFees] = useState(data.shoppingFees);
   const productPrice = data.price * quantity;
 
   // 수량이 변경되면 배송비 다시 계산
   const handleQuantityChange = (e) => {
     const newQuantity = Number(e.target.value);
-    setShippingFees(data.shippingFees * Math.ceil(newQuantity / 5));
+    setShoppingFees(data.shoppingFees * Math.ceil(newQuantity / 5));
     setQuantity(newQuantity);
   };
 
@@ -57,12 +57,12 @@ function App() {
           value={quantity}
           onChange={handleQuantityChange}
         />
-        (배송비는 5개당 {data.shippingFees.toLocaleString()}원씩 추가됩니다.)
+        (배송비는 5개당 {data.shoppingFees.toLocaleString()}원씩 추가됩니다.)
         <br />
         상품 금액: {productPrice.toLocaleString()}원
       </div>
 
-      <Shipping fees={shippingFees} handlePayment={handlePayment} />
+      <Shopping fees={shoppingFees} handlePayment={handlePayment} />
     </>
   );
 }
