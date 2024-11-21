@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Product from "./Product";
-import Shopping from "./Shopping";
+import Shipping from "./Shipping";
 
 function App() {
   const data = {
     _id: 2,
     price: 125000,
-    shoppingFees: 3000,
+    shippingFees: 3000,
     name: "나이키 잼",
     quantity: 35,
     buyQuantity: 10,
@@ -16,24 +16,29 @@ function App() {
   };
 
   const [quantity, setQuantity] = useState(1);
-  const [shoppingFees, setShoppingFees] = useState(data.shoppingFees);
-
+  const [shippingFees, setShippingFees] = useState(data.shippingFees);
   const productPrice = data.price * quantity;
 
-  // 수량이 변경되어 배송비 다시 계산
+  // 수량이 변경되면 배송비 다시 계산
   const handleQuantityChange = (e) => {
     const newQuantity = Number(e.target.value);
-    setShoppingFees(data.shoppingFees * Math.ceil(newQuantity / 5));
+    setShippingFees(data.shippingFees * Math.ceil(newQuantity / 5));
     setQuantity(newQuantity);
   };
 
-  const handlePayment = () => [alert(`상품을 결제하시겠습니까?`)];
+  // const handlePayment = () => {
+  //   alert(`상품을 결제하시겠습니까?`);
+  // };
+
+  const handlePayment = useCallback(() => {
+    alert(`상품을 결제하시겠습니까?`);
+  }, []);
+
   return (
     <>
       <h1>
         06 useCallback(함수 자체를 memoize), React.memo(컴포넌트를 memoize)
       </h1>
-
       <Product
         name={data.name}
         price={data.price}
@@ -43,9 +48,8 @@ function App() {
 
       <h2>수량 선택</h2>
       <div>
-        가격: {data.price.toLocaleString()}원
-        <br />
-        수량:
+        가격: {data.price.toLocaleString()}원<br />
+        수량:{" "}
         <input
           type="number"
           min="1"
@@ -53,12 +57,12 @@ function App() {
           value={quantity}
           onChange={handleQuantityChange}
         />
-        (배송비는 5개당 {data.shoppingFees.toLocaleString()}씩 추가됩니다.)
+        (배송비는 5개당 {data.shippingFees.toLocaleString()}원씩 추가됩니다.)
         <br />
         상품 금액: {productPrice.toLocaleString()}원
       </div>
 
-      <Shopping handlePayment={handlePayment} shoppingFees={shoppingFees} />
+      <Shipping fees={shippingFees} handlePayment={handlePayment} />
     </>
   );
 }
