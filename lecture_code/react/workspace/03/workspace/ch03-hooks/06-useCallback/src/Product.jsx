@@ -1,15 +1,9 @@
 import PropTypes from "prop-types";
+import { memo } from "react";
 
-Product.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  mainImage: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-};
-
-export default function Product({ name, price, mainImage, content }) {
+const Product = memo(function Product({ name, price, mainImage, content }) {
   return (
-    <div>
+    <>
       <h2>상품 설명</h2>
       <p>상품명: {name}</p>
       <p>가격: {price.toLocaleString()}원</p>
@@ -18,6 +12,15 @@ export default function Product({ name, price, mainImage, content }) {
         <img src={`https://11.fesp.shop${mainImage}`} width="600" />
         <p>{content}</p>
       </div>
-    </div>
+    </>
   );
-}
+});
+
+Product.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  mainImage: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
+
+export default Product;
