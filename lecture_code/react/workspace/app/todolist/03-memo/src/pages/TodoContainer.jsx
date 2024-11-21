@@ -1,6 +1,6 @@
 import Todo from "@pages/Todo";
 import TodoReducer from "@pages/TodoReducer";
-import { useReducer, useRef } from "react";
+import { useCallback, useReducer, useRef } from "react";
 
 function TodoContainer() {
   // 샘플 목록
@@ -26,14 +26,17 @@ function TodoContainer() {
   };
 
   // 할일 완료/미완료 처리
-  const toggleDone = (_id) => {
+  // TODO: 2.useCallback으로 함수를 메모이제이션
+  const toggleDone = useCallback((_id) => {
     itemListDispatch({ type: "TOGGLE", value: { _id } });
-  };
+  }, []);
 
   // 할일 삭제
-  const deleteItem = (_id) => {
+  // TODO: 2.useCallback으로 함수를 메모이제이션
+
+  const deleteItem = useCallback((_id) => {
     itemListDispatch({ type: "DELETE", value: { _id } });
-  };
+  }, []);
 
   return (
     <Todo
