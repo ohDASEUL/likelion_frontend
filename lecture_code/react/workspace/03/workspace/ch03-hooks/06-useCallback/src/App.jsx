@@ -31,8 +31,8 @@ function App() {
   };
 
   const handlePayment = useCallback(() => {
-    alert(`상품을 결제하시겠습니까?`);
-  }, []);
+    alert(`배송비 ${shoppingFees}원이 추가됩니다. 상품을 결제하시겠습니까?`);
+  }, [shoppingFees]);
 
   return (
     <>

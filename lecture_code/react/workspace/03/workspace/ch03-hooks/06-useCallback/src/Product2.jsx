@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import { memo } from "react";
 
-const Product2 = memo(function Product2({
+const Product = memo(function Product({
   product: { name, price, mainImage, content },
 }) {
-  // function Product({ name, price, mainImage, content }){
   // 복잡한 로직
   console.log("Product 렌더링.");
 
@@ -20,10 +19,9 @@ const Product2 = memo(function Product2({
       </div>
     </>
   );
-  // }
 });
 
-Product2.propTypes = {
+Product.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -32,4 +30,4 @@ Product2.propTypes = {
   }).isRequired,
 };
 
-export default Product2;
+export default Product;
