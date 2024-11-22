@@ -1,6 +1,6 @@
 import Page1 from "./Page1";
-import Home from "./Home";
 import Page2 from "./Page2";
+import Home from "./Home";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -9,11 +9,14 @@ function App() {
 
   useEffect(() => {
     const handleNavigate = (e) => {
-      setPath(e.destination.url);
+      setPath(e.destination.url.split(location.host).pop());
     };
     window.navigation.addEventListener("navigate", handleNavigate);
-    return () => {};
-  }, []);
+    return () => {
+      window.navigation.removeEventListener("navigate", handleNavigate);
+    };
+  }, []); // 최초 한번만 호출
+
   return (
     <>
       {(path === "/" || path === "/home.html") && <Home />}
