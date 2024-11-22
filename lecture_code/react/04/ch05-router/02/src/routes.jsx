@@ -1,4 +1,5 @@
 import Home from "./Home";
+import Layout from "./Layout";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import { createBrowserRouter } from "react-router-dom";
@@ -7,15 +8,12 @@ const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/page1",
-      element: <Page1 />,
-    },
-    {
-      path: "/page2",
-      element: <Page2 />,
+      element: <Layout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "page1", element: <Page1 /> },
+        { path: "page2", element: <Page2 /> },
+      ],
     },
   ],
   {
