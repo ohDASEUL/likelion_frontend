@@ -1,8 +1,8 @@
-import Home from "./Home";
 import Layout from "./Layout";
+import Home from "./Home";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 const router = createBrowserRouter(
   [
@@ -10,7 +10,8 @@ const router = createBrowserRouter(
       path: "/",
       element: <Layout />,
       children: [
-        { index: true, element: <Home /> },
+        { index: true, element: <Navigate to="/home" /> },
+        { path: "home", element: <Home /> },
         { path: "page1", element: <Page1 /> },
         { path: "page2", element: <Page2 /> },
       ],
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
   ],
   {
     future: {
+      // 없으면 콘솔에 경고 표시
       v7_fetcherPersist: true,
       v7_normalizeFormMethod: true,
       v7_partialHydration: true,
