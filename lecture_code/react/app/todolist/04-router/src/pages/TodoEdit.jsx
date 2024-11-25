@@ -30,6 +30,8 @@
 
 // export default TodoEdit;
 
+import { Link } from "react-router-dom";
+
 function TodoEdit() {
   return (
     <div id="main">
@@ -47,8 +49,8 @@ function TodoEdit() {
           <label htmlFor="done">완료 :</label>
           <input type="checkbox" id="done" checked />
           <br />
-          <a href="./tododetail.html">수정</a>
-          <a href="./tododetail.html">취소</a>
+          <Link to="/list/1">수정</Link>
+          <Link to="/list/1">취소</Link>
         </form>
       </div>
     </div>
