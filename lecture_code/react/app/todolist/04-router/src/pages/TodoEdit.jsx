@@ -34,7 +34,7 @@ import { Link } from "react-router-dom";
 
 function TodoEdit() {
   return (
-    <div id="main">
+    <>
       <h2>할일 수정</h2>
       <div className="todo">
         <form>
@@ -53,7 +53,7 @@ function TodoEdit() {
           <Link to="/list/1">취소</Link>
         </form>
       </div>
-    </div>
+    </>
   );
 }
 

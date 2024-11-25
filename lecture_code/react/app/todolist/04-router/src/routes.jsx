@@ -70,8 +70,12 @@ const router = createBrowserRouter(
         { path: "about", element: <About /> },
         { path: "list", element: <TodoList /> },
         { path: "add", element: <TodoAdd /> },
-        { path: "edit", element: <TodoEdit /> },
-        { path: "list/:_id", element: <TodoDetail /> },
+
+        {
+          path: "list/:_id",
+          element: <TodoDetail />,
+          children: [{ path: "edit", element: <TodoEdit /> }],
+        },
       ],
     },
   ],
