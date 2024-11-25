@@ -52,6 +52,7 @@
 
 import Layout from "@components/Layout";
 import About from "@pages/About";
+import ErrorPage from "@pages/ErrorPage";
 import Home from "@pages/Home";
 import TodoAdd from "@pages/TodoAdd";
 import TodoDetail from "@pages/TodoDetail";
@@ -64,6 +65,7 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <Layout />,
+      errorElement: <ErrorPage />,
       children: [
         { index: true, element: <Navigate to="/home" /> },
         { path: "home", element: <Home /> },
