@@ -14,17 +14,17 @@ function TodoList() {
         <ul className="todolist">
           <li>
             <span>1</span>
-            <Link to="detail">잠자기</Link>
+            <Link to="detail/1">잠자기</Link>
             <Link to="/list">삭제</Link>
           </li>
           <li>
             <span>2</span>
-            <Link to="detail">자바스크립트 복습</Link>
+            <Link to="detail/2">자바스크립트 복습</Link>
             <Link to="/list">삭제</Link>
           </li>
           <li>
             <span>3</span>
-            <Link to="detail">
+            <Link to="detail/3">
               <s>리액트 과제 하기</s>
             </Link>
             <Link to="/list">삭제</Link>

@@ -29,7 +29,7 @@ const router = createBrowserRouter(
             { index: true, element: <TodoList /> },
             { path: "add", element: <TodoAdd /> },
             {
-              path: "detail",
+              path: "detail/:id",
               children: [
                 { index: true, element: <TodoDetail /> },
                 {
