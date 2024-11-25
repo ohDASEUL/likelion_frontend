@@ -20,6 +20,7 @@ const router = createBrowserRouter(
   {
     future: {
       // 없으면 콘솔에 경고 표시
+      v7_startTransition: true,
       v7_fetcherPersist: true,
       v7_normalizeFormMethod: true,
       v7_partialHydration: true,
