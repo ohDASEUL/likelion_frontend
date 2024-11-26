@@ -1,58 +1,128 @@
-import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
-const dummyData = {
-  item: {
-    _id: 5,
-    title: "Javascript 공부",
-    content: "열심히 하자",
-    done: false,
-    createdAt: "2024.11.21 16:49:00",
-    updatedAt: "2024.11.21 16:49:00",
-  },
-};
-
+// TodoAdd 는 XMLHttpRequest 사용
 function TodoDetail() {
-  // useParams 리액트 라우터 훅 사용
-  // id 값을 uri 로부터 추출, 동적으로 uri 세그먼트를 가져올 때 주로 사용
-  // URL 의 파라미터 추출
-  // 라우터에 'list/:_id' 로 등록된 컴포넌트가 호출되는 경우
-  // URL 이 list/3 일 때 useParams() 는 {_id: 3} 을 반환
-  const { _id } = useParams();
-  console.log(_id);
+  // 입력값 검증 - react hook form 사용
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setFocus,
+    formState: { errors },
+  } = useForm(); // 기본 설정 유지
 
-  const [data, setData] = useState();
+  /**
+   * 폼 제출 처리하는 함수
+   * react-hook-form이 유효성 검사 통과하면 실행됨
+   * XMLHttpRequest로 서버에 할일 데이터 전송하고 응답 처리함
+   *
+   * @param {Object} item - 폼에서 입력받은 데이터
+   * @param {string} item.title - 할일 제목
+   * @param {string} item.content - 할일 내용
+   */
+  const onSubmit = (item) => {
+    console.log("서버에 전송", item);
 
-  useEffect(() => {
-    // TODO : API 서버 통신 - side effect 가 발생하는 코드는 useEffect 내부에 실행
-    setData(dummyData);
-  }, []);
+    // 요청 시간이 2초 이상 걸리면 자동으로 중단하기 위한 타이머 설정
+    // 서버 응답이 오면 clearTimeout으로 취소해야 함
+    const timer = setTimeout(() => {
+      xhr.abort(); // 2초 후 요청 강제 중단
+    }, 2000);
+
+    // XMLHttpRequest 객체로 서버와 HTTP 통신
+    const xhr = new XMLHttpRequest();
+
+    // HTTP 요청 초기화
+    // 첫 번째 인자: HTTP 메서드 (POST)
+    // 두 번째 인자: 요청 URL
+    xhr.open("POST", "https://todo-api.fesp.shop/api/todolist");
+    // 테스트용 URL: "/api/todolist?delay=10000000"
+    // delay 파라미터로 의도적으로 응답 지연 가능
+
+    // Content-Type 헤더 설정
+    // 서버에 JSON 형식의 데이터를 보낸다고 알려줌
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // 서버 응답 데이터 타입을 JSON으로 설정
+    // 자동으로 JSON.parse() 실행되어 객체로 변환됨
+    xhr.responseType = "json";
+
+    // 서버 응답 완료 시 실행되는 콜백
+    // 정상 응답(2xx)과 에러 응답(4xx, 5xx) 모두 여기서 처리
+    xhr.onload = () => {
+      clearTimeout(timer); // 응답이 왔으니 타이머 취소
+
+      if (xhr.status >= 200 && xhr.status < 300) {
+        // 정상 응답 처리 (2xx)
+        console.log("서버 응답:", xhr.response);
+        alert("할일이 추가되었습니다.");
+
+        // 폼 초기화
+        setFocus("title"); // 먼저 제목 입력란에 포커스
+        reset(); // 그 다음 입력값들 초기화
+      } else {
+        // 서버 에러 응답 처리 (4xx, 5xx)
+        console.error("서버 에러:", xhr.status, xhr.response);
+
+        // 서버가 보낸 에러 메시지가 있으면 그걸 보여주고,
+        // 없으면 기본 에러 메시지 출력
+        alert(xhr.response.error?.message || "할일 추가에 실패했습니다.");
+      }
+    };
+
+    // 타임아웃으로 요청이 중단됐을 때 실행
+    // 2초 이상 서버 응답이 없는 경우 실행됨
+    xhr.onabort = () => {
+      alert("타임 아웃");
+    };
+
+    // 네트워크 에러 발생 시 실행
+    // 서버 연결 자체가 실패한 경우 (못 찾거나, 오프라인 등)
+    xhr.onerror = () => {
+      console.error("네트워크 에러 발생");
+      alert("할일 추가에 실패했습니다.");
+    };
+
+    // 실제 서버 요청 전송
+    // item 객체를 JSON 문자열로 변환해서 전송
+    // 서버는 JSON.parse()로 다시 객체로 변환하여 처리
+    xhr.send(JSON.stringify(item));
+  };
 
   return (
     <div id="main">
-      <h2>할일 상세 보기</h2>
-      {/* data 가 있는 경우에만 아래 코드를 실행, 렌더링 */}
-      {/* 서버가 어떤 데이터를 전달해주더라도 최초에 한 번 렌더링 - 함수의 순수성을 유지
-      setEffect 안에 있는 API 서버 응답으로 setData 가 되기 때문에 리렌더링 됨 */}
-      {data && ( // 조건부 렌더링
-        <>
-          <div className="todo">
-            <div>제목 : {data.item.title}</div>
-            <div>내용 : {data.item.content}</div>
-            <div>상태 : {data.item.done ? "완료" : "미완료"}</div>
-            <div>작성일 : {data.item.createdAt}</div>
-            <div>수정일 : {data.item.updatedAt}</div>
-            {/* 가능한 절대 주소로 지정하는 것이 좋음 */}
-            <Link to="./edit">수정</Link>
-            {/* 한 페이지의 자식 페이지로 지정하는 경우, 기존 url 에서 to 의 속성이 추가되어야 해당 페이지에 접근 가능, 따라서 상대경로 사용 */}
-            <Link to="/list">목록</Link>
-          </div>
-          {/* context 는 outlet 에 정의된 Props 를 하위 요소로 전달하기 위한 속성, context 는 자식 요소로 전달되는 고정적인 속성 명 */}
-          <Outlet context={{ item: data.item }} />
-          {/* 하위 자식 요소를 표시하기 위해서는 해당 컴포넌트가 들어가기 위해 outlet 에 삽입되도록 해야함 */}
-          {/* Outlet 을 조건부 렌더링하는 경우, 하위 컴포넌트에 undefined 데이터가 전달, 그래서 오류 발생, 따라서 Outlet 도 조건부 렌더링 안에 포함시켜 데이터가 있는 경우에만 렌더링되도록 함 */}
-        </>
-      )}
+      <h2>할일 추가</h2>
+      <div className="todo">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label htmlFor="title">제목 :</label>
+          <input
+            type="text"
+            id="title"
+            autoFocus
+            {...register("title", {
+              required: "제목을 입력하세요.",
+            })}
+          />
+          {/* error 메시지 출력 */}
+          <div className="input-error">{errors.title?.message}</div>
+          <br />
+          <label htmlFor="content">내용 :</label>
+          <textarea
+            id="content"
+            cols="23"
+            rows="5"
+            {...register("content", {
+              required: "내용을 입력하세요.",
+            })}
+          />
+          <div className="input-error">{errors.content?.message}</div>
+          <br />
+          <button type="submit">추가</button>
+          {/* submit 타입 버튼으로 변경 */}
+          <Link to="/list">취소</Link>
+        </form>
+      </div>
     </div>
   );
 }
