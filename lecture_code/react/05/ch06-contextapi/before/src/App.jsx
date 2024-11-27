@@ -13,7 +13,7 @@ function App() {
     setCount(count - step);
   };
 
-  const countReset = function (step) {
+  const countReset = function () {
     setCount(0);
   };
 
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <h1>Context API - Sample</h1>
+      <h1>Props Drilling 사용</h1>
       <div id="container">
         <h1>App</h1>
         <div id="grid">
