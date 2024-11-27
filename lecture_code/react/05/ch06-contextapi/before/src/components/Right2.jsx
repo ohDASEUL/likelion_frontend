@@ -6,14 +6,14 @@ Right2.propTypes = {
   countUp: PropTypes.func.isRequired,
 };
 
-function Right2({ countUp }) {
+function Right2({ countUp, countDown, countReset }) {
   useEffect(() => {
     console.log("    # Right2 렌더링.");
   });
   return (
     <div>
       <h2>Right2</h2>
-      <Right3 countUp={countUp} />
+      <Right3 countUp={countUp} countDown={countDown} countReset={countReset} />
     </div>
   );
 }
