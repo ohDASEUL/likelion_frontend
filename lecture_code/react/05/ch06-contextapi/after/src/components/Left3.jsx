@@ -6,7 +6,7 @@ function Left3() {
     console.log("      # Left3 렌더링.");
   });
   const {
-    state: { count },
+    stats: { count },
   } = useContext(CounterContext);
 
   return (
