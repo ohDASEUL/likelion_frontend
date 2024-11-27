@@ -1,10 +1,12 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 
 function TodoDetail() {
   const { _id } = useParams();
   console.log(_id);
+
+  const navigate = useNavigate();
 
   const [data, setData] = useState();
 
@@ -25,7 +27,8 @@ function TodoDetail() {
   return (
     <div id="main">
       <h2>할일 상세 보기</h2>
-      {data && ( // 조건부 렌더링
+
+      {data && (
         <>
           <div className="todo">
             <div>제목 : {data.item.title}</div>
@@ -33,11 +36,13 @@ function TodoDetail() {
             <div>상태 : {data.item.done ? "완료" : "미완료"}</div>
             <div>작성일 : {data.item.createdAt}</div>
             <div>수정일 : {data.item.updatedAt}</div>
-            {/* 가능한 절대 주소로 지정하는 것이 좋음 */}
+
             <Link to="./edit">수정</Link>
-            <Link to="/list">목록</Link>
+            <button type="button" onClick={() => navigate(-1)}>
+              목록
+            </button>
           </div>
-          {/* 하위 컴포넌트에게 fetchDetail 함수를 context 로 전달 */}
+
           <Outlet context={{ item: data.item, refetch: fetchDetail }} />
         </>
       )}

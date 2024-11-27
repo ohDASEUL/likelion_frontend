@@ -8,5 +8,11 @@ a {
 }
 
 .menu-dark {
-  border-color: gray;
+  background-color: gray;
+}
+
+.input-error {
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
 }
