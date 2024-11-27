@@ -1,4 +1,9 @@
+import PropTypes from "prop-types";
 import { useEffect } from "react";
+
+Right3.propTypes = {
+  countUp: PropTypes.func.isRequired,
+};
 
 function Right3({ countUp }) {
   useEffect(() => {

@@ -1,5 +1,10 @@
 import Right2 from "@components/Right2";
+import PropTypes from "prop-types";
 import { useEffect } from "react";
+
+Right1.propTypes = {
+  countUp: PropTypes.func.isRequired,
+};
 
 function Right1({ countUp }) {
   useEffect(() => {

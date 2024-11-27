@@ -1,4 +1,9 @@
+import PropTypes from "prop-types";
 import { useEffect } from "react";
+
+Left3.propTypes = {
+  count: PropTypes.number.isRequired,
+};
 
 function Left3({ count }) {
   useEffect(() => {
