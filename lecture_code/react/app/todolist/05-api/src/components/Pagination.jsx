@@ -1,4 +1,10 @@
+import PropTypes from "prop-types";
 import { Link, useSearchParams } from "react-router-dom";
+
+Pagination.propTypes = {
+  totalPages: PropTypes.number.isRequired,
+  current: PropTypes.number,
+};
 
 export default function Pagination({ totalPages, current = 1 }) {
   let pageList = [];
