@@ -5,8 +5,10 @@ function Left3() {
   useEffect(() => {
     console.log("      # Left3 렌더링.");
   });
+
+  // CounterContext 구독
   const {
-    stats: { count },
+    state: { count },
   } = useContext(CounterContext);
 
   return (

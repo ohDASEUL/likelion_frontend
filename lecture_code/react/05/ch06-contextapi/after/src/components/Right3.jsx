@@ -11,14 +11,14 @@ function Right3() {
 
   // CounterContext 구독함(CounterContext의 상태변경이 리렌더링을 유발함)
   const {
-    actions: { countDown, countReset, countUp },
+    actions: { countDown, reset, countUp },
   } = useContext(CounterContext);
 
   return (
     <div>
       <h3>Right3 - {simple.hello}</h3>
       <button onClick={() => countDown(1)}>-1</button>
-      <button onClick={() => countReset()}>0</button>
+      <button onClick={() => reset()}>0</button>
       <button onClick={() => countUp(1)}>+1</button>
     </div>
   );
