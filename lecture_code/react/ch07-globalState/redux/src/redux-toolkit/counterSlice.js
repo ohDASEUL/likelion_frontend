@@ -10,10 +10,10 @@ const counterSlice = createSlice({
   reducers: {
     countUp: (state, action) => {
       // immer 라이브러리를 내부적으로 사용하기에 state를 직접 수정해도 됨
-      state.count += action.payload.step;
+      state.count -= action.payload;
     },
     countDown: (state, action) => {
-      state.count -= action.payload.step;
+      state.count -= action.payload;
     },
     countReset: (state) => {
       state.count = 0;
