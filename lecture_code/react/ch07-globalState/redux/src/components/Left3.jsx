@@ -6,7 +6,7 @@ function Left3() {
     console.log("      # Left3 렌더링.");
   });
 
-  // redux
+  // useSelector() 훅으로 스토어 접근(자동으로 구독이 됨)
   const count = useSelector((state) => state.count);
   return (
     <div>
