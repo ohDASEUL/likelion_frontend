@@ -15,6 +15,7 @@ export default defineConfig({
       { find: "@redux-toolkit", replacement: "/src/redux-toolkit" },
       { find: "@recoil", replacement: "/src/recoil" },
       { find: "@zustand", replacement: "/src/zustand" },
+      { find: "@jotai", replacement: "/src/jotai" },
     ],
   },
 });
