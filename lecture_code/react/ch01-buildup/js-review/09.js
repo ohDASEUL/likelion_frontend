@@ -14,7 +14,7 @@ const result = sayHello(
 console.log(result);
 
 const result2 = sayHello(
-  ["안녕하세요. ", "님. 오늘 날씨는 ", " 입니다. 즐거운 ", " 보내세요."],
+  ["안녕하세요. ", "님. 오늘 날씨는 ", " 입니다. 즐거운", " 보내세요."],
   "데이지",
   "흐림",
   "하루"
