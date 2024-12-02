@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./Button.module.css";
+import classNames from "classnames";
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
@@ -16,12 +17,10 @@ export default function Button({
   color,
   onClick: clickHandler,
 }) {
+  // const colorStyle = `${styles.button} ${styles[`color-${bg}-${color}`]}`;
+  const colorStyle = classNames(styles.button, styles[`color-${bg}-${color}`]);
   return (
-    <button
-      className={`${styles.button} ${styles[`color-${bg}-${color}`]}`}
-      type={type}
-      onClick={clickHandler}
-    >
+    <button className={colorStyle} type={type} onClick={clickHandler}>
       {children}
     </button>
   );
