@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Tailwind CSS의 base, components utilities 레이어 중에 base 레이어 h1 태그 정의 */
+@layer base {
+  h1 {
+    @apply mb-6 text-2xl font-bold;
+  }
+}
+
+@layer components {
+  .btn-base {
+    @apply text-white font-semibold px-2 py-1 ml-2 text-base rounded;
+  }
+
+  .btn {
+    @apply btn-base bg-gray-600 hover:bg-blue-600;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-blue-500 hover:bg-blue-600;
+  }
+
+  .btn-warn {
+    @apply btn-base bg-red-500 hover:bg-red-600;
+  }
+}

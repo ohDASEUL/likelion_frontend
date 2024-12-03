@@ -1,26 +1,29 @@
 import Button from "@components/Button";
-import "./Login.css";
 
 function Login() {
   return (
-    <div className="container">
-      <h2>Login</h2>
-      <form className="form">
-        <div className="input-group">
-          <label htmlFor="email">Email:</label>
+    <div className="w-72 mt-[50px] mx-auto p-5 border border-gray-300 rounded-lg shadow-md">
+      <h2 className="mb-5 text-xl font-bold">Login</h2>
+      <form className="flex flex-col">
+        <div className="mb-[15px] text-left">
+          <label className="block mb-[5px]" htmlFor="email">
+            Email:
+          </label>
           <input
             type="email"
             id="email"
-            className="input color-red-blue"
+            className="w-full p-[10px] border rounded-md text-red-500 bg-blue-500"
             required
           />
         </div>
-        <div className="input-group">
-          <label htmlFor="password">Password:</label>
+        <div className="mb-[15px] text-left">
+          <label className="block mb-[5px]" htmlFor="password">
+            Password:
+          </label>
           <input
             type="password"
             id="password"
-            className="input color-blue-red"
+            className="w-full p-[10px] border rounded-md text-blue-500 bg-red-500"
             required
           />
         </div>

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import "./Button.css";
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
@@ -18,14 +17,15 @@ export default function Button({
   ...rest
 }) {
   let bgColor = {
-    gray: "bg-gray-500",
+    gray: "bg-gray-400",
     blue: "bg-blue-500",
     red: "bg-red-500",
     yellow: "bg-yellow-500",
   };
+
   let textColor = {
     black: "text-black",
-    while: "text-white",
+    white: "text-white",
     blue: "text-blue-500",
     red: "text-red-500",
   };
@@ -35,9 +35,10 @@ export default function Button({
     md: "py-2 px-4 text-base",
     lg: "py-2 px-6 text-lg",
   };
+
   return (
     <button
-      className={` ${bgColor[bg]} ${textColor[color]} ${btnSize[size]} m-1 rounded-md`}
+      className={`${bgColor[bg]} ${textColor[color]} ${btnSize[size]} m-1 rounded-md`}
       {...rest}
     >
       {children}
