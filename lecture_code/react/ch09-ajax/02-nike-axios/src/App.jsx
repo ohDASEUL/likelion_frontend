@@ -3,6 +3,8 @@ import Product from "./Product";
 import Shipping from "./Shipping";
 import { DotLoader } from "react-spinners";
 import useAxiosInstance from "@hooks/useAxiosInstance";
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [data, setData] = useState(); // 1(마운트)
@@ -23,7 +25,7 @@ function App() {
     } catch (err) {
       // network 에러, 4xx, 5xx 응답일 경우
       console.error(err);
-      setError({ message: "잠시 후 다시 요청하세요." });
+      setError(error);
       setData(null);
     } finally {
       setIsLoading(false);
@@ -55,7 +57,6 @@ function App() {
     <>
       <h1>02 Nike 상품 상세 조회 - Axios</h1>
       {isLoading && <DotLoader />}
-      {error && <p>{error.message}</p>}
       {data && (
         <div>
           <Product product={data} />
@@ -78,6 +79,17 @@ function App() {
           <Shipping fees={shippingFees} handlePayment={handlePayment} />
         </div>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="dark"
+        transition={Slide}
+      />
     </>
   );
 }
