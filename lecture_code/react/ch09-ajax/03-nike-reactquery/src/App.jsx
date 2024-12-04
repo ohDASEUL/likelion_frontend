@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import Product from "./Product";
 import Shipping from "./Shipping";
 import { DotLoader } from "react-spinners";
