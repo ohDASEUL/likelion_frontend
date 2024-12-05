@@ -2,52 +2,64 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <!-- 반응형 웹 디자인을 위한 뷰포트 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter</title>
   </head>
   <body>
+    <!-- JavaScript로 동적으로 UI를 구성할 루트 요소 -->
     <div id="root"></div>
 
+    <!-- UI 구성을 위한 모듈 스크립트 -->
     <script type="module">
-      // module은 defar 속성을 지정한 것처럼 지연 실행
-      // HTML 파싱을 멈추지 않고, HTML 파싱이 끝난 이후 실행
+      // ES6 모듈 시스템을 사용하여 Yong 라이브러리 임포트
+      // module 속성은 자동으로 defer처럼 작동하여 HTML 파싱 완료 후 실행됨
       import Yong from "./yong.js";
 
+      // createElement 라이브러리를 사용하여 UI 구성
+      // 제목 요소 생성
       const h1 = Yong.createElement(
         "h1",
-        null,
+        null, // 속성 없음
         "Counter - createElement() 라이브러리 사용"
       );
 
+      // 파일 경로 표시 요소 생성
       const p = Yong.createElement(
         "p",
         null,
         "파일 경로: ",
-        Yong.createElement("span", { id: "filepath" })
+        Yong.createElement("span", { id: "filepath" }) // 중첩된 createElement 호출
       );
 
+      // 감소 버튼 생성
       const downBtn = Yong.createElement(
         "button",
         { type: "button", onclick: "handleDown()" },
         "-"
       );
 
+      // 리셋 버튼 생성
       const resetBtn = Yong.createElement(
         "button",
         { type: "button", onclick: "handleReset(event)" },
-        "0"
+        0
       );
 
+      // 증가 버튼 생성
       const upBtn = Yong.createElement(
         "button",
         { type: "button", onclick: "handleUp()" },
         "+"
       );
 
+      // 카운터 값 표시 요소 생성
       const span = Yong.createElement("span", null, 0);
 
+      // 헤더 섹션 구성
       const Header = Yong.createElement("header", null, h1, p);
 
+      // 카운터 섹션 구성
       const Counter = Yong.createElement(
         "div",
         { id: "counter" },
@@ -57,30 +69,41 @@
         span
       );
 
+      // 전체 앱 구조 구성
       const App = Yong.createElement("div", { id: "app" }, Header, Counter);
 
+      // 생성된 UI를 DOM에 추가
       document.getElementById("root").appendChild(App);
+    </script>
 
+    <!-- 파일 경로 표시를 위한 모듈 스크립트 -->
+    <script type="module">
+      // URL에서 챕터 번호를 추출하여 파일 경로 표시
       document.querySelector("#filepath").textContent = `ch${
         document.URL.split("/ch")[1]
       }index.html`;
     </script>
 
+    <!-- 카운터 기능 구현을 위한 일반 스크립트 -->
     <script type="text/javascript">
+      // 카운터의 현재 값을 저장하는 전역 변수
       let count = 0;
 
+      // 카운터 감소 함수
       const handleDown = () => {
-        // TODO: 데이터 갱신
         count--;
-        // TODO: 화면 갱신
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
+
+      // 카운터 증가 함수
       const handleUp = () => {
         count++;
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
+
+      // 카운터 리셋 함수
       const handleReset = (event) => {
         count = 0;
         const counterSpan = document.querySelector("#counter > span");
