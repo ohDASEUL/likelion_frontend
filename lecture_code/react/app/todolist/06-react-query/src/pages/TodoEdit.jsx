@@ -27,19 +27,17 @@ function TodoEdit() {
 
   const queryClient = useQueryClient();
 
-  // 수정 기능을 React Query로 변경(숙제)
+  // 수정 기능을 React Query로 변경(숙제-강사님 버전)
   // 수정 작업
   const updateItem = useMutation({
     mutationFn: (formData) => axios.patch(`/todolist/${item._id}`, formData),
     onSuccess: () => {
       alert("할일이 수정 되었습니다.");
-      queryClient.invalidateQueries(["todolist"]);
+      // 할일 상세보기로 이동
       navigate(-1);
+      queryClient.invalidateQueries(["todolist", item._id]);
     },
-    onError: (err) => {
-      console.error("서버에서 에러 응답");
-      alert(err?.message || "할일 수정에 실패했습니다.");
-    },
+    onError: () => {},
   });
 
   return (
