@@ -4,26 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List App</title>
+    <!-- React 관련 라이브러리 로드 -->
+    <!-- React 핵심 라이브러리 로드 -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- React DOM 조작을 위한 라이브러리 로드 -->
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- JSX 문법을 지원하기 위한 Babel 로드 -->
     <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
   </head>
   <body>
+    <!-- React 애플리케이션이 마운트될 루트 요소 -->
     <div id="root"></div>
 
+    <!-- React 컴포넌트 정의 시작 -->
     <script type="text/babel">
       function App() {
-        // 샘플 목록
+        // 초기 샘플 데이터 정의
+        // _id: 각 항목의 고유 식별자
+        // title: 할 일 내용
+        // done: 완료 여부 상태
         const itemList = [
           { _id: 1, title: "두부", done: true },
           { _id: 2, title: "계란", done: false },
           { _id: 3, title: "라면", done: true },
         ];
 
+        // App 컴포넌트의 UI 구조 반환
         return (
+          // 전체 투두리스트를 감싸는 최상위 컨테이너
           <div id="todo">
+            {/* 헤더 섹션: 제목과 파일 경로 표시 */}
             <header>
               <h1>Todo List - React로 UI 구성 :()</h1>
+              {/* 현재 파일의 경로를 동적으로 표시 */}
               <p>
                 파일 경로:{" "}
                 <span id="filepath">{`ch${
@@ -31,18 +44,27 @@
                 }index.html`}</span>
               </p>
             </header>
+
+            {/* 메인 콘텐츠 영역 */}
             <div id="main">
               <div id="container">
                 <ul>
                   <li>
+                    {/* 쇼핑 목록 섹션 */}
                     <h2>쇼핑 목록</h2>
+                    {/* 새로운 항목 입력 폼 */}
                     <div className="todoinput">
+                      {/* autoFocus: 페이지 로드 시 자동으로 포커스 */}
                       <input type="text" autoFocus />
                       <button type="button">추가</button>
                     </div>
+
+                    {/* 할 일 목록을 표시하는 리스트 */}
                     <ul className="todolist">
+                      {/* 개별 할 일 항목 */}
                       <li>
                         <span>1</span>
+                        {/* <s> 태그로 완료된 항목 표시 */}
                         <span>
                           <s>샘플1</s>
                         </span>
@@ -63,6 +85,8 @@
                 </ul>
               </div>
             </div>
+
+            {/* 푸터 섹션 */}
             <footer>
               <p>멋쟁이 사자처럼 FrontEnd BootCamp</p>
             </footer>
@@ -70,6 +94,7 @@
         );
       }
 
+      // React 18의 새로운 렌더링 API를 사용하여 App 컴포넌트를 DOM에 마운트
       ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     </script>
   </body>
