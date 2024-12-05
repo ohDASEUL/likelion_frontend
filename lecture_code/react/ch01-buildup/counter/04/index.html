@@ -2,27 +2,40 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <!-- 반응형 웹 디자인을 위한 뷰포트 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter</title>
   </head>
   <body>
+    <!-- 애플리케이션이 마운트될 루트 요소 -->
     <div id="root"></div>
 
+    <!-- 컴포넌트 기반 UI 구현을 위한 모듈 스크립트 -->
     <script type="module">
+      // Yong 라이브러리 임포트
       import Yong from "./yong.js";
-      // 애플리케이션의 시작점
+
+      /**
+       * 애플리케이션의 시작점 - 최상위 컴포넌트 함수
+       * React 스타일의 컴포넌트 구조를 따르는 함수
+       * @returns {Element} 전체 애플리케이션 UI 구조
+       */
       function App() {
+        // 중첩된 createElement 호출을 통해 선언적으로 UI 구조 정의
         return Yong.createElement(
           "div",
           { id: "app" },
+          // 헤더 섹션
           Yong.createElement(
             "header",
             null,
+            // 제목
             Yong.createElement(
               "h1",
               null,
               "Counter - createElement() 라이브러리 사용"
             ),
+            // 파일 경로 표시
             Yong.createElement(
               "p",
               null,
@@ -30,52 +43,71 @@
               Yong.createElement(
                 "span",
                 { id: "filepath" },
+                // URL에서 챕터 번호를 추출하여 경로 생성
                 `ch${document.URL.split("/ch")[1]}index.html`
               )
             )
           ),
+          // 카운터 섹션
           Yong.createElement(
             "div",
             { id: "counter" },
+            // 감소 버튼
             Yong.createElement(
               "button",
               { type: "button", onclick: "handleDown()" },
               "-"
             ),
+            // 리셋 버튼
             Yong.createElement(
               "button",
               { type: "button", onclick: "handleReset(event)" },
               0
             ),
+            // 증가 버튼
             Yong.createElement(
               "button",
               { type: "button", onclick: "handleUp()" },
               "+"
             ),
+            // 카운터 값 표시
             Yong.createElement("span", null, 0)
           )
         );
       }
+
+      // createRoot를 사용하여 App 컴포넌트를 루트 요소에 렌더링
       Yong.createRoot(document.getElementById("root")).render(App);
     </script>
 
+    <!-- 카운터 기능 구현을 위한 스크립트 -->
     <script type="text/javascript">
+      // 카운터의 현재 값을 저장하는 전역 변수
       let count = 0;
 
+      // 카운터 감소 함수
       const handleDown = () => {
-        // TODO: 데이터 갱신
+        // 카운터 값을 1 감소
         count--;
-        // TODO: 화면 갱신
+        // DOM에서 카운터 표시 요소를 찾아 새로운 값으로 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
+
+      // 카운터 증가 함수
       const handleUp = () => {
+        // 카운터 값을 1 증가
         count++;
+        // DOM에서 카운터 표시 요소를 찾아 새로운 값으로 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
+
+      // 카운터 리셋 함수
       const handleReset = (event) => {
+        // 카운터 값을 0으로 초기화
         count = 0;
+        // DOM에서 카운터 표시 요소를 찾아 초기값으로 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
