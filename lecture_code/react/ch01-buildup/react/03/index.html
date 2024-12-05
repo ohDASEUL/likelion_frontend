@@ -4,20 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List App</title>
+    <!-- React 관련 라이브러리 로드 -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
   </head>
   <body>
+    <!-- React 앱이 마운트될 루트 요소 -->
     <div id="root"></div>
 
     <script type="text/babel">
+      // Header 컴포넌트: 앱의 제목과 파일 경로를 표시
       function Header() {
         return (
           <header>
             <h1>Todo List - 컴포넌트 분리 :()</h1>
+            {/* 현재 파일의 경로를 동적으로 추출하여 표시 */}
             <p>
-              파일 경로:{" "}
+              파일 경로:
               <span id="filepath">{`ch${
                 document.URL.split("/ch")[1]
               }index.html`}</span>
@@ -26,32 +30,43 @@
         );
       }
 
+      // TodoInput 컴포넌트: 새로운 할 일 항목을 입력받는 폼
       function TodoInput() {
         return (
           <div className="todoinput">
+            {/* autoFocus로 페이지 로드 시 자동 포커스 설정 */}
             <input type="text" autoFocus />
             <button type="button">추가</button>
           </div>
         );
       }
 
+      // TodoItem 컴포넌트: 개별 할 일 항목을 표시
+      // props로 item 객체를 받아 각 항목의 정보를 표시
       function TodoItem({ item }) {
         return (
           <li>
             <span>{item._id}</span>
+            {/* done 상태에 따라 취소선(s 태그) 적용 */}
             <span>{item.done ? <s>{item.title}</s> : item.title}</span>
             <button type="button">삭제</button>
           </li>
         );
       }
 
+      // TodoList 컴포넌트: 전체 할 일 목록을 관리
+      // props로 itemList 배열을 받아 TodoItem 컴포넌트들을 생성
       function TodoList({ itemList }) {
+        // map을 사용하여 배열의 각 항목을 TodoItem 컴포넌트로 변환
         const list = itemList.map((item) => (
+          // key prop으로 각 항목의 고유 ID를 사용
           <TodoItem key={item._id} item={item} />
         ));
         return <ul className="todolist">{list}</ul>;
       }
 
+      // Todo 컴포넌트: 할 일 관리의 메인 섹션
+      // props로 itemList를 받아 하위 컴포넌트들에게 전달
       function Todo(props) {
         return (
           <div id="main">
@@ -60,6 +75,7 @@
                 <li>
                   <h2>쇼핑 목록</h2>
                   <TodoInput />
+                  {/* itemList를 TodoList 컴포넌트에 전달 */}
                   <TodoList itemList={props.itemList} />
                 </li>
               </ul>
@@ -68,6 +84,7 @@
         );
       }
 
+      // Footer 컴포넌트: 앱의 하단 정보를 표시
       function Footer() {
         return (
           <footer>
@@ -76,14 +93,16 @@
         );
       }
 
+      // App 컴포넌트: 애플리케이션의 최상위 컴포넌트
       function App() {
-        // 샘플 목록
+        // 초기 샘플 데이터 정의
         const itemList = [
           { _id: 1, title: "두부", done: true },
           { _id: 2, title: "계란", done: false },
           { _id: 3, title: "라면", done: true },
         ];
 
+        // 전체 앱 구조 렌더링
         return (
           <div id="todo">
             <Header />
@@ -93,6 +112,7 @@
         );
       }
 
+      // React 18의 새로운 렌더링 API를 사용하여 App을 DOM에 마운트
       ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     </script>
   </body>
