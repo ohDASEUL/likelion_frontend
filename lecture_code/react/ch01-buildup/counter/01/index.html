@@ -2,46 +2,69 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <!-- 반응형 웹 디자인을 위한 뷰포트 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter</title>
   </head>
   <body>
+    <!-- 전체 애플리케이션을 감싸는 최상위 컨테이너 -->
     <div id="app">
+      <!-- 헤더 섹션: 제목과 파일 경로 정보 표시 -->
       <header>
         <h1>Counter - HTML + JS</h1>
+        <!-- 현재 파일의 경로를 동적으로 표시할 요소 -->
         <p>파일 경로: <span id="filepath"></span></p>
       </header>
+
+      <!-- 카운터 컴포넌트: 버튼들과 카운터 값 표시 -->
       <div id="counter">
+        <!-- 감소 버튼: handleDown 함수 호출 -->
         <button type="button" onclick="handleDown()">-</button>
+        <!-- 리셋 버튼: handleReset 함수 호출 -->
         <button type="button" onclick="handleReset(event)">0</button>
+        <!-- 증가 버튼: handleUp 함수 호출 -->
         <button type="button" onclick="handleUp()">+</button>
+        <!-- 현재 카운터 값을 표시하는 요소 -->
         <span>0</span>
       </div>
     </div>
 
+    <!-- 파일 경로 표시를 위한 스크립트 -->
     <script type="text/javascript">
+      // URL에서 챕터 번호를 추출하여 파일 경로 생성 및 표시
       document.querySelector("#filepath").textContent = `ch${
         document.URL.split("/ch")[1]
       }index.html`;
     </script>
 
+    <!-- 카운터 기능 구현을 위한 스크립트 -->
     <script type="text/javascript">
+      // 카운터의 현재 값을 저장하는 전역 변수
       let count = 0;
 
+      // 카운터 값 감소 함수
       const handleDown = () => {
-        // TODO: 데이터 갱신
+        // 카운터 값을 1 감소
         count--;
-        // TODO: 화면 갱신
+        // DOM에서 카운터 표시 요소를 찾아 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
+
+      // 카운터 값 증가 함수
       const handleUp = () => {
+        // 카운터 값을 1 증가
         count++;
+        // DOM에서 카운터 표시 요소를 찾아 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
+
+      // 카운터 값 리셋 함수
       const handleReset = (event) => {
+        // 카운터 값을 0으로 초기화
         count = 0;
+        // DOM에서 카운터 표시 요소를 찾아 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };

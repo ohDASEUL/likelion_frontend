@@ -2,98 +2,120 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <!-- 반응형 웹 디자인을 위한 뷰포트 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter</title>
   </head>
   <body>
+    <!-- JavaScript로 동적으로 UI를 구성할 루트 요소 -->
     <div id="root"></div>
 
+    <!-- UI 동적 생성을 위한 스크립트 -->
     <script type="text/javascript">
-      // <h1>Counter - JS로 UI 구성</h1>
+      // 1. 제목 요소 생성
+      // createElement를 사용하여 h1 요소를 생성하고 텍스트 노드를 추가
       const h1 = document.createElement("h1");
       const h1Txt = document.createTextNode("Counter - JS로 UI 구성");
       h1.appendChild(h1Txt);
 
-      // <p>파일 경로: <span id="filepath"></span></p>
+      // 2. 파일 경로 표시 요소 생성
+      // p 태그와 span 태그를 조합하여 파일 경로를 표시할 구조 생성
       const p = document.createElement("p");
-      p.setAttribute("id", "filepath");
-      const pTxt = document.createTextNode("파일 경로:");
+      const pTxt = document.createTextNode("파일 경로: ");
       const filePath = document.createElement("span");
-      filePath.setAttribute("id", "filepath");
+      filePath.setAttribute("id", "filepath"); // 파일 경로를 동적으로 표시하기 위한 id 설정
       p.appendChild(pTxt);
       p.appendChild(filePath);
 
-      // <button type="button" onclick="handleDown()">-</button>
+      // 3. 감소 버튼 생성
+      // 버튼 요소 생성 및 속성 설정
       const downBtn = document.createElement("button");
       const downBtnTxt = document.createTextNode("-");
       downBtn.setAttribute("type", "button");
-      downBtn.setAttribute("onclick", "handleDown()");
+      downBtn.setAttribute("onclick", "handleDown()"); // 클릭 이벤트 핸들러 설정
       downBtn.appendChild(downBtnTxt);
 
-      // <button type="button" onclick="handleReset(event)">0</button>
-      const zeroBtn = document.createElement("button");
-      const zeroBtnTxt = document.createTextNode("0");
-      zeroBtn.setAttribute("type", "button");
-      zeroBtn.setAttribute("onclick", "handleReset(event)");
-      zeroBtn.appendChild(zeroBtnTxt);
+      // 4. 리셋 버튼 생성
+      const resetBtn = document.createElement("button");
+      const resetBtnTxt = document.createTextNode("0");
+      resetBtn.setAttribute("type", "button");
+      resetBtn.setAttribute("onclick", "handleReset(event)");
+      resetBtn.appendChild(resetBtnTxt);
 
-      // <button type="button" onclick="handleUp()">+</button>
-      const plusBtn = document.createElement("button");
-      const plusBtnTxt = document.createTextNode("+");
-      plusBtn.setAttribute("type", "button");
-      plusBtn.setAttribute("onclick", "handleUp()");
-      plusBtn.appendChild(plusBtnTxt);
+      // 5. 증가 버튼 생성
+      const upBtn = document.createElement("button");
+      const upBtnTxt = document.createTextNode("+");
+      upBtn.setAttribute("type", "button");
+      upBtn.setAttribute("onclick", "handleUp()");
+      upBtn.appendChild(upBtnTxt);
 
-      // <span>0</span>
-      const zero = document.createElement("span");
-      const zeroTxt = document.createTextNode("0");
-      zero.appendChild(zeroTxt);
+      // 6. 카운터 값 표시 요소 생성
+      const span = document.createElement("span");
+      const spanTxt = document.createTextNode(0); // 초기값 0 설정
+      span.appendChild(spanTxt);
 
-      // <header>
+      // 7. 헤더 섹션 구성
+      // 제목과 파일 경로를 포함하는 헤더 생성
       const Header = document.createElement("header");
       Header.appendChild(h1);
       Header.appendChild(p);
 
-      // <div id="counter">
+      // 8. 카운터 섹션 구성
+      // 버튼들과 카운터 값을 포함하는 counter div 생성
       const Counter = document.createElement("div");
       Counter.setAttribute("id", "counter");
       Counter.appendChild(downBtn);
-      Counter.appendChild(zeroBtn);
-      Counter.appendChild(plusBtn);
-      Counter.appendChild(zero);
+      Counter.appendChild(resetBtn);
+      Counter.appendChild(upBtn);
+      Counter.appendChild(span);
 
-      // <div id="app">
+      // 9. 전체 앱 구조 구성
+      // 헤더와 카운터를 포함하는 최상위 컨테이너 생성
       const App = document.createElement("div");
       App.setAttribute("id", "app");
       App.appendChild(Header);
       App.appendChild(Counter);
 
+      // 10. 생성된 UI를 DOM에 추가
       document.getElementById("root").appendChild(App);
     </script>
 
+    <!-- 파일 경로 동적 표시를 위한 스크립트 -->
     <script type="text/javascript">
+      // URL에서 챕터 번호를 추출하여 파일 경로 표시
       document.querySelector("#filepath").textContent = `ch${
         document.URL.split("/ch")[1]
       }index.html`;
     </script>
 
+    <!-- 카운터 기능 구현을 위한 스크립트 -->
     <script type="text/javascript">
+      // 카운터의 현재 값을 저장하는 전역 변수
       let count = 0;
 
+      // 카운터 감소 함수
       const handleDown = () => {
-        // TODO: 데이터 갱신
+        // 카운터 값을 1 감소
         count--;
-        // TODO: 화면 갱신
+        // DOM에서 카운터 표시 요소를 찾아 새로운 값으로 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
+
+      // 카운터 증가 함수
       const handleUp = () => {
+        // 카운터 값을 1 증가
         count++;
+        // DOM에서 카운터 표시 요소를 찾아 새로운 값으로 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
+
+      // 카운터 리셋 함수
       const handleReset = (event) => {
+        // 카운터 값을 0으로 초기화
         count = 0;
+        // DOM에서 카운터 표시 요소를 찾아 초기값으로 업데이트
         const counterSpan = document.querySelector("#counter > span");
         counterSpan.textContent = count;
       };
