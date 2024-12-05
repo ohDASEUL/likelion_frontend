@@ -4,20 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter</title>
+    <!-- React 라이브러리 로드 -->
+    <!-- React 핵심 라이브러리 -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- React DOM 라이브러리 - 웹 브라우저에서 React를 사용하기 위한 도구 -->
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel - JSX를 일반 JavaScript로 변환하는 도구 -->
     <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
   </head>
   <body>
+    <!-- React 애플리케이션이 마운트될 루트 엘리먼트 -->
     <div id="root"></div>
 
+    <!-- React 컴포넌트 정의 시작 -->
     <script type="text/babel">
+      // Header 컴포넌트: 페이지 상단의 제목과 파일 경로를 표시
       function Header() {
         return (
           <header>
             <h1>Counter - React</h1>
             <p>
               파일 경로:{" "}
+              {/* 현재 URL에서 'ch' 이후의 부분을 추출하여 파일 경로 표시 */}
               <span id="filepath">{`ch${
                 document.URL.split("/ch")[1]
               }index.html`}</span>
@@ -26,35 +34,49 @@
         );
       }
 
+      // Counter 컴포넌트: 카운터의 핵심 기능을 구현
       function Counter() {
+        // React의 useState 훅을 사용하여 카운터 상태 관리
+        // count: 현재 카운터 값, setCount: 카운터 값을 업데이트하는 함수
         let [count, setCount] = React.useState(0);
 
+        // 카운터 감소 함수
         const handleDown = () => {
           setCount(count - 1);
         };
+
+        // 카운터 증가 함수
         const handleUp = () => {
           setCount(count + 1);
         };
+
+        // 카운터 리셋 함수
         const handleReset = (event) => {
           setCount(0);
         };
 
+        // Counter 컴포넌트의 UI 렌더링
         return (
           <div id="counter">
+            {/* 감소 버튼 */}
             <button type="button" onClick={handleDown}>
               -
             </button>
+            {/* 리셋 버튼 */}
             <button type="button" onClick={(event) => handleReset(event)}>
               0
             </button>
+            {/* 증가 버튼 */}
             <button type="button" onClick={handleUp}>
               +
             </button>
+            {/* 현재 카운터 값 표시 */}
             <span>{count}</span>
           </div>
         );
       }
 
+      // App 컴포넌트: 전체 애플리케이션의 레이아웃을 구성
       function App() {
         return (
           <div id="app">
@@ -64,6 +86,8 @@
         );
       }
 
+      // React 애플리케이션을 DOM에 렌더링
+      // createRoot: React 18의 새로운 렌더링 API를 사용
       ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     </script>
   </body>
