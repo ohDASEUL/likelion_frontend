@@ -1,33 +1,29 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 
 function TodoDetail() {
+  // URL의 파라미터 추출
+  // 라우터에 'list/:_id'로 등록된 컴포넌트가 호출되는 경우
+  // URL이 list/3일 때 useParams()는 { _id: 3 }을 반환
   const { _id } = useParams();
   console.log(_id);
 
   const navigate = useNavigate();
 
-  const [data, setData] = useState();
-
   const axios = useAxiosInstance();
 
-  // API 서버로부터 상세정보를 조회해오는 함수 선언
-  const fetchDetail = async () => {
-    const res = await axios.get(`/todolist/${_id}`);
-    setData(res.data);
-  };
-  // fetchDetail 은 새로운 정보를 조회하여 data 를 새로운 상태값으로 지정
-
-  // 최초 마운트될 때 fetchDetail 한 번만 호출
-  useEffect(() => {
-    fetchDetail();
-  }, []);
+  const { data, isLoading } = useQuery({
+    queryKey: ["todolist", _id],
+    queryFn: () => axios.get(`/todolist/${_id}`),
+    select: (res) => res.data,
+    staleTime: 1000 * 60,
+  });
 
   return (
     <div id="main">
       <h2>할일 상세 보기</h2>
-
+      {isLoading && <div>로딩중...</div>}
       {data && (
         <>
           <div className="todo">
@@ -43,7 +39,7 @@ function TodoDetail() {
             </button>
           </div>
 
-          <Outlet context={{ item: data.item, refetch: fetchDetail }} />
+          <Outlet context={{ item: data.item }} />
         </>
       )}
     </div>
