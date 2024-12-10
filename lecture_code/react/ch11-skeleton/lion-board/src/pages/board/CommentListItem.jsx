@@ -48,14 +48,12 @@ export default function CommentListItem({ comment }) {
       <div className="flex justify-between items-center mb-2">
         <form onSubmit={handleDelete}>
           <pre className="whitespace-pre-wrap text-sm">{comment.content}</pre>
-          {comment.isMine && (
-            <button
-              type="submit"
-              className="bg-red-500 py-1 px-2 text-sm text-white font-semibold ml-2 hover:bg-amber-400 rounded"
-            >
-              삭제
-            </button>
-          )}
+          <button
+            type="submit"
+            className="bg-red-500 py-1 px-2 text-sm text-white font-semibold ml-2 hover:bg-amber-400 rounded"
+          >
+            삭제
+          </button>
         </form>
       </div>
     </div>
@@ -64,10 +62,10 @@ export default function CommentListItem({ comment }) {
 
 CommentListItem.propTypes = {
   comment: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
+    _id: PropTypes.number.isRequired,
     content: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
-    isMine: PropTypes.bool.isRequired,
+    isMine: PropTypes.bool,
     user: PropTypes.shape({
       name: PropTypes.string,
       image: PropTypes.string,
