@@ -1,41 +1,38 @@
-import InputError from "@components/InputError";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import InputError from "@components/InputError";
 
-export default function Edit() {
-  const { type, _id } = useParams();
-  const axios = useAxiosInstance();
+export default function New() {
+  const navigate = useNavigate(); // 페이지 이동을 위한 훅
 
-  const { data } = useQuery({
-    queryKey: ["posts", _id],
-    queryFn: () => axios.get(`/posts/${_id}`),
-    select: (res) => res.data,
-    staleTime: 1000 * 10,
-  });
-
-  const navigate = useNavigate();
-
+  // react-hook-form 설정
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      title: data?.item.title,
-      content: data?.item.content,
-    },
-  });
+    register, // 입력 필드 등록
+    handleSubmit, // 폼 제출 핸들러
+    formState: { errors }, // 유효성 검사 에러 상태
+  } = useForm();
 
+  const axios = useAxiosInstance();
+  const { type } = useParams(); // URL: 파라미터에서 게시판 타입 추출
   const queryClient = useQueryClient();
 
-  const updateItem = useMutation({
-    mutationFn: (formData) => axios.patch(`/posts/${_id}`, formData),
+  // 게시글 추가 mutation 설정
+  const addItem = useMutation({
+    mutationFn: (formData) => {
+      const body = {
+        title: formData.title,
+        content: formData.content,
+        type: type,
+      };
+      return axios.post(`/posts`, body);
+    },
     onSuccess: () => {
-      alert("게시물이 수정되었습니다.");
-      queryClient.invalidateQueries({ queryKey: ["posts", _id] });
-      navigate(`/${type}/${_id}`);
+      // 게시글 등록 성공 시 처리
+      alert("게시물이 등록되었습니다.");
+      queryClient.invalidateQueries({ queryKey: ["posts", type] }); // 목록 갱신
+      navigate(`/${type}`); // 목록 페이지로 이동
     },
     onError: (err) => {
       console.error(err);
@@ -46,11 +43,11 @@ export default function Edit() {
     <main className="min-w-[320px] p-4">
       <div className="text-center py-4">
         <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
-          게시글 수정
+          게시글 등록
         </h2>
       </div>
       <section className="mb-8 p-4">
-        <form action="/info/1" onSubmit={handleSubmit(updateItem.mutate)}>
+        <form onSubmit={handleSubmit(addItem.mutate)}>
           <div className="my-4">
             <label className="block text-lg content-center" htmlFor="title">
               제목
@@ -60,9 +57,8 @@ export default function Edit() {
               type="text"
               placeholder="제목을 입력하세요."
               className="w-full py-2 px-4 border rounded-md dark:bg-gray-700 border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-              {...register("title", { required: "제목은 필수 입니다." })}
+              {...register("title", { required: "제목은 필수입니다." })}
             />
-
             <InputError target={errors.title} />
           </div>
           <div className="my-4">
@@ -74,10 +70,9 @@ export default function Edit() {
               rows="15"
               placeholder="내용을 입력하세요."
               className="w-full p-4 text-sm border rounded-lg border-gray-300 bg-gray-50 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              {...register("content", { required: "내용은 필수 입니다." })}
-            />
-
-            <InputError target={errors.title} />
+              {...register("content", { required: "내용은 필수입니다." })}
+            ></textarea>
+            <InputError target={errors.content} />
           </div>
           <hr />
           <div className="flex justify-end my-6">
@@ -85,10 +80,10 @@ export default function Edit() {
               type="submit"
               className="bg-orange-500 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
             >
-              수정
+              등록
             </button>
             <Link
-              to={`/${type}/${_id}`}
+              to="/info"
               className="bg-gray-900 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
             >
               취소
