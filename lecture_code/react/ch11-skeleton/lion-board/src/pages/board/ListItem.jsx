@@ -7,11 +7,22 @@ ListItem.propTypes = {
     title: PropTypes.string.isRequired,
     user: PropTypes.shape({
       name: PropTypes.string.isRequired,
-    }),
+      type: PropTypes.string,
+      image: PropTypes.string,
+      email: PropTypes.string,
+      _id: PropTypes.number,
+    }).isRequired,
+    type: PropTypes.string,
     views: PropTypes.number.isRequired,
     repliesCount: PropTypes.number.isRequired,
     createdAt: PropTypes.string.isRequired,
-  }),
+    updatedAt: PropTypes.string,
+    content: PropTypes.string,
+    bookmarks: PropTypes.number,
+    product: PropTypes.shape({
+      image: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default function ListItem({ item }) {
@@ -19,7 +30,10 @@ export default function ListItem({ item }) {
     <tr className="border-b border-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
       <td className="p-2 text-center">{item._id}</td>
       <td className="p-2 truncate indent-4">
-        <Link to={`${item._id}`} className="cursor-pointer">
+        <Link
+          to={`${item._id}`}
+          className="cursor-pointer hover:text-orange-500"
+        >
           {item.title}
         </Link>
       </td>
@@ -29,7 +43,7 @@ export default function ListItem({ item }) {
         {item.repliesCount}
       </td>
       <td className="p-2 truncate text-center hidden sm:table-cell">
-        {item.createdAt}
+        {new Date(item.createdAt).toLocaleString()}
       </td>
     </tr>
   );

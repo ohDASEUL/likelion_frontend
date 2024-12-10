@@ -5,25 +5,33 @@ import useAxiosInstance from "@hooks/useAxiosInstance";
 
 export default function List() {
   const axios = useAxiosInstance();
-
-  // /:type
-  // localhost/info => useParams()의 리턴값 { type: info }
   const { type } = useParams();
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["posts", type],
-    queryFn: () => axios.get("/posts", { params: { type } }),
-    select: (res) => res.data,
+    queryFn: async () => {
+      const response = await axios.get("/posts", { params: { type } });
+      console.log("API Response Data:", response.data);
+      // title이 없는 항목 체크
+      const invalidItems = response.data.item.filter((item) => !item.title);
+      if (invalidItems.length > 0) {
+        console.log("Items without title:", invalidItems);
+      }
+      return response.data.item.filter(
+        (item) => item && item.title && item._id && item.user && item.user.name
+      );
+    },
     staleTime: 1000 * 10,
   });
 
-  console.log(data);
-
-  if (!data) {
-    return <div>로딩중...</div>;
+  // 로딩 중이거나 데이터가 없는 경우
+  if (isLoading || !data) {
+    return (
+      <div className="flex justify-center items-center min-h-[200px]">
+        <div className="text-gray-500">로딩중...</div>
+      </div>
+    );
   }
-
-  const list = data.item.map((item) => <ListItem key={item._id} item={item} />);
 
   return (
     <main className="min-w-80 p-10">
@@ -80,17 +88,21 @@ export default function List() {
               </th>
             </tr>
           </thead>
-          <tbody>{list}</tbody>
+          <tbody>
+            {data.map((item) => (
+              <ListItem key={item._id} item={item} />
+            ))}
+          </tbody>
         </table>
         <hr />
 
         <div>
           <ul className="flex justify-center gap-3 m-4">
             <li className="font-bold text-blue-700">
-              <Link to="/info?page=1">1</Link>
+              <Link to={`/${type}?page=1`}>1</Link>
             </li>
             <li>
-              <Link to="/info?page=2">2</Link>
+              <Link to={`/${type}?page=2`}>2</Link>
             </li>
           </ul>
         </div>
