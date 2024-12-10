@@ -5,10 +5,11 @@ import useUserStore from "@zustand/userStore";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Detail() {
-  const { user } = useUserStore();
+  const { user } = useUserStore(); // 현재 로그인한 사용자 정보
   const axios = useAxiosInstance();
-  const { type, _id } = useParams();
+  const { type, _id } = useParams(); // URL 파리미터 추출
 
+  // 게시글 상세 정보 조회
   const { data } = useQuery({
     queryKey: ["posts", _id],
     queryFn: () => axios.get(`/posts/${_id}`),
@@ -19,6 +20,7 @@ export default function Detail() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
+  // 게시글 삭제 mutation 설정
   const removeItem = useMutation({
     mutationFn: (_id) => axios.delete(`/posts/${_id}`),
     onSuccess: () => {
@@ -28,11 +30,13 @@ export default function Detail() {
     },
   });
 
+  // 삭제 버튼 클릭 핸들러
   const onSubmit = (event) => {
     event.preventDefault();
     removeItem.mutate(_id);
   };
 
+  // 로딩 중 UI
   if (!data) {
     return <div>로딩중...</div>;
   }

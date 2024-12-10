@@ -5,19 +5,20 @@ import { useForm } from "react-hook-form";
 import InputError from "@components/InputError";
 
 export default function New() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // 페이지 이동을 위한 훅
 
+  // react-hook-form 설정
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
+    register, // 입력 필드 등록
+    handleSubmit, // 폼 제출 핸들러
+    formState: { errors }, // 유효성 검사 에러 상태
   } = useForm();
 
   const axios = useAxiosInstance();
-  const { type, _id } = useParams();
-
+  const { type } = useParams(); // URL: 파라미터에서 게시판 타입 추출
   const queryClient = useQueryClient();
 
+  // 게시글 추가 mutation 설정
   const addItem = useMutation({
     mutationFn: (formData) => {
       const body = {
@@ -28,9 +29,10 @@ export default function New() {
       return axios.post(`/posts`, body);
     },
     onSuccess: () => {
+      // 게시글 등록 성공 시 처리
       alert("게시물이 등록되었습니다.");
-      queryClient.invalidateQueries({ queryKey: ["posts", type] });
-      navigate(`/${type}`);
+      queryClient.invalidateQueries({ queryKey: ["posts", type] }); // 목록 갱신
+      navigate(`/${type}`); // 목록 페이지로 이동
     },
     onError: (err) => {
       console.error(err);
@@ -57,7 +59,7 @@ export default function New() {
               className="w-full py-2 px-4 border rounded-md dark:bg-gray-700 border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
               {...register("title", { required: "제목은 필수입니다." })}
             />
-            <InputError />
+            <InputError target={errors.title} />
           </div>
           <div className="my-4">
             <label className="block text-lg content-center" htmlFor="content">

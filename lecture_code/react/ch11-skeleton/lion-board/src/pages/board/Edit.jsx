@@ -8,6 +8,7 @@ export default function Edit() {
   const { type, _id } = useParams();
   const axios = useAxiosInstance();
 
+  // 기존 게시글 정보 조회
   const { data } = useQuery({
     queryKey: ["posts", _id],
     queryFn: () => axios.get(`/posts/${_id}`),
@@ -17,6 +18,7 @@ export default function Edit() {
 
   const navigate = useNavigate();
 
+  // react-hook-form 설정 (기존 데이터를 폼의 초기값으로 설정)
   const {
     register,
     handleSubmit,
@@ -30,6 +32,7 @@ export default function Edit() {
 
   const queryClient = useQueryClient();
 
+  // 게시글 수정 mutation 설정
   const updateItem = useMutation({
     mutationFn: (formData) => axios.patch(`/posts/${_id}`, formData),
     onSuccess: () => {
@@ -50,7 +53,7 @@ export default function Edit() {
         </h2>
       </div>
       <section className="mb-8 p-4">
-        <form action="/info/1" onSubmit={handleSubmit(updateItem.mutate)}>
+        <form onSubmit={handleSubmit(updateItem.mutate)}>
           <div className="my-4">
             <label className="block text-lg content-center" htmlFor="title">
               제목
@@ -60,9 +63,8 @@ export default function Edit() {
               type="text"
               placeholder="제목을 입력하세요."
               className="w-full py-2 px-4 border rounded-md dark:bg-gray-700 border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-              {...register("title", { required: "제목은 필수 입니다." })}
+              {...register("title", { required: "제목은 필수입니다." })}
             />
-
             <InputError target={errors.title} />
           </div>
           <div className="my-4">
@@ -74,10 +76,9 @@ export default function Edit() {
               rows="15"
               placeholder="내용을 입력하세요."
               className="w-full p-4 text-sm border rounded-lg border-gray-300 bg-gray-50 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              {...register("content", { required: "내용은 필수 입니다." })}
+              {...register("content", { required: "내용은 필수입니다." })}
             />
-
-            <InputError target={errors.title} />
+            <InputError target={errors.content} />
           </div>
           <hr />
           <div className="flex justify-end my-6">
