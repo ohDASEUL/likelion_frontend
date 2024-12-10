@@ -65,6 +65,7 @@ CommentListItem.propTypes = {
     _id: PropTypes.number.isRequired,
     content: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string,
     isMine: PropTypes.bool,
     user: PropTypes.shape({
       name: PropTypes.string,
