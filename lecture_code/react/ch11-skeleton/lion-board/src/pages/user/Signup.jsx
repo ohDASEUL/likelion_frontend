@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const navigate = useNavigate();
+  const axios = useAxiosInstance();
 
   const {
     register,
@@ -14,15 +15,30 @@ export default function Signup() {
     setError,
   } = useForm();
 
-  const axios = useAxiosInstance();
-
   const addUser = useMutation({
-    mutationFn: (formData) => {
+    mutationFn: async (formData) => {
+      let imageUrl = null;
+
+      // 이미지 업로드 처리
+      if (formData.attach?.length > 0) {
+        const imageFormData = new FormData();
+        imageFormData.append("attach", formData.attach[0]);
+
+        const fileRes = await axios.post("/files", imageFormData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        imageUrl = fileRes.data.item[0];
+      }
+
+      // 유저 정보 생성
       const body = {
         type: "user",
         name: formData.name,
         email: formData.email,
         password: formData.password,
+        profileImage: imageUrl, // 업로드된 이미지 URL
       };
       return axios.post(`/users`, body);
     },
@@ -41,6 +57,7 @@ export default function Signup() {
       }
     },
   });
+
   return (
     <main className="min-w-80 flex-grow flex items-center justify-center">
       <div className="p-8 border border-gray-200 rounded-lg w-full max-w-md dark:bg-gray-600 dark:border-0">
@@ -67,6 +84,7 @@ export default function Signup() {
             />
             <InputError target={errors.name} />
           </div>
+
           <div className="mb-4">
             <label
               className="block text-gray-700 dark:text-gray-200 mb-2"
@@ -83,6 +101,7 @@ export default function Signup() {
             />
             <InputError target={errors.email} />
           </div>
+
           <div className="mb-4">
             <label
               className="block text-gray-700 dark:text-gray-200 mb-2"
@@ -113,7 +132,7 @@ export default function Signup() {
               accept="image/*"
               placeholder="이미지를 선택하세요"
               className="w-full px-3 py-2 border rounded-lg dark:bg-gray-700"
-              name="attach"
+              {...register("attach")}
             />
           </div>
 
