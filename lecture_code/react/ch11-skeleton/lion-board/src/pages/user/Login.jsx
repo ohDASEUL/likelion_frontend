@@ -1,10 +1,12 @@
 import InputError from "@components/InputError";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation } from "@tanstack/react-query";
+import useUserStore from "@zustand/userStore";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const setUser = useUserStore((store) => store.setUser);
   const navigate = useNavigate();
   const {
     register,
@@ -13,11 +15,22 @@ export default function Login() {
     setError,
   } = useForm();
   const axios = useAxiosInstance();
+
   const login = useMutation({
     mutationFn: (formData) => axios.post(`/users/login`, formData),
     onSuccess: (res) => {
-      console.log(res);
-      alert(res.data.item.name + "님, 로그인 되었습니다.");
+      console.log("Login response:", res.data.item);
+
+      const user = res.data.item;
+      setUser({
+        _id: user._id,
+        name: user.name,
+        profile: `/files/00-brunch/${user.profileImage.name}`, // 수정된 부분
+        accessToken: user.token.accessToken,
+        refreshToken: user.token.refreshToken,
+      });
+
+      alert(user.name + "님, 로그인 되었습니다.");
       navigate(`/`);
     },
     onError: (err) => {
