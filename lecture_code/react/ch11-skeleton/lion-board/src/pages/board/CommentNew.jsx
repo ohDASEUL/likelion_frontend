@@ -25,7 +25,7 @@ export default function CommentNew() {
     },
     onSuccess: () => {
       alert("댓글이 등록되었습니다.");
-      queryClient.invalidateQueries(["comments", _id]);
+      queryClient.invalidateQueries({ queryKey: ["comments", _id] });
       reset(); // 폼 초기화
     },
     onError: (err) => {

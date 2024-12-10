@@ -1,7 +1,7 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import CommentList from "@pages/board/CommentList";
-import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Detail() {
   const axios = useAxiosInstance();
@@ -15,6 +15,22 @@ export default function Detail() {
   });
 
   console.log(data);
+
+  const navigate = useNavigate();
+
+  const queryClient = useQueryClient();
+
+  const deleteItem = useMutation({
+    mutationFn: () => axios.delete(`/posts/${_id}`),
+    onSuccess: () => {
+      alert("게시물이 삭제되었습니다.");
+      queryClient.invalidateQueries({ queryKey: ["posts", _id] });
+      navigate(`/${type}`);
+    },
+    onError: (err) => {
+      console.error(err);
+    },
+  });
 
   if (!data) {
     return <div>로딩중...</div>;
@@ -50,7 +66,7 @@ export default function Detail() {
               수정
             </Link>
             <button
-              type="submit"
+              onClick={() => deleteItem.mutate()}
               className="bg-red-500 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
             >
               삭제
