@@ -1,9 +1,11 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import CommentList from "@pages/board/CommentList";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import useUserStore from "@zustand/userStore";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Detail() {
+  const { user } = useUserStore();
   const axios = useAxiosInstance();
   const { type, _id } = useParams();
 
@@ -14,23 +16,22 @@ export default function Detail() {
     staleTime: 1000 * 10,
   });
 
-  console.log(data);
-
   const navigate = useNavigate();
-
   const queryClient = useQueryClient();
 
-  const deleteItem = useMutation({
-    mutationFn: () => axios.delete(`/posts/${_id}`),
+  const removeItem = useMutation({
+    mutationFn: (_id) => axios.delete(`/posts/${_id}`),
     onSuccess: () => {
       alert("게시물이 삭제되었습니다.");
-      queryClient.invalidateQueries({ queryKey: ["posts", _id] });
+      queryClient.invalidateQueries({ queryKey: ["posts", type] });
       navigate(`/${type}`);
     },
-    onError: (err) => {
-      console.error(err);
-    },
   });
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    removeItem.mutate(_id);
+  };
 
   if (!data) {
     return <div>로딩중...</div>;
@@ -39,7 +40,7 @@ export default function Detail() {
   return (
     <main className="container mx-auto mt-4 px-4">
       <section className="mb-8 p-4">
-        <form action="/info">
+        <form onSubmit={onSubmit}>
           <div className="font-semibold text-xl">제목 : {data.item.title}</div>
           <div className="text-right text-gray-400">
             작성자 : {data.item.user.name}
@@ -59,23 +60,28 @@ export default function Detail() {
             >
               목록
             </Link>
-            <Link
-              to={`/${type}/${_id}/edit`}
-              className="bg-gray-900 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
-            >
-              수정
-            </Link>
-            <button
-              onClick={() => deleteItem.mutate()}
-              className="bg-red-500 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
-            >
-              삭제
-            </button>
+
+            {user?._id === data.item.user._id && (
+              <>
+                <Link
+                  to={`/${type}/${_id}/edit`}
+                  className="bg-gray-900 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
+                >
+                  수정
+                </Link>
+                <button
+                  type="submit"
+                  className="bg-red-500 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
+                >
+                  삭제
+                </button>
+              </>
+            )}
           </div>
         </form>
       </section>
 
-      <CommentList />
+      <CommentList data={data.item.replies} />
     </main>
   );
 }

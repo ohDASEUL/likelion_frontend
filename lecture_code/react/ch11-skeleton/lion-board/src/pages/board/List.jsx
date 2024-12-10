@@ -12,14 +12,25 @@ export default function List() {
     queryFn: async () => {
       const response = await axios.get("/posts", { params: { type } });
       console.log("API Response Data:", response.data);
-      // title이 없는 항목 체크
-      const invalidItems = response.data.item.filter((item) => !item.title);
-      if (invalidItems.length > 0) {
-        console.log("Items without title:", invalidItems);
-      }
-      return response.data.item.filter(
-        (item) => item && item.title && item._id && item.user && item.user.name
-      );
+
+      return response.data.item.filter((item) => {
+        if (
+          !item ||
+          !item.title ||
+          !item._id ||
+          !item.user ||
+          !item.user.name
+        ) {
+          return false;
+        }
+
+        // user.image가 객체인 경우 url 필드를 사용하거나, 없는 경우 null로 설정
+        if (item.user.image && typeof item.user.image === "object") {
+          item.user.image = item.user.image.url || null;
+        }
+
+        return true;
+      });
     },
     staleTime: 1000 * 10,
   });

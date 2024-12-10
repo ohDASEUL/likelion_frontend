@@ -8,7 +8,7 @@ ListItem.propTypes = {
     user: PropTypes.shape({
       name: PropTypes.string.isRequired,
       type: PropTypes.string,
-      image: PropTypes.string,
+      image: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
       email: PropTypes.string,
       _id: PropTypes.number,
     }).isRequired,
