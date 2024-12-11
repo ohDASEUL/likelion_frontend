@@ -16,11 +16,17 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: "zara@zara.com",
+      password: "zara1234!",
+    },
+  });
 
   const axios = useAxiosInstance();
 
   // 로그인 mutation 설정
+  // Login.jsx의 mutation 성공 핸들러 부분
   const login = useMutation({
     mutationFn: (formData) => axios.post(`/users/login`, formData),
     onSuccess: (res) => {
@@ -31,7 +37,7 @@ export default function Login() {
       setUser({
         _id: user._id,
         name: user.name,
-        profile: user.image?.path,
+        image: user.profileImage, // profileImage 전체 객체를 저장
         accessToken: user.token.accessToken,
         refreshToken: user.token.refreshToken,
       });
@@ -41,7 +47,6 @@ export default function Login() {
     },
     onError: (err) => {
       console.error(err);
-      // 서버에서 전달된 유효성 검사 에러 처리
       if (err.response?.data.errors) {
         err.response?.data.errors.forEach((error) =>
           setError(error.path, { message: error.msg })
