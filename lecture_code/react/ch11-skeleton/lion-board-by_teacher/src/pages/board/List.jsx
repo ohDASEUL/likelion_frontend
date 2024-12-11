@@ -57,12 +57,12 @@ export default function List() {
       <section className="pt-10">
         <table className="border-collapse w-full table-fixed">
           <colgroup>
-            <col className="w-[10%] sm:w-[10%]" /> {/* 번호 */}
-            <col className="w-[60%] sm:w-[30%]" /> {/* 제목 */}
-            <col className="w-[30%] sm:w-[15%]" /> {/* 글쓴이 */}
-            <col className="w-0 sm:w-[10%]" /> {/* 조회수 */}
-            <col className="w-0 sm:w-[10%]" /> {/* 댓글수 */}
-            <col className="w-0 sm:w-[25%]" /> {/* 작성일 */}
+            <col className="w-[10%] sm:w-[10%]" />
+            <col className="w-[60%] sm:w-[30%]" />
+            <col className="w-[30%] sm:w-[15%]" />
+            <col className="w-0 sm:w-[10%]" />
+            <col className="w-0 sm:w-[10%]" />
+            <col className="w-0 sm:w-[25%]" />
           </colgroup>
           <thead>
             <tr className="border-b border-solid border-gray-600">
