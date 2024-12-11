@@ -18,7 +18,7 @@ function useAxiosInstance() {
     headers: {
       "Content-Type": "application/json", // 요청 본문 타입을 JSON으로 설정
       accept: "application/json", // 응답 타입을 JSON으로 설정
-      "client-id": "00-branch", // 클라이언트 식별자
+      "client-id": "00-board", // 클라이언트 식별자
     },
   });
 
