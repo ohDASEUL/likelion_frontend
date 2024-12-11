@@ -2,10 +2,12 @@ import { Link, useParams } from "react-router-dom";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import PropTypes from "prop-types";
+import useUserStore from "@zustand/userStore";
 
 export default function CommentListItem({ comment }) {
+  const { user } = useUserStore();
   const axios = useAxiosInstance();
-  const { type, _id } = useParams();
+  const { _id } = useParams();
   const queryClient = useQueryClient();
 
   // 사용자 정보를 가져오는 쿼리 추가
@@ -15,14 +17,16 @@ export default function CommentListItem({ comment }) {
       const res = await axios.get(`/users/${comment.user._id}`);
       return res.data;
     },
-    enabled: !!comment.user?._id, // user._id가 있을 때만 쿼리 실행
+    enabled: !!comment.user?._id,
+    staleTime: 1000 * 60 * 5, // 5분간 캐시 유지
+    cacheTime: 1000 * 60 * 30, // 30분간 캐시 보관
   });
 
   const deleteComment = useMutation({
     mutationFn: () => axios.delete(`/posts/${_id}/replies/${comment._id}`),
     onSuccess: () => {
       alert("댓글이 삭제되었습니다.");
-      queryClient.invalidateQueries(["comments", _id]);
+      queryClient.invalidateQueries({ queryKey: ["comments", _id] });
     },
     onError: (err) => {
       console.error(err);
@@ -70,12 +74,14 @@ export default function CommentListItem({ comment }) {
       <div className="flex justify-between items-center mb-2">
         <form onSubmit={handleDelete}>
           <pre className="whitespace-pre-wrap text-sm">{comment.content}</pre>
-          <button
-            type="submit"
-            className="bg-red-500 py-1 px-2 text-sm text-white font-semibold ml-2 hover:bg-amber-400 rounded"
-          >
-            삭제
-          </button>
+          {user?._id === comment.user._id && (
+            <button
+              type="submit"
+              className="bg-red-500 py-1 px-2 text-sm text-white font-semibold ml-2 hover:bg-amber-400 rounded"
+            >
+              삭제
+            </button>
+          )}
         </form>
       </div>
     </div>
@@ -90,7 +96,7 @@ CommentListItem.propTypes = {
     updatedAt: PropTypes.string,
     isMine: PropTypes.bool,
     user: PropTypes.shape({
-      _id: PropTypes.number.isRequired,
+      _id: PropTypes.number,
       name: PropTypes.string,
       email: PropTypes.string,
     }),

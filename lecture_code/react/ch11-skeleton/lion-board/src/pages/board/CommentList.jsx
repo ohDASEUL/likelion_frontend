@@ -6,7 +6,7 @@ import CommentNew from "@pages/board/CommentNew";
 
 export default function CommentList() {
   const axios = useAxiosInstance();
-  const { type, _id } = useParams();
+  const { _id } = useParams();
 
   const { data: commentsData } = useQuery({
     queryKey: ["comments", _id],
