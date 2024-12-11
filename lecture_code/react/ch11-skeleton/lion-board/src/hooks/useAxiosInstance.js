@@ -1,46 +1,73 @@
 import useUserStore from "@zustand/userStore";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+
+const REFRESH_URL = "/auth/refresh";
 
 function useAxiosInstance() {
-  const { user } = useUserStore;
+  const { user, setUser, resetUser } = useUserStore();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const instance = axios.create({
     baseURL: "https://11.fesp.shop",
     timeout: 1000 * 15,
     headers: {
-      "Content-Type": "application/json", // request의 데이터 타입
-      accept: "application/json", // response의 데이터 타입
+      "Content-Type": "application/json",
+      accept: "application/json",
       "client-id": "00-board",
     },
   });
 
-  // 요청 인터셉터 추가하기
-  instance.interceptors.request.use((config) => {
-    if (user) {
-      config.headers["Authorization"] = `Bearer ${user.accessToken}`;
+  instance.interceptors.request.use(async (config) => {
+    if (!user) return config;
+
+    // 리프레시 토큰 요청인 경우
+    if (config.url === REFRESH_URL) {
+      config.headers["Authorization"] = `Bearer ${user.refreshToken}`;
+      return config;
     }
-    config.params = {
-      delay: 500,
-      ...config.params,
-    };
-    return config;
+
+    try {
+      const newToken = await getAccessToken(instance);
+      if (!newToken) {
+        resetUser();
+        const error = new Error("로그인이 만료되었습니다.");
+        error.isAuthError = true;
+        throw error;
+      }
+      config.headers["Authorization"] = `Bearer ${newToken}`;
+      return config;
+    } catch (error) {
+      resetUser();
+      throw error;
+    }
   });
 
-  // 응답 인터셉터 추가하기
   instance.interceptors.response.use(
-    (response) => {
-      // 2xx 범위에 있는 상태 코드는 이 함수가 호출됨
-      // 응답 데이터를 이용해서 필요한 공통 작업 수행
-
-      return response;
-    },
-    (error) => {
-      // 2xx 외의 범위에 있는 상태 코드는 이 함수가 호출됨
-      // 공통 에러 처리
-      console.error("인터셉터", error);
+    (response) => response,
+    async (error) => {
+      if (error.isAuthError) {
+        alert("로그인이 만료되었습니다. 다시 로그인해주세요.");
+        navigate("/users/login", { state: { from: location.pathname } });
+      }
       return Promise.reject(error);
     }
   );
+
+  async function getAccessToken(instance) {
+    try {
+      const {
+        data: { accessToken },
+      } = await instance.get(REFRESH_URL);
+      const tokenExpiry = new Date().getTime() + 8000; // 8초로 설정 (서버 만료시간 10초보다 조금 짧게)
+      setUser({ ...user, accessToken, tokenExpiry });
+      return accessToken;
+    } catch (err) {
+      console.error("토큰 재발급 실패:", err);
+      return null;
+    }
+  }
 
   return instance;
 }

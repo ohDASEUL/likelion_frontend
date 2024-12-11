@@ -25,9 +25,10 @@ export default function Login() {
       setUser({
         _id: user._id,
         name: user.name,
-        profile: `/files/00-brunch/${user.profileImage.name}`, // 수정된 부분
+        profile: user.image?.path,
         accessToken: user.token.accessToken,
         refreshToken: user.token.refreshToken,
+        tokenExpiry: new Date().getTime() + 60 * 60 * 1000, // 1시간 후 만료
       });
 
       alert(user.name + "님, 로그인 되었습니다.");
