@@ -1,6 +1,7 @@
 import { RouterProvider } from "react-router-dom";
 import router from "@/routes";
 import useThemeStore from "@zustand/themeStore";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   // 테마 스토어에서 현재 다크모드 상태 가져오기
@@ -14,7 +15,9 @@ function App() {
   }
 
   return (
-    <RouterProvider router={router} future={{ v7_startTransition: true }} />
+    <HelmetProvider>
+      <RouterProvider router={router} future={{ v7_startTransition: true }} />
+    </HelmetProvider>
   );
 }
 
