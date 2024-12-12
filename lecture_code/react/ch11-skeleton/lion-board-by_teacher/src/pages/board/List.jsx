@@ -1,11 +1,13 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import ListItem from "@pages/board/ListItem";
 import { useQuery } from "@tanstack/react-query";
+import useUserStore from "@zustand/userStore";
 import { Link, useParams } from "react-router-dom";
 
 export default function List() {
   const axios = useAxiosInstance();
   const { type } = useParams(); // URL 파라미터에서 게시판 타입 추출
+  const { user } = useUserStore();
 
   // React Query를 사용하여 게시글 목록 데이터 fetch
   const { data } = useQuery({
@@ -46,13 +48,14 @@ export default function List() {
             검색
           </button>
         </form>
-
-        <Link
-          to="new"
-          className="bg-orange-500 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
-        >
-          글작성
-        </Link>
+        {user && (
+          <Link
+            to="new"
+            className="bg-orange-500 py-1 px-4 text-base text-white font-semibold ml-2 hover:bg-amber-400 rounded"
+          >
+            글작성
+          </Link>
+        )}
       </div>
       <section className="pt-10">
         <table className="border-collapse w-full table-fixed">

@@ -1,3 +1,7 @@
+/**
+ * 게시글 작성 페이지 컴포넌트
+ * 사용자가 제목과 내용을 입력하여 새로운 게시글을 작성할 수 있는 폼을 제공합니다.
+ */
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -5,21 +9,22 @@ import { useForm } from "react-hook-form";
 import InputError from "@components/InputError";
 
 export default function New() {
-  const navigate = useNavigate(); // 페이지 이동을 위한 훅
+  const navigate = useNavigate();
 
-  // react-hook-form 설정
+  // react-hook-form의 주요 기능들을 구조 분해 할당으로 가져옴
   const {
-    register, // 입력 필드 등록
-    handleSubmit, // 폼 제출 핸들러
-    formState: { errors }, // 유효성 검사 에러 상태
+    register, // 폼 필드를 등록하고 유효성 검사 규칙을 설정
+    handleSubmit, // 폼 제출 시 실행될 함수를 설정
+    formState: { errors }, // 폼의 유효성 검사 오류 상태를 관리
   } = useForm();
 
-  const axios = useAxiosInstance();
-  const { type } = useParams(); // URL: 파라미터에서 게시판 타입 추출
-  const queryClient = useQueryClient();
+  const axios = useAxiosInstance(); // 커스텀 axios 인스턴스 사용
+  const { type } = useParams(); // URL에서 게시판 타입 파라미터 추출
+  const queryClient = useQueryClient(); // React Query의 캐시 관리 클라이언트
 
-  // 게시글 추가 mutation 설정
+  // 게시글 추가를 위한 mutation 설정
   const addItem = useMutation({
+    // mutation 함수: 서버에 POST 요청을 보내 새 게시글 생성
     mutationFn: (formData) => {
       const body = {
         title: formData.title,
@@ -28,12 +33,14 @@ export default function New() {
       };
       return axios.post(`/posts`, body);
     },
+    // 성공 시 실행될 콜백
     onSuccess: () => {
-      // 게시글 등록 성공 시 처리
       alert("게시물이 등록되었습니다.");
-      queryClient.invalidateQueries({ queryKey: ["posts", type] }); // 목록 갱신
-      navigate(`/${type}`); // 목록 페이지로 이동
+      // 게시글 목록 쿼리를 무효화하여 새로고침 유도
+      queryClient.invalidateQueries({ queryKey: ["posts", type] });
+      navigate(`/${type}`); // 게시글 목록 페이지로 이동
     },
+    // 에러 처리
     onError: (err) => {
       console.error(err);
     },
@@ -46,6 +53,7 @@ export default function New() {
           게시글 등록
         </h2>
       </div>
+
       <section className="mb-8 p-4">
         <form onSubmit={handleSubmit(addItem.mutate)}>
           <div className="my-4">
@@ -61,6 +69,7 @@ export default function New() {
             />
             <InputError target={errors.title} />
           </div>
+
           <div className="my-4">
             <label className="block text-lg content-center" htmlFor="content">
               내용
@@ -74,6 +83,7 @@ export default function New() {
             ></textarea>
             <InputError target={errors.content} />
           </div>
+
           <hr />
           <div className="flex justify-end my-6">
             <button

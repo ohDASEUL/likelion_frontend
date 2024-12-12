@@ -45,10 +45,10 @@ export default function Header() {
           {user ? (
             <form onSubmit={handleLogout}>
               <p className="flex items-center">
-                {user?.image?.path && (
+                {user.profile && (
                   <img
                     className="w-8 rounded-full mr-2"
-                    src={`https://11.fesp.shop${user.image.path}`}
+                    src={`https://11.fesp.shop${user.profile}`}
                     width="40"
                     height="40"
                     alt="프로필 이미지"

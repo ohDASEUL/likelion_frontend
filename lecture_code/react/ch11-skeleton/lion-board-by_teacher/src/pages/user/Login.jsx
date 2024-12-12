@@ -1,57 +1,76 @@
+/**
+ * 사용자 로그인을 처리하는 컴포넌트
+ * 이메일과 비밀번호를 입력받아 사용자 인증을 수행합니다.
+ */
+
+// 필요한 의존성 import
 import InputError from "@components/InputError";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
-  // Zustand store에서 사용자 정보 설정 함수 가져오기
+  // Zustand store에서 사용자 정보를 설정하는 함수를 가져옴
   const setUser = useUserStore((store) => store.setUser);
+
+  // 페이지 네비게이션을 위한 hooks
   const navigate = useNavigate();
+  const location = useLocation(); // 이전 페이지 정보를 저장하기 위해 사용
 
   // react-hook-form 설정
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setError,
+    register, // 입력 필드 등록
+    handleSubmit, // 폼 제출 핸들러
+    formState: { errors }, // 유효성 검사 오류 상태
+    setError, // 수동으로 오류를 설정하는 함수
   } = useForm({
+    // 개발 환경에서 테스트를 위한 기본값 설정
     defaultValues: {
-      email: "zara@zara.com",
-      password: "zara1234!",
+      email: "jimmyKudo@detective.com",
+      password: "Kudo1234",
     },
   });
 
+  // 커스텀 axios 인스턴스 사용
   const axios = useAxiosInstance();
 
   // 로그인 mutation 설정
-  // Login.jsx의 mutation 성공 핸들러 부분
   const login = useMutation({
+    // 서버에 로그인 요청을 보내는 함수
     mutationFn: (formData) => axios.post(`/users/login`, formData),
+
+    // 로그인 성공 시 처리
     onSuccess: (res) => {
       console.log(res);
 
-      // 로그인 성공 시 사용자 정보를 store에 저장
+      // 서버로부터 받은 사용자 정보를 전역 상태에 저장
       const user = res.data.item;
       setUser({
-        _id: user._id,
-        name: user.name,
-        image: user.profileImage, // profileImage 전체 객체를 저장
-        accessToken: user.token.accessToken,
-        refreshToken: user.token.refreshToken,
+        _id: user._id, // 사용자 고유 ID
+        name: user.name, // 사용자 이름
+        profile: user.image?.path, // 프로필 이미지 경로 (옵셔널)
+        accessToken: user.token.accessToken, // JWT 액세스 토큰
+        refreshToken: user.token.refreshToken, // JWT 리프레시 토큰
       });
 
+      // 로그인 성공 메시지 표시
       alert(res.data.item.name + "님, 로그인 되었습니다.");
-      navigate(`/`); // 메인 페이지로 이동
+      // 이전 페이지가 있으면 해당 페이지로, 없으면 홈으로 이동
+      navigate(location.state?.from || `/`);
     },
+
+    // 에러 처리
     onError: (err) => {
       console.error(err);
+      // 서버에서 반환된 유효성 검사 에러 처리
       if (err.response?.data.errors) {
         err.response?.data.errors.forEach((error) =>
           setError(error.path, { message: error.msg })
         );
       } else {
+        // 기타 에러 메시지 표시
         alert(err.response?.data.message || "잠시후 다시 요청하세요.");
       }
     },
