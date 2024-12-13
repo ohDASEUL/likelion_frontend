@@ -29,7 +29,7 @@ export default function Login() {
     // 개발 환경에서 테스트를 위한 기본값 설정
     defaultValues: {
       email: "jimmyKudo@detective.com",
-      password: "Kudo1234",
+      password: "Kudo1234!",
     },
   });
 
