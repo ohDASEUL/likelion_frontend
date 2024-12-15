@@ -59,8 +59,9 @@ export default function Edit() {
     <>
       <Helmet>
         <title>
-          {data ? `${data.item.title} 수정 - ${boardName}` : "게시글 수정"} -
-          멋사컴
+          {data
+            ? `${boardName} 게시글 수정 - ${data.item.title}`
+            : "게시글 수정"}
         </title>
         <meta property="og:title" content={`게시글 수정 - ${boardName}`} />
         <meta
